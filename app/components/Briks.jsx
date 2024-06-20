@@ -26,7 +26,7 @@ const Briks = () => {
     <div className="bg-stone-800 flex flex-col md:flex-row bg-stone-800 min-h-screen">
       <div className="md:w-1/2 w-full">
         <img
-          src="/assets/briques.png"
+          src="/lamy_construction_website/assets/briques.png"
           alt="floor"
           className="h-full w-full object-cover"
         />

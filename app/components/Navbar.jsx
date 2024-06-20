@@ -30,7 +30,7 @@ const Navbar = () => {
 		>
 			<div className="mx-auto flex items-center justify-between p-4">
 				<Link href="/">
-					<Image src="/assets/logo.png" width={70} height={70} alt="logo" />
+					<Image src="/lamy_construction_website/assets/logo.png" width={70} height={70} alt="logo" />
 				</Link>
 				{/* Add other navbar items here */}
 			</div>

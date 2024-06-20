@@ -26,7 +26,7 @@ const Floor = () => {
     <div className="flex flex-col md:flex-row bg-stone-800 min-h-screen">
       <div className="md:w-1/2 w-full">
         <img
-          src="/assets/expert_en_plancher.png"
+          src="/lamy_construction_website/assets/expert_en_plancher.png"
           alt="floor"
           className="h-full w-full object-cover"
         />
