@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+* {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  @apply bg-stone-800
+}
+
+.bg_light_yellow {
+  background: #faf3e1;
+}
+
+.bg_light_brown {
+  background: #93845e;
+}
+
+.bg_gray {
+  background: #aaa19c;
+}
+
+.tc_light_yellow {
+  color: #faf3e1;
+}
+
+.tc_light_brown {
+  color: #93845e;
+}
+
+.tc_gray {
+  color: #aaa19c;
+}
+
+.slide-up {
+  transform: translateY(200px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.slide-up.show {
+  transform: translateY(0);
+  opacity: 1;
+}
