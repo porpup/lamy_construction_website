@@ -3,8 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+	const pathname = usePathname();
+  const basePath = pathname.includes('/lamy_construction_website') ? '/lamy_construction_website' : '';
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	useEffect(() => {
@@ -30,7 +33,12 @@ const Navbar = () => {
 		>
 			<div className="mx-auto flex items-center justify-between p-4">
 				<Link href="/">
-					<Image src="/lamy_construction_website/assets/logo.png" width={70} height={70} alt="logo" />
+					<Image
+						src={`${basePath}/assets/logo.png`}
+						width={70}
+						height={70}
+						alt="logo"
+					/>
 				</Link>
 				{/* Add other navbar items here */}
 			</div>

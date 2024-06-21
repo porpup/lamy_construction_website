@@ -1,8 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Briks = () => {
+  const pathname = usePathname();
+  const basePath = pathname.includes('/lamy_construction_website') ? '/lamy_construction_website' : '';
   const [animateText, setAnimateText] = useState(false);
 
   useEffect(() => {
@@ -26,8 +29,8 @@ const Briks = () => {
     <div className="bg-stone-800 flex flex-col md:flex-row bg-stone-800 min-h-screen">
       <div className="md:w-1/2 w-full">
         <img
-          src="/lamy_construction_website/assets/briques.png"
-          alt="floor"
+          src={`${basePath}/assets/briques.png`}
+          alt="briques"
           className="h-full w-full object-cover"
         />
       </div>

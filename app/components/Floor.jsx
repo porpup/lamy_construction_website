@@ -1,8 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Floor = () => {
+  const pathname = usePathname();
+  const basePath = pathname.includes('/lamy_construction_website') ? '/lamy_construction_website' : '';
   const [animateText, setAnimateText] = useState(false);
 
   useEffect(() => {
@@ -26,8 +29,8 @@ const Floor = () => {
     <div className="flex flex-col md:flex-row bg-stone-800 min-h-screen">
       <div className="md:w-1/2 w-full">
         <img
-          src="/lamy_construction_website/assets/expert_en_plancher.png"
-          alt="floor"
+          src={`${basePath}/assets/expert_en_plancher.png`}
+          alt="expert_en_plancher"
           className="h-full w-full object-cover"
         />
       </div>
