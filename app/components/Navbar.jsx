@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -10,12 +10,11 @@ const Navbar = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			if (window.scrollY > 10) {
-				setIsScrolled(true);
-			} else {
-				setIsScrolled(false);
-			}
+			setIsScrolled(window.scrollY > 10);
 		};
+
+		// Set the initial state based on the current scroll position
+		handleScroll();
 
 		window.addEventListener("scroll", handleScroll);
 		return () => {
