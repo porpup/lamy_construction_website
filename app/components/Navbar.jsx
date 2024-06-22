@@ -3,11 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-	const pathname = usePathname();
-  const basePath = pathname.includes('/lamy_construction_website') ? '/lamy_construction_website' : '';
+	const basePath = process.env.NODE_ENV === 'production' ? '/lamy_construction_website' : '';
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	useEffect(() => {

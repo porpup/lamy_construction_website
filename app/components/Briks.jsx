@@ -1,11 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 
 const Briks = () => {
-  const pathname = usePathname();
-  const basePath = pathname.includes('/lamy_construction_website') ? '/lamy_construction_website' : '';
+  const basePath = process.env.NODE_ENV === 'production' ? '/lamy_construction_website' : '';
   const [animateText, setAnimateText] = useState(false);
 
   useEffect(() => {
