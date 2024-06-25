@@ -4,20 +4,17 @@ import "@styles/globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Lamy Construction",
-  description: "Lamy Construction Website",
-  icons: {
-    icon: '/logo.png',
-  },
+	title: "Lamy Construction",
+	description: "Lamy Construction Website",
+	icons: {
+		icon: "/assets/logo.png", // Update the path here
+	},
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/logo.png" type="image/png" />
-      </head>
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={inter.className}>{children}</body>
+		</html>
+	);
 }
