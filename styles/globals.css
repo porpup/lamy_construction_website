@@ -24,17 +24,17 @@
   }
 }
 
+/* Apply Rubik font immediately to ensure it's used */
 * {
   font-family: 'Rubik', sans-serif;
   font-weight: 400;
   font-optical-sizing: auto;
   font-style: normal;
-
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  @apply bg-stone-800
+  @apply bg-stone-800;
 }
 
 .bg_light_yellow {
