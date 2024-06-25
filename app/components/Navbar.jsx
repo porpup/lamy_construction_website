@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
+import BasePath from './BasePath';
 import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
-	const basePath = process.env.NODE_ENV === 'production' ? '/lamy_construction_website' : '';
+	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	useEffect(() => {

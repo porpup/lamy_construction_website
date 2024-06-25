@@ -1,9 +1,10 @@
 'use client';
 
 import React from "react";
+import BasePath from './BasePath';
 
 const Home = () => {
-  const basePath = process.env.NODE_ENV === 'production' ? '/lamy_construction_website' : '';
+  const basePath = BasePath();
 
   return (
     <div>

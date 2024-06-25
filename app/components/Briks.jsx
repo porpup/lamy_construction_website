@@ -1,9 +1,10 @@
 'use client'
 
+import BasePath from './BasePath';
 import React, { useEffect, useState } from "react";
 
 const Briks = () => {
-  const basePath = process.env.NODE_ENV === 'production' ? '/lamy_construction_website' : '';
+  const basePath = BasePath();
   const [animateText, setAnimateText] = useState(false);
 
   useEffect(() => {
@@ -62,6 +63,6 @@ const Briks = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Briks;

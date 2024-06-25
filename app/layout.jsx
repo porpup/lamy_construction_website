@@ -1,13 +1,15 @@
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
+import BasePath from "./components/BasePath";
 
 const inter = Inter({ subsets: ["latin"] });
+const basePath = BasePath();
 
 export const metadata = {
 	title: "Lamy Construction",
 	description: "Lamy Construction Website",
 	icons: {
-		icon: "/assets/logo.png", // Update the path here
+		icon: `${basePath}/assets/logo.png`,
 	},
 };
 
