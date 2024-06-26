@@ -1,68 +1,121 @@
-'use client'
+"use client";
 
-import BasePath from './BasePath';
-import React, { useEffect, useState } from "react";
+import BasePath from "./BasePath";
+import React, { useEffect, useState, useRef } from "react";
 
 const Briks = () => {
-  const basePath = BasePath();
-  const [animateText, setAnimateText] = useState(false);
+	const basePath = BasePath();
+	const [animateText, setAnimateText] = useState({
+		text1: false,
+		text2: false,
+	});
+	const textRef1 = useRef(null);
+	const textRef2 = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 200) { // Adjust this value as needed
-        setAnimateText(true);
-      } else {
-        setAnimateText(false);
-      }
-    };
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						if (entry.target.id === "text1") {
+							setAnimateText((prev) => ({ ...prev, text1: true }));
+						} else if (entry.target.id === "text2") {
+							setAnimateText((prev) => ({ ...prev, text2: true }));
+						}
+					}
+				});
+			},
+			{
+				threshold: 0.1, // Adjust this value as needed
+			}
+		);
 
-    window.addEventListener("scroll", handleScroll);
+		if (textRef1.current) {
+			observer.observe(textRef1.current);
+		}
+		if (textRef2.current) {
+			observer.observe(textRef2.current);
+		}
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+		return () => {
+			if (textRef1.current) {
+				observer.unobserve(textRef1.current);
+			}
+			if (textRef2.current) {
+				observer.unobserve(textRef2.current);
+			}
+		};
+	}, []);
 
-  return (
-    <div className="bg-stone-800 flex flex-col md:flex-row bg-stone-800 min-h-screen">
-      <div className="md:w-1/2 w-full">
-        <img
-          src={`${basePath}/assets/briques.png`}
-          alt="briques"
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <div
-        className={`md:w-1/2 w-full tc_light_yellow p-16 overflow-y-auto slide-up ${animateText ? 'show' : ''}`}
-      >
-        <p className="tc_light_brown mb-4 text-2xl">EXPERT EN PLANCHER</p>
-        <p className="mb-4">Boily œuvre dans le domaine de la rénovation.</p>
-        <p className="mb-4">
-          Entreprise québécoise qui depuis son ouverture a réalisé plus de 500
-          projets.
-        </p>
-        <p className="mb-4">L'entreprise offre plusieurs services :</p>
-        <p className="mb-4">
-          Toiture, peinture, lavage à pression, isolation, revêtements
-          planchers, céramique, tapis, boiseries, moulures, rampes, portes,
-          fenêtres, briques. Elle offre également un service d'expert en après
-          sinistre.
-        </p>
-        <p className="mb-4">
-          Son équipe a acquis avec les années, une réputa- tion de fiabilité, un
-          service à la clientèle hors pair et surtout une qualité des travaux
-          exceptionnelle. Nous mettons tout en œuvre afin de maintenir des
-          standards de qualité élevés et une propreté du chantier exemplaire.
-        </p>
-        <p className="mb-4">
-          L'entreprise se spécialise dans le domaine commercial et œuvre
-          également dans le domaine de la restauration de bâtiments
-          patrimoniaux.
-        </p>
-      </div>
-    </div>
-  );
-}
+	return (
+		<div className="bg_light_brown flex flex-col md:flex-row">
+			<div className="md:w-1/2 w-full flex flex-col justify-between">
+				<div
+					ref={textRef1}
+					id="text1"
+					className={`tc_light_yellow p-8 slide-up ${
+						animateText.text1 ? "show" : ""
+					}`}
+				>
+					<p className="text-stone-800 mb-4 text-2xl">BRIQUES</p>
+					<p className="mb-4">
+						Nous offrons des projets clés en main, jusqu'à 12 étages pour votre
+						projet: que ce soit pour un foyer, un mur ou la maçonnerie complète
+						de votre demeure, commerces ou immeubles.
+					</p>
+					<p className="mb-4">
+						Nous faisons aussi la réfection des points de maçonnerie et le
+						remplacement des pièces de maçonnerie.
+					</p>
+				</div>
+				<div className="flex-grow"></div>
+				<div className="relative flex justify-center items-end">
+					<img
+						src={`${basePath}/assets/briques.png`}
+						alt="briques"
+						className="h-auto w-full object-cover"
+					/>
+				</div>
+			</div>
+			<div className="md:w-1/2 w-full flex-col justify-between">
+				<div
+					ref={textRef2}
+					id="text2"
+					className={`tc_light_yellow p-8 slide-up ${
+						animateText.text2 ? "show" : ""
+					}`}
+				>
+					<p className="text-stone-800 mb-4 text-2xl">NOTRE EXPERTISE</p>
+					<div className="mb-4">
+						<li>RESPECT DES ÉCHÉANCIERS</li>
+						<li>TRAVAUX GARANTIE 5 ANS AVEC PREUVE AU CONTRAT</li>
+						<li>ASSURANCE INDEMNITÉ</li>
+						<li>SATISFACTION GARANTIE À 100%</li>
+						<li>RBQ: 5848-3058-01</li>
+						<li>LOI 122</li>
+						<li>SERVICE D'INGÉNIEURS ET ARCHITECTES DISPONIBLE</li>
+					</div>
+				</div>
+				<div className="flex-grow"></div>
+				<div className="flex justify-between p-8 items-center">
+					<div className="w-1/2 mx-8">
+						<img
+							src={`${basePath}/assets/ordre_ingenieurs_du_quebec_logo.png`}
+							alt="ordre_ingenieurs_du_quebec_logo"
+							className="h-auto w-full object-contain"
+						/>
+					</div>
+					<div className="w-1/2 mx-8">
+						<img
+							src={`${basePath}/assets/ordre_des_architectes_du_québec_logo.png`}
+							alt="ordre_des_architectes_du_québec_logo"
+							className="h-auto w-full object-contain"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
 
 export default Briks;

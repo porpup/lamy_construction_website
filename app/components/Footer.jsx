@@ -15,7 +15,6 @@ const Footer = () => {
 	return (
 		<footer className="bg-stone-800 tc_gray pr-16 pl-16">
 			<hr className="h-0.5 mx-auto my-4 border-0 rounded md:my-5 bg_gray" />
-
 			<h6 className="mb-4 font-semibold uppercase text-center">Contact</h6>
 			<div className="flex flex-col items-center md:flex-row md:justify-between">
 				{/* Address Section */}
@@ -74,8 +73,8 @@ const Footer = () => {
 
 			{/* Copyright Section */}
 			<hr className="h-0.5 mx-auto my-4 border-0 rounded md:my-5 bg_gray" />
-			<div className="bg-stone-800 pb-5 text-center">
-				<p>Copyright © 2024 - {company.name}</p>
+			<div className="pb-5 text-center flex flex-col items-center md:flex-row md:justify-center md:space-x-16">
+				<p className="mb-2 md:mb-0">Copyright © 2024 - {company.name}</p>
 				<p>RBQ: 5848-3058-01</p>
 			</div>
 		</footer>

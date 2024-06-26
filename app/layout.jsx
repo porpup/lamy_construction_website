@@ -29,6 +29,10 @@ export default function RootLayout({ children }) {
           href={`${basePath}/assets/logo.png`}
           type="image/png"
         />
+        <link
+          rel="apple-touch-icon"
+          href={`${basePath}/assets/logo.png`}
+        />
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>

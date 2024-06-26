@@ -1,40 +1,52 @@
-'use client'
+'use client';
 
 import BasePath from './BasePath';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const Floor = () => {
   const basePath = BasePath();
   const [animateText, setAnimateText] = useState(false);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 200) { // Adjust this value as needed
-        setAnimateText(true);
-      } else {
-        setAnimateText(false);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setAnimateText(true);
+          } else {
+            setAnimateText(false);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Adjust this value as needed
       }
-    };
+    );
 
-    window.addEventListener("scroll", handleScroll);
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (textRef.current) {
+        observer.unobserve(textRef.current);
+      }
     };
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row bg-stone-800 min-h-screen">
-      <div className="md:w-1/2 w-full">
+    <div className="flex flex-col md:flex-row">
+      <div className="md:w-1/2 w-full relative justify-center items-end">
         <img
           src={`${basePath}/assets/expert_en_plancher.png`}
           alt="expert_en_plancher"
-          className="h-full w-full object-cover"
+          className="h-auto w-full object-cover"
         />
       </div>
       <div
-        className={`md:w-1/2 w-full tc_light_yellow p-16 overflow-y-auto slide-up ${animateText ? 'show' : ''}`}
+        ref={textRef}
+        className={`md:w-1/2 w-full tc_light_yellow p-16 slide-up ${animateText ? 'show' : ''}`}
       >
         <p className="tc_light_brown mb-4 text-2xl">EXPERT EN PLANCHER</p>
         <p className="mb-4">Boily œuvre dans le domaine de la rénovation.</p>
