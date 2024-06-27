@@ -140,7 +140,7 @@ body {
 }
 
 .navbar-expanded {
-  max-height: 150px;
+  max-height: 1000px;
   opacity: 1;
   overflow: hidden;
 }

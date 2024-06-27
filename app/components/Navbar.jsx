@@ -72,7 +72,10 @@ const Navbar = () => {
 				isScrolled ? "bg-stone-800" : "bg_light_yellow"
 			}`}
 		>
-			<div className="mx-auto flex items-center justify-between p-2">
+			<div
+				className="mx-auto flex items-center justify-between p-2"
+				style={{ height: "71px" }}
+			>
 				<ScrollLink
 					to="home"
 					smooth={true}
@@ -127,8 +130,8 @@ const Navbar = () => {
 				</nav>
 			</div>
 			<div
-				className={`md:hidden flex flex-col items-center space-y-2 p-3 navbar ${
-					isMenuOpen ? "navbar-expanded" : "navbar-collapsed"
+				className={`md:hidden flex flex-col items-center space-y-2 overflow-hidden transition-all duration-300 ease-in-out ${
+					isMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"
 				}`}
 			>
 				<ScrollLink
