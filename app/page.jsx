@@ -15,6 +15,7 @@ const Page = () => {
         <Home />
         <Floor />
         <Paint />
+        
         <Briks />
         <Footer />
       </LanguageProvider>

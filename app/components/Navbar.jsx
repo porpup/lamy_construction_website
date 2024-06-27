@@ -5,7 +5,8 @@ import BasePath from './BasePath';
 import Link from "next/link";
 import Image from "next/image";
 import { LanguageContext } from '../components/LanguageContext';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import Controls from './Controls';
 
 const Navbar = () => {
   const basePath = BasePath();
@@ -33,9 +34,7 @@ const Navbar = () => {
   const linkClass = `font-bold text-lg ${isScrolled ? 'tc_gray hover:text-neutral-100' : 'text-stone-800 hover:text-neutral-100'}`;
 
   return (
-    <div
-      className={`fixed top-0 left-0 w-full z-10 transition-colors duration-300 ${isScrolled ? "bg-stone-800" : "bg-transparent"}`}
-    >
+    <div className={`fixed top-0 left-0 w-full z-10 transition-colors duration-200 ${isScrolled ? "bg-stone-800" : "bg_light_yellow"}`}>
       <div className="mx-auto flex items-center justify-between p-3">
         <Link href="/">
           <Image
@@ -48,13 +47,11 @@ const Navbar = () => {
           />
         </Link>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white">
-            ☰
-          </button>
+          <Controls isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} isScrolled={isScrolled} />
         </div>
-        <nav className={`flex items-center space-x-4 ${isMenuOpen ? 'block' : 'hidden'} md:flex`}>
+        <nav className={`hidden md:flex items-center space-x-4`}>
           <Link href="/" className={linkClass}>{translations.home}</Link>
-          <ScrollLink to="footer" smooth={true} duration={500} className={`cursor-pointer ${linkClass}`} onClick={toggleMenu}>
+          <ScrollLink to="footer" smooth={true} duration={500} className={`cursor-pointer ${linkClass}`}>
             {translations.contacts}
           </ScrollLink>
           <button
