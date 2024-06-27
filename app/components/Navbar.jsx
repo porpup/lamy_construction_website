@@ -11,8 +11,7 @@ const Navbar = () => {
 	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const { language, toggleLanguage, translations } =
-		useContext(LanguageContext);
+	const { language, toggleLanguage, translations } = useContext(LanguageContext);
 	const navbarRef = useRef(null);
 	const [offset, setOffset] = useState(0);
 
@@ -48,10 +47,7 @@ const Navbar = () => {
 	}, [isMenuOpen]);
 
 	useEffect(() => {
-		const bodyPaddingTop = parseInt(
-			window.getComputedStyle(document.body).paddingTop,
-			10
-		);
+		const bodyPaddingTop = parseInt(window.getComputedStyle(document.body).paddingTop, 10);
 		setOffset(-bodyPaddingTop);
 	}, []);
 
@@ -60,9 +56,7 @@ const Navbar = () => {
 	};
 
 	const linkClass = `font-bold text-lg ${
-		isScrolled
-			? "tc_gray hover:text-neutral-100"
-			: "text-stone-800 tc_hover_light_brown"
+		isScrolled ? "tc_gray hover:text-neutral-100" : "text-stone-800 tc_hover_light_brown"
 	}`;
 
 	return (
@@ -72,16 +66,14 @@ const Navbar = () => {
 				isScrolled ? "bg-stone-800" : "bg_light_yellow"
 			}`}
 		>
-			<div
-				className="mx-auto flex items-center justify-between p-2"
-				style={{ height: "71px" }}
-			>
+			<div className="mx-auto flex items-center justify-between p-2" style={{ height: "71px" }}>
 				<ScrollLink
 					to="home"
 					smooth={true}
 					duration={500}
 					offset={offset}
 					className="cursor-pointer"
+					onClick={() => setIsMenuOpen(false)} // Add this to collapse the menu when the logo is clicked
 				>
 					<div className="relative w-14 h-14">
 						<Image
@@ -94,11 +86,7 @@ const Navbar = () => {
 					</div>
 				</ScrollLink>
 				<div className="md:hidden">
-					<Controls
-						isMenuOpen={isMenuOpen}
-						toggleMenu={toggleMenu}
-						isScrolled={isScrolled}
-					/>
+					<Controls isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} isScrolled={isScrolled} />
 				</div>
 				<nav className={`hidden md:flex items-center space-x-4`}>
 					<ScrollLink
