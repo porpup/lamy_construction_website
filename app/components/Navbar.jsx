@@ -62,19 +62,18 @@ const Navbar = () => {
 	const linkClass = `font-bold text-lg ${
 		isScrolled
 			? "tc_gray hover:text-neutral-100"
-			: "text-stone-800 tc_hover_light_brown"
+			: "text-neutral-100 hover:text-stone-800"
 	}`;
 
 	return (
 		<div
 			ref={navbarRef}
 			className={`fixed top-0 left-0 w-full z-10 transition-colors duration-200 px-4 ${
-				isScrolled ? "bg-stone-800" : "bg_light_yellow"
+				isScrolled ? "bg-stone-800/90" : "bg-sky-300/90"
 			}`}
 		>
 			<div
 				className="mx-auto flex items-center justify-between p-2"
-				style={{ height: "71px" }}
 			>
 				<ScrollLink
 					to="home"
@@ -82,7 +81,7 @@ const Navbar = () => {
 					duration={500}
 					offset={offset}
 					className="cursor-pointer"
-					onClick={() => setIsMenuOpen(false)} // Add this to collapse the menu when the logo is clicked
+					onClick={() => setIsMenuOpen(false)}
 				>
 					<div className="relative w-14 h-14">
 						<Image

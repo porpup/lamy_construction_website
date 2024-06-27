@@ -4,7 +4,7 @@ const Controls = ({ isMenuOpen, toggleMenu, isScrolled }) => {
 	const lineBaseClass = "block w-full h-0.5 transition-transform duration-200";
 	const colorClass = isScrolled
 		? "bg_gray group-hover:bg-neutral-100"
-		: "bg-stone-800 group_hover_bg_light_brown";
+		: "bg-neutral-100 group-hover:bg-stone-800";
 
 	return (
 		<button className="menuToggle group" onClick={toggleMenu}>
