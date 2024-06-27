@@ -2,10 +2,12 @@ import React from "react";
 
 const Controls = ({ isMenuOpen, toggleMenu, isScrolled }) => {
 	const lineBaseClass = "block w-full h-0.5 transition-transform duration-200";
-	const colorClass = isScrolled ? "bg-neutral-100" : "bg-stone-800";
+	const colorClass = isScrolled
+		? "bg_gray group-hover:bg-neutral-100"
+		: "bg-stone-800 group_hover_bg_light_brown";
 
 	return (
-		<button className="menuToggle" onClick={toggleMenu}>
+		<button className="menuToggle group" onClick={toggleMenu}>
 			<span
 				className={`${lineBaseClass} ${
 					isMenuOpen ? "translate-y-3 rotate-45" : ""

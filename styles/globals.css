@@ -46,6 +46,10 @@ body {
   background: #93845e;
 }
 
+.group:hover .group_hover_bg_light_brown {
+  background-color: #93845e;
+}
+
 .bg_gray {
   background: #aaa19c;
 }
@@ -122,4 +126,21 @@ body {
 
 .line3Open {
   transform: translateY(-12px) rotate(-45deg);
+}
+
+/* Navbar animation */
+.navbar {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.navbar-collapsed {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.navbar-expanded {
+  max-height: 150px;
+  opacity: 1;
+  overflow: hidden;
 }

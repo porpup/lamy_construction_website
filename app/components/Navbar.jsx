@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import BasePath from "./BasePath";
-import Link from "next/link";
-import Image from "next/image";
 import { LanguageContext } from "../components/LanguageContext";
 import { Link as ScrollLink } from "react-scroll";
 import Controls from "./Controls";
@@ -12,7 +10,10 @@ const Navbar = () => {
 	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const { language, toggleLanguage, translations } = useContext(LanguageContext);
+	const { language, toggleLanguage, translations } =
+		useContext(LanguageContext);
+	const navbarRef = useRef(null);
+	const [offset, setOffset] = useState(0);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -27,45 +28,88 @@ const Navbar = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+				setIsMenuOpen(false);
+			}
+		};
+
+		if (isMenuOpen) {
+			document.addEventListener("mousedown", handleClickOutside);
+		} else {
+			document.removeEventListener("mousedown", handleClickOutside);
+		}
+
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [isMenuOpen]);
+
+	useEffect(() => {
+		const bodyPaddingTop = parseInt(
+			window.getComputedStyle(document.body).paddingTop,
+			10
+		);
+		setOffset(-bodyPaddingTop);
+	}, []);
+
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
 	const linkClass = `font-bold text-lg ${
 		isScrolled
-			? "text-neutral-100 hover:text-neutral-200"
+			? "tc_gray hover:text-neutral-100"
 			: "text-stone-800 tc_hover_light_brown"
 	}`;
 
 	return (
 		<div
+			ref={navbarRef}
 			className={`fixed top-0 left-0 w-full z-10 transition-colors duration-200 px-4 ${
 				isScrolled ? "bg-stone-800" : "bg_light_yellow"
 			}`}
 		>
 			<div className="mx-auto flex items-center justify-between p-2">
-				<Link href="/">
-					<Image
+				<ScrollLink
+					to="home"
+					smooth={true}
+					duration={500}
+					offset={offset}
+					className="cursor-pointer"
+				>
+					<img
 						src={`${basePath}/assets/icons/logo.svg`}
-						width={55}
-						height={55}
 						alt="logo"
-						priority={true}
 						style={{ width: "55px", height: "55px" }}
 					/>
-				</Link>
+				</ScrollLink>
 				<div className="md:hidden">
-					<Controls isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} isScrolled={isScrolled} />
+					<Controls
+						isMenuOpen={isMenuOpen}
+						toggleMenu={toggleMenu}
+						isScrolled={isScrolled}
+					/>
 				</div>
 				<nav className={`hidden md:flex items-center space-x-4`}>
-					<ScrollLink to="home" smooth={true} duration={500} className={`cursor-pointer ${linkClass}`}>
+					<ScrollLink
+						to="home"
+						smooth={true}
+						duration={500}
+						offset={offset}
+						className={`cursor-pointer ${linkClass}`}
+						onClick={toggleMenu}
+					>
 						{translations.home}
 					</ScrollLink>
 					<ScrollLink
 						to="footer"
 						smooth={true}
 						duration={500}
+						offset={offset}
 						className={`cursor-pointer ${linkClass}`}
+						onClick={toggleMenu}
 					>
 						{translations.contacts}
 					</ScrollLink>
@@ -77,31 +121,41 @@ const Navbar = () => {
 					</button>
 				</nav>
 			</div>
-			{isMenuOpen && (
-				<div className="md:hidden flex flex-col items-center space-y-2 p-3">
-					<ScrollLink to="home" smooth={true} duration={500} className={`cursor-pointer ${linkClass}`} onClick={toggleMenu}>
-						{translations.home}
-					</ScrollLink>
-					<ScrollLink
-						to="footer"
-						smooth={true}
-						duration={500}
-						className={`cursor-pointer ${linkClass}`}
-						onClick={toggleMenu}
-					>
-						{translations.contacts}
-					</ScrollLink>
-					<button
-						onClick={() => {
-							toggleLanguage();
-							toggleMenu();
-						}}
-						className={`${linkClass} border border-current px-2 py-1 rounded`}
-					>
-						{language === "en" ? "FR" : "EN"}
-					</button>
-				</div>
-			)}
+			<div
+				className={`md:hidden flex flex-col items-center space-y-2 p-3 navbar ${
+					isMenuOpen ? "navbar-expanded" : "navbar-collapsed"
+				}`}
+			>
+				<ScrollLink
+					to="home"
+					smooth={true}
+					duration={500}
+					offset={offset}
+					className={`cursor-pointer ${linkClass}`}
+					onClick={toggleMenu}
+				>
+					{translations.home}
+				</ScrollLink>
+				<ScrollLink
+					to="footer"
+					smooth={true}
+					duration={500}
+					offset={offset}
+					className={`cursor-pointer ${linkClass}`}
+					onClick={toggleMenu}
+				>
+					{translations.contacts}
+				</ScrollLink>
+				<button
+					onClick={() => {
+						toggleLanguage();
+						toggleMenu();
+					}}
+					className={`${linkClass} border border-current px-2 py-1 rounded`}
+				>
+					{language === "en" ? "FR" : "EN"}
+				</button>
+			</div>
 		</div>
 	);
 };
