@@ -87,7 +87,7 @@ const Floor = () => {
 							Entreprise québécoise qui depuis son ouverture a réalisé plus de
 							500 projets.
 						</p>
-						<p className="mb-4">L'entreprise offre plusieurs services :</p>
+						<p className="mb-4">L'entreprise offre plusieurs services:</p>
 						<p className="mb-4">
 							Toiture, peinture, lavage à pression, isolation, revêtements
 							planchers, céramique, tapis, boiseries, moulures, rampes, portes,
