@@ -9,7 +9,7 @@ export const metadata = {
   title: "Lamy Construction",
   description: "Lamy Construction Website",
   icons: {
-    icon: `${basePath}/assets/logo.png`,
+    icon: `${basePath}/assets/logo.svg`,
   },
 };
 
@@ -26,12 +26,12 @@ export default function RootLayout({ children }) {
         />
         <link
           rel="icon"
-          href={`${basePath}/assets/logo.png`}
+          href={`${basePath}/assets/logo.svg`}
           type="image/png"
         />
         <link
           rel="apple-touch-icon"
-          href={`${basePath}/assets/logo_180x180.png`}
+          href={`${basePath}/assets/logo.svg`}
         />
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />

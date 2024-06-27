@@ -9,7 +9,7 @@ const Home = () => {
   const { language } = useContext(LanguageContext);
 
   return (
-    <div className="relative text-center">
+    <div id="home" className="relative text-center">
       <img
         src={`${basePath}/assets/constructors.png`}
         alt="constructors"

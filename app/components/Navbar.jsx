@@ -12,8 +12,7 @@ const Navbar = () => {
 	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const { language, toggleLanguage, translations } =
-		useContext(LanguageContext);
+	const { language, toggleLanguage, translations } = useContext(LanguageContext);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -34,7 +33,7 @@ const Navbar = () => {
 
 	const linkClass = `font-bold text-lg ${
 		isScrolled
-			? "tc_gray hover:text-neutral-100"
+			? "text-neutral-100 hover:text-neutral-200"
 			: "text-stone-800 tc_hover_light_brown"
 	}`;
 
@@ -47,7 +46,7 @@ const Navbar = () => {
 			<div className="mx-auto flex items-center justify-between p-2">
 				<Link href="/">
 					<Image
-						src={`${basePath}/assets/logo.png`}
+						src={`${basePath}/assets/logo.svg`}
 						width={55}
 						height={55}
 						alt="logo"
@@ -56,16 +55,12 @@ const Navbar = () => {
 					/>
 				</Link>
 				<div className="md:hidden">
-					<Controls
-						isMenuOpen={isMenuOpen}
-						toggleMenu={toggleMenu}
-						isScrolled={isScrolled}
-					/>
+					<Controls isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} isScrolled={isScrolled} />
 				</div>
 				<nav className={`hidden md:flex items-center space-x-4`}>
-					<Link href="/" className={linkClass}>
+					<ScrollLink to="home" smooth={true} duration={500} className={`cursor-pointer ${linkClass}`}>
 						{translations.home}
-					</Link>
+					</ScrollLink>
 					<ScrollLink
 						to="footer"
 						smooth={true}
@@ -84,9 +79,9 @@ const Navbar = () => {
 			</div>
 			{isMenuOpen && (
 				<div className="md:hidden flex flex-col items-center space-y-2 p-3">
-					<Link href="/" onClick={toggleMenu} className={linkClass}>
+					<ScrollLink to="home" smooth={true} duration={500} className={`cursor-pointer ${linkClass}`} onClick={toggleMenu}>
 						{translations.home}
-					</Link>
+					</ScrollLink>
 					<ScrollLink
 						to="footer"
 						smooth={true}
