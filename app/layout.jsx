@@ -8,9 +8,6 @@ const basePath = BasePath();
 export const metadata = {
   title: "Lamy Construction",
   description: "Lamy Construction Website",
-  icons: {
-    icon: `${basePath}/assets/logo.svg`,
-  },
 };
 
 export default function RootLayout({ children }) {
@@ -24,15 +21,17 @@ export default function RootLayout({ children }) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <link
-          rel="icon"
-          href={`${basePath}/assets/logo.svg`}
-          type="image/png"
-        />
-        <link
-          rel="apple-touch-icon"
-          href={`${basePath}/assets/logo.svg`}
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href={`${basePath}/assets/icons/apple-touch-icon.png`} />
+        <link rel="icon" type="image/png" sizes="32x32" href={`${basePath}/assets/icons/favicon-32x32.png`} />
+        <link rel="icon" type="image/png" sizes="16x16" href={`${basePath}/assets/icons/favicon-16x16.png`} />
+        <link rel="manifest" href={`${basePath}/assets/icons/site.webmanifest`} />
+        <link rel="mask-icon" href={`${basePath}/assets/icons/safari-pinned-tab.svg`} color="#5bbad5" />
+        <link rel="shortcut icon" href={`${basePath}/assets/icons/favicon.ico`} />
+        <meta name="apple-mobile-web-app-title" content="Lamy Construction" />
+        <meta name="application-name" content="Lamy Construction" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="msapplication-config" content={`${basePath}/assets/icons/browserconfig.xml`} />
+        <meta name="theme-color" content="#ffffff" />
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
