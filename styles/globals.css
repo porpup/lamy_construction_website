@@ -34,6 +34,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  padding-top: 71px;
   @apply bg-stone-800;
 }
 
