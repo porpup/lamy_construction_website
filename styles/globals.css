@@ -45,10 +45,6 @@ body {
   background: #93845e;
 }
 
-.group:hover .group_hover_bg_light_brown {
-  background-color: #93845e;
-}
-
 .bg_gray {
   background: #aaa19c;
 }
@@ -58,10 +54,6 @@ body {
 }
 
 .tc_light_brown {
-  color: #93845e;
-}
-
-.tc_hover_light_brown:hover {
   color: #93845e;
 }
 
