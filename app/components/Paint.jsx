@@ -107,7 +107,6 @@ const Paint = () => {
 						</>
 					)}
 				</div>
-				<div className="flex-grow"></div>
 				<div className="relative flex justify-center items-end">
 					<img
 						src={`${basePath}/assets/peinture.png`}
@@ -117,26 +116,26 @@ const Paint = () => {
 				</div>
 			</div>
 			<div className="md:w-1/2 w-full flex-col justify-between">
-				<div className="w-full flex justify-center pb-4">
+				<div className="w-full flex justify-center">
 					<img
 						src={`${basePath}/assets/boiseries.png`}
 						alt="boiseries"
 						className="h-auto w-full object-contain"
 					/>
 				</div>
-				<div className="flex justify-between items-center">
-					<div className="w-1/2 pr-1">
+				<div className="flex items-center w-full" style={{ height: "200px" }}>
+					<div className="w-1/2 h-full">
 						<img
 							src={`${basePath}/assets/moulures_rampes.png`}
 							alt="moulures_rampes"
-							className="h-auto w-full object-contain"
+							className="h-full w-full object-cover"
 						/>
 					</div>
-					<div className="w-1/2 pl-3">
+					<div className="w-1/2 h-full">
 						<img
 							src={`${basePath}/assets/portes_et_fenetres.png`}
 							alt="portes_et_fenetres"
-							className="h-auto w-full object-contain"
+							className="h-full w-full object-cover"
 						/>
 					</div>
 				</div>

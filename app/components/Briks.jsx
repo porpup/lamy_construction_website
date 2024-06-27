@@ -4,6 +4,7 @@ import BasePath from "./BasePath";
 import Image from "next/image";
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { LanguageContext } from "../components/LanguageContext";
+
 const Briks = () => {
 	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState({
@@ -86,7 +87,6 @@ const Briks = () => {
 						</>
 					)}
 				</div>
-				<div className="flex-grow"></div>
 				<div className="relative flex justify-center items-end">
 					<Image
 						src={`${basePath}/assets/briques.png`}
@@ -134,7 +134,6 @@ const Briks = () => {
 						</>
 					)}
 				</div>
-				<div className="flex-grow"></div>
 				<div className="flex justify-between p-8 items-center">
 					<div className="w-1/2 mx-8">
 						<Image

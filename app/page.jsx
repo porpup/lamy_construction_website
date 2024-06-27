@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Floor from "./components/Floor";
 import Paint from "./components/Paint";
+import Design from "./components/Design";
 import Briks from "./components/Briks";
 import Footer from "./components/Footer";
 
@@ -15,6 +16,7 @@ const Page = () => {
 				<Home />
 				<Floor />
 				<Paint />
+				<Design />
 
 				<Briks />
 				<Footer />
