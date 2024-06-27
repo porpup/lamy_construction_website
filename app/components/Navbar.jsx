@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect, useContext, useRef } from "react";
 import BasePath from "./BasePath";
+import Controls from "./Controls";
+import Image from "next/image";
 import { LanguageContext } from "../components/LanguageContext";
 import { Link as ScrollLink } from "react-scroll";
-import Controls from "./Controls";
 
 const Navbar = () => {
 	const basePath = BasePath();
@@ -79,11 +80,15 @@ const Navbar = () => {
 					offset={offset}
 					className="cursor-pointer"
 				>
-					<img
-						src={`${basePath}/assets/icons/logo.svg`}
-						alt="logo"
-						style={{ width: "55px", height: "55px" }}
-					/>
+					<div className="relative w-14 h-14">
+						<Image
+							src={`${basePath}/assets/icons/logo.svg`}
+							alt="logo"
+							fill
+							sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+							style={{ objectFit: "contain" }}
+						/>
+					</div>
 				</ScrollLink>
 				<div className="md:hidden">
 					<Controls

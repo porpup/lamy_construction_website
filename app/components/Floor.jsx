@@ -1,14 +1,15 @@
 "use client";
 
-import BasePath from "./BasePath";
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { LanguageContext } from "../components/LanguageContext"; // Adjust the path if needed
+import BasePath from "./BasePath";
+import Image from "next/image";
+import { LanguageContext } from "../components/LanguageContext";
 
 const Floor = () => {
 	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState(false);
 	const textRef = useRef(null);
-	const { language } = useContext(LanguageContext); // Using LanguageContext
+	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -40,10 +41,12 @@ const Floor = () => {
 	return (
 		<div className="flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full relative justify-center items-end">
-				<img
+				<Image
 					src={`${basePath}/assets/expert_en_plancher.png`}
 					alt="expert_en_plancher"
-					className="h-auto w-full object-cover"
+					width={1920}
+					height={1080}
+					style={{ width: "100%", height: "auto" }}
 				/>
 			</div>
 			<div
@@ -80,9 +83,7 @@ const Floor = () => {
 				) : (
 					<>
 						<p className="tc_light_brown mb-4 text-2xl">EXPERT EN PLANCHER</p>
-						<p className="mb-4">
-							Lamy œuvre dans le domaine de la rénovation.
-						</p>
+						<p className="mb-4">Lamy œuvre dans le domaine de la rénovation.</p>
 						<p className="mb-4">
 							Entreprise québécoise qui depuis son ouverture a réalisé plus de
 							500 projets.

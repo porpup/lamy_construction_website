@@ -8,19 +8,19 @@ import Briks from "./components/Briks";
 import Footer from "./components/Footer";
 
 const Page = () => {
-  return (
-    <div>
-      <LanguageProvider>
-        <Navbar />
-        <Home />
-        <Floor />
-        <Paint />
-        
-        <Briks />
-        <Footer />
-      </LanguageProvider>
-    </div>
-  );
+	return (
+		<div>
+			<LanguageProvider>
+				<Navbar />
+				<Home />
+				<Floor />
+				<Paint />
+
+				<Briks />
+				<Footer />
+			</LanguageProvider>
+		</div>
+	);
 };
 
 export default Page;
