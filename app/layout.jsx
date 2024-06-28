@@ -6,14 +6,16 @@ const inter = Inter({ subsets: ["latin"] });
 const basePath = BasePath();
 
 export const metadata = {
-	title: "Lamy Construction",
-	description: "Lamy Construction Website",
+	title: "Lamy Construction - Quality Building Services",
+	description: "Lamy Construction offers top-notch construction services, ensuring quality and reliability for all your building needs.",
+	keywords: "construction, building, quality services, Lamy Construction",
 };
 
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<head>
+				<meta charSet="UTF-8" />
 				<link
 					rel="preload"
 					href="https://fonts.gstatic.com/s/rubik/v28/iJWKBXyIfDnIV7nBrXyw023e.woff2"
@@ -59,8 +61,18 @@ export default function RootLayout({ children }) {
 					content={`${basePath}/assets/icons/browserconfig.xml`}
 				/>
 				<meta name="theme-color" content="#ffffff" />
-				<title>{metadata.title}</title>
 				<meta name="description" content={metadata.description} />
+				<meta name="keywords" content={metadata.keywords} />
+				<meta property="og:title" content={metadata.title} />
+				<meta property="og:description" content={metadata.description} />
+				<meta property="og:image" content={`${basePath}/assets/icons/og-image.png`} />
+				<meta property="og:url" content="https://yourwebsite.com" />
+				<meta property="og:type" content="website" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content={metadata.title} />
+				<meta name="twitter:description" content={metadata.description} />
+				<meta name="twitter:image" content={`${basePath}/assets/icons/twitter-image.png`} />
+				<title>{metadata.title}</title>
 			</head>
 			<body className={inter.className}>{children}</body>
 		</html>
