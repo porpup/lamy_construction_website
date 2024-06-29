@@ -1,1 +1,2 @@
+# Redirect /gallery/* to /
 /gallery/*    /   200
