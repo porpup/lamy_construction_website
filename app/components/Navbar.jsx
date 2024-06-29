@@ -12,8 +12,7 @@ const Navbar = ({ scrolled }) => {
 	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(scrolled || false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const { language, toggleLanguage, translations } =
-		useContext(LanguageContext);
+	const { language, toggleLanguage, translations } = useContext(LanguageContext);
 	const navbarRef = useRef(null);
 	const [offset, setOffset] = useState(0);
 
@@ -22,8 +21,6 @@ const Navbar = ({ scrolled }) => {
 			const handleScroll = () => {
 				setIsScrolled(window.scrollY > 10);
 			};
-
-			handleScroll();
 
 			window.addEventListener("scroll", handleScroll);
 			return () => {
@@ -39,22 +36,14 @@ const Navbar = ({ scrolled }) => {
 			}
 		};
 
-		if (isMenuOpen) {
-			document.addEventListener("mousedown", handleClickOutside);
-		} else {
-			document.removeEventListener("mousedown", handleClickOutside);
-		}
-
+		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
 	}, [isMenuOpen]);
 
 	useEffect(() => {
-		const bodyPaddingTop = parseInt(
-			window.getComputedStyle(document.body).paddingTop,
-			10
-		);
+		const bodyPaddingTop = parseInt(window.getComputedStyle(document.body).paddingTop, 10);
 		setOffset(-bodyPaddingTop);
 	}, []);
 
@@ -62,11 +51,7 @@ const Navbar = ({ scrolled }) => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
-	const linkClass = `font-bold text-lg ${
-		isScrolled
-			? "tc_gray hover:text-neutral-100"
-			: "text-neutral-100 hover:text-stone-800"
-	}`;
+	const linkClass = `font-bold text-lg ${isScrolled ? "tc_gray hover:text-neutral-100" : "text-neutral-100 hover:text-stone-800"}`;
 
 	const handleHomeClick = (event) => {
 		if (window.location.pathname === `${basePath}/`) {
@@ -78,9 +63,7 @@ const Navbar = ({ scrolled }) => {
 	return (
 		<div
 			ref={navbarRef}
-			className={`fixed top-0 left-0 w-full z-10 transition-colors duration-200 px-4 ${
-				isScrolled ? "bg-stone-800/90" : "bg-sky-300/90"
-			}`}
+			className={`fixed top-0 left-0 w-full z-10 transition-colors duration-200 px-4 ${isScrolled ? "bg-stone-800/90" : "bg-sky-300/90"}`}
 		>
 			<div className="mx-auto flex items-center justify-between p-2">
 				<Link href={`${basePath}/`}>
@@ -90,7 +73,7 @@ const Navbar = ({ scrolled }) => {
 								src={`${basePath}/assets/icons/logo.svg`}
 								alt="logo"
 								fill
-								sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 								style={{ objectFit: "contain" }}
 							/>
 						</div>
@@ -136,9 +119,7 @@ const Navbar = ({ scrolled }) => {
 				</nav>
 			</div>
 			<div
-				className={`md:hidden flex flex-col items-center space-y-2 overflow-hidden transition-all duration-300 ease-in-out ${
-					isMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"
-				}`}
+				className={`md:hidden flex flex-col items-center space-y-2 overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"}`}
 			>
 				<Link href={`${basePath}/`}>
 					<div
