@@ -164,10 +164,24 @@ const ImageCarousel = () => {
           onTouchEnd={handleTouchEnd}
         >
           <div className="fullscreen-content">
+            <button 
+              className="fullscreen-prev" 
+              onClick={(e) => { e.stopPropagation(); showPreviousImage(); }}
+              tabIndex="-1" // Prevent focus
+            >
+              &#10094;
+            </button>
             <img
               src={images[fullscreenImageIndex]}
               alt="Full Screen Image"
             />
+            <button 
+              className="fullscreen-next" 
+              onClick={(e) => { e.stopPropagation(); showNextImage(); }}
+              tabIndex="-1" // Prevent focus
+            >
+              &#10095;
+            </button>
           </div>
         </div>
       )}

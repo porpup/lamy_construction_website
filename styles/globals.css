@@ -207,3 +207,34 @@ body {
   border-radius: 8px; /* Rounded corners for images */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow effect */
 }
+
+.fullscreen-prev, .fullscreen-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1001;
+  border-radius: 50%;
+  outline: none; /* Remove outline */
+}
+
+.fullscreen-prev {
+  left: 10px;
+}
+
+.fullscreen-next {
+  right: 10px;
+}
+
+.fullscreen-prev:hover, .fullscreen-next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+.fullscreen-prev:focus, .fullscreen-next:focus {
+  outline: none; /* Remove focus outline */
+}
