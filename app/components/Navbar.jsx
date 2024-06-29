@@ -69,7 +69,7 @@ const Navbar = ({ scrolled }) => {
 	}`;
 
 	const handleHomeClick = (event) => {
-		if (window.location.pathname === "/") {
+		if (window.location.pathname === `${basePath}/`) {
 			event.preventDefault();
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
@@ -83,17 +83,19 @@ const Navbar = ({ scrolled }) => {
 			}`}
 		>
 			<div className="mx-auto flex items-center justify-between p-2">
-				<a href="/" className="cursor-pointer" onClick={handleHomeClick}>
-					<div className="relative w-14 h-14">
-						<Image
-							src={`${basePath}/assets/icons/logo.svg`}
-							alt="logo"
-							fill
-							sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-							style={{ objectFit: "contain" }}
-						/>
+				<Link href={`${basePath}/`}>
+					<div className="cursor-pointer" onClick={handleHomeClick}>
+						<div className="relative w-14 h-14">
+							<Image
+								src={`${basePath}/assets/icons/logo.svg`}
+								alt="logo"
+								fill
+								sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+								style={{ objectFit: "contain" }}
+							/>
+						</div>
 					</div>
-				</a>
+				</Link>
 				<div className="md:hidden">
 					<Controls
 						isMenuOpen={isMenuOpen}
@@ -102,15 +104,18 @@ const Navbar = ({ scrolled }) => {
 					/>
 				</div>
 				<nav className={`hidden md:flex items-center space-x-4`}>
-					<a
-						href="/"
-						className={`cursor-pointer ${linkClass}`}
-						onClick={handleHomeClick}
-					>
-						{translations.home}
-					</a>
-					<Link href="/gallery" className={`cursor-pointer ${linkClass}`}>
-						{translations.gallery}
+					<Link href={`${basePath}/`}>
+						<div
+							className={`cursor-pointer ${linkClass}`}
+							onClick={handleHomeClick}
+						>
+							{translations.home}
+						</div>
+					</Link>
+					<Link href={`${basePath}/gallery`}>
+						<div className={`cursor-pointer ${linkClass}`}>
+							{translations.gallery}
+						</div>
 					</Link>
 					<ScrollLink
 						to="footer"
@@ -135,22 +140,21 @@ const Navbar = ({ scrolled }) => {
 					isMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"
 				}`}
 			>
-				<a
-					href="/"
-					className={`cursor-pointer ${linkClass}`}
-					onClick={(e) => {
-						handleHomeClick(e);
-						toggleMenu();
-					}}
-				>
-					{translations.home}
-				</a>
-				<Link
-					href="/gallery"
-					className={`cursor-pointer ${linkClass}`}
-					onClick={toggleMenu}
-				>
-					{translations.gallery}
+				<Link href={`${basePath}/`}>
+					<div
+						className={`cursor-pointer ${linkClass}`}
+						onClick={(e) => {
+							handleHomeClick(e);
+							toggleMenu();
+						}}
+					>
+						{translations.home}
+					</div>
+				</Link>
+				<Link href={`${basePath}/gallery`}>
+					<div className={`cursor-pointer ${linkClass}`} onClick={toggleMenu}>
+						{translations.gallery}
+					</div>
 				</Link>
 				<ScrollLink
 					to="footer"
