@@ -9,12 +9,32 @@ import BasePath from "./BasePath";
 const ImageCarousel = () => {
   const basePath = BasePath();
   const [sliderLoaded, setSliderLoaded] = useState(false);
-  const [fullscreenImage, setFullscreenImage] = useState(null);
+  const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
   const isDragging = useRef(false); // Track if the user is dragging
 
   useEffect(() => {
     setSliderLoaded(true);
-  }, []);
+
+    // Add event listener for keydown events
+    const handleKeyDown = (e) => {
+      if (fullscreenImageIndex !== null) {
+        if (e.key === "ArrowRight") {
+          showNextImage();
+        } else if (e.key === "ArrowLeft") {
+          showPreviousImage();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [fullscreenImageIndex]);
 
   const images = [
     `${basePath}/assets/gallery/gallery1.jpg`,
@@ -29,11 +49,11 @@ const ImageCarousel = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1500,
+    speed: 2500,
     slidesToShow: 3, // Number of slides to show at once
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4500,
+    autoplaySpeed: 2000,
     centerMode: true, // Enable center mode
     centerPadding: "110px", // Padding around the centered slide
     responsive: [
@@ -50,7 +70,7 @@ const ImageCarousel = () => {
         settings: {
           slidesToShow: 1,
           centerMode: true,
-          centerPadding: "77px",
+          centerPadding: "80px",
         },
       },
     ],
@@ -65,22 +85,53 @@ const ImageCarousel = () => {
     isDragging.current = true;
   };
 
-  const handleMouseUp = (e, image) => {
+  const handleMouseUp = (e, index) => {
     e.currentTarget.style.outline = "none"; // Remove outline on mouseup
     if (!isDragging.current) {
-      openFullScreen(image);
+      openFullScreen(index);
     }
     isDragging.current = false;
   };
 
   // Function to open image in full screen overlay
-  const openFullScreen = (imageUrl) => {
-    setFullscreenImage(imageUrl);
+  const openFullScreen = (index) => {
+    setFullscreenImageIndex(index);
   };
 
   // Function to close full screen overlay
   const closeFullScreen = () => {
-    setFullscreenImage(null);
+    setFullscreenImageIndex(null);
+  };
+
+  // Function to handle touch start
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  // Function to handle touch move
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  // Function to handle touch end
+  const handleTouchEnd = () => {
+    if (touchStartX - touchEndX > 50) {
+      // Swipe left
+      showNextImage();
+    } else if (touchEndX - touchStartX > 50) {
+      // Swipe right
+      showPreviousImage();
+    }
+  };
+
+  // Function to show the next image
+  const showNextImage = () => {
+    setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  // Function to show the previous image
+  const showPreviousImage = () => {
+    setFullscreenImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   return (
@@ -92,7 +143,7 @@ const ImageCarousel = () => {
             className="image-slide"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
-            onMouseUp={(e) => handleMouseUp(e, image)}
+            onMouseUp={(e) => handleMouseUp(e, index)}
           >
             <img
               src={image}
@@ -104,10 +155,19 @@ const ImageCarousel = () => {
       </Slider>
 
       {/* Full screen overlay */}
-      {fullscreenImage && (
-        <div className="fullscreen-overlay" onClick={closeFullScreen}>
+      {fullscreenImageIndex !== null && (
+        <div
+          className="fullscreen-overlay"
+          onClick={closeFullScreen}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="fullscreen-content">
-            <img src={fullscreenImage} alt="Full Screen Image" />
+            <img
+              src={images[fullscreenImageIndex]}
+              alt="Full Screen Image"
+            />
           </div>
         </div>
       )}
