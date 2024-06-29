@@ -35,14 +35,14 @@ const ImageCarousel = () => {
     autoplay: true,
     autoplaySpeed: 4500,
     centerMode: true, // Enable center mode
-    centerPadding: "60px", // Padding around the centered slide
+    centerPadding: "110px", // Padding around the centered slide
     responsive: [
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           centerMode: true,
-          centerPadding: "40px",
+          centerPadding: "110px",
         },
       },
       {
@@ -50,7 +50,7 @@ const ImageCarousel = () => {
         settings: {
           slidesToShow: 1,
           centerMode: true,
-          centerPadding: "40px",
+          centerPadding: "77px",
         },
       },
     ],
