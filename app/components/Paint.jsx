@@ -71,14 +71,14 @@ const Paint = () => {
 								application, you can count on our work and professionalism.
 							</p>
 							<p className="mb-4">Services offered</p>
-							<div className="mb-4">
+							<ul className="mb-4">
 								<li>Interior / Exterior</li>
 								<li>Concrete block</li>
 								<li>Wood surfaces</li>
 								<li>Stain and varnish</li>
 								<li>Wallboard</li>
 								<li>Plaster repair</li>
-							</div>
+							</ul>
 							<p className="mb-4">And more...</p>
 						</>
 					) : (
@@ -95,14 +95,14 @@ const Paint = () => {
 								travail ainsi que sur notre professionnalisme.
 							</p>
 							<p className="mb-4">Services offerts</p>
-							<div className="mb-4">
+							<ul className="mb-4">
 								<li>Intérieur / Extérieur</li>
 								<li>Bloc de béton</li>
 								<li>Surface de bois</li>
 								<li>Teinture et vernis</li>
 								<li>Planche murale</li>
 								<li>Réparation de plâtre</li>
-							</div>
+							</ul>
 							<p className="mb-4">Et plus encore...</p>
 						</>
 					)}

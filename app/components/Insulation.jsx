@@ -72,7 +72,7 @@ const Insulation = () => {
 							One of the major advantages of urethane insulation is that it
 							combines the following characteristics:
 						</p>
-						<div className="mb-4">
+						<ul className="mb-4">
 							<li>
 								Superior insulating properties: very high thermal resistance
 								with an R-factor of over 6.
@@ -82,11 +82,11 @@ const Insulation = () => {
 								its periphery.
 							</li>
 							<li>Vapor barrier properties: certain insulators.</li>
-						</div>
+						</ul>
 						<p className="mb-4 tc_light_brown text-lg">
 							Batt Insulation (Mineral Wool)
 						</p>
-						<div className="mb-4">
+						<ul className="mb-4">
 							<li>Easy to install by friction.</li>
 							<li>Contains 73% recycled materials.</li>
 							<li>
@@ -97,7 +97,7 @@ const Insulation = () => {
 								Formaldehyde-free, validated by UL Environment Product
 								Environmental Declaration.
 							</li>
-						</div>
+						</ul>
 					</>
 				) : (
 					<>
@@ -117,7 +117,7 @@ const Insulation = () => {
 							Un des avantages majeurs d'une isolation à l'uréthane est de
 							combiner les caractéristiques suivantes:
 						</p>
-						<div className="mb-4">
+						<ul className="mb-4">
 							<li>
 								Propriétés isolantes supérieures: une résistance thermique très
 								élevée avec un facteur R de plus de 6.
@@ -127,11 +127,11 @@ const Insulation = () => {
 								l'uréthane ou en périphérie de celui-ci.
 							</li>
 							<li>Propriété de pare-vapeur: certains isolants.</li>
-						</div>
+						</ul>
 						<p className="mb-4 tc_light_brown text-lg">
 							En matelas (Laine minérale)
 						</p>
-						<div className="mb-4">
+						<ul className="mb-4">
 							<li>Facile à installer par friction.</li>
 							<li>Elle contient 73% de matières recyclées.</li>
 							<li>
@@ -142,7 +142,7 @@ const Insulation = () => {
 								Sans formaldéhyde, validé par UL Environnent Déclaration
 								environnementale de produits UL.
 							</li>
-						</div>
+						</ul>
 					</>
 				)}
 			</div>

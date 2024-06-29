@@ -109,7 +109,7 @@ const Briks = () => {
 					{language === "en" ? (
 						<>
 							<p className="text-stone-800 mb-4 text-2xl">OUR EXPERTISE</p>
-							<div className="mb-4">
+							<ul className="mb-4">
 								<li>MEETING DEADLINES</li>
 								<li>5-YEAR WARRANTY WITH CONTRACT PROOF</li>
 								<li>INDEMNITY INSURANCE</li>
@@ -117,12 +117,12 @@ const Briks = () => {
 								<li>RBQ: 5848-3058-01</li>
 								<li>LAW 122</li>
 								<li>ENGINEER AND ARCHITECT SERVICES AVAILABLE</li>
-							</div>
+							</ul>
 						</>
 					) : (
 						<>
 							<p className="text-stone-800 mb-4 text-2xl">NOTRE EXPERTISE</p>
-							<div className="mb-4">
+							<ul className="mb-4">
 								<li>RESPECT DES ÉCHÉANCIERS</li>
 								<li>TRAVAUX GARANTIE 5 ANS AVEC PREUVE AU CONTRAT</li>
 								<li>ASSURANCE INDEMNITÉ</li>
@@ -130,7 +130,7 @@ const Briks = () => {
 								<li>RBQ: 5848-3058-01</li>
 								<li>LOI 122</li>
 								<li>SERVICE D'INGÉNIEURS ET ARCHITECTES DISPONIBLE</li>
-							</div>
+							</ul>
 						</>
 					)}
 				</div>

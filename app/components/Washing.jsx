@@ -67,14 +67,14 @@ const Washing = () => {
 								through the complexities of insurance requirements. We offer all
 								the services:
 							</p>
-							<div className="mb-4">
+							<ul className="mb-4">
 								<li>Post-disaster cleaning</li>
 								<li>Construction</li>
 								<li>Residential and commercial housekeeping</li>
 								<li>Dry cleaning</li>
 								<li>Excavation</li>
 								<li>Water damage</li>
-							</div>
+							</ul>
 							<p className="mb-4">
 								Specialized in cleaning, washing, stain removal, drying,
 								decontamination, and so much more.
@@ -92,14 +92,14 @@ const Washing = () => {
 								guidé à travers les complexités des exigences des assurances.
 								Nous offrons tous les services :
 							</p>
-							<div className="mb-4">
+							<ul className="mb-4">
 								<li>Nettoyage après sinistre</li>
 								<li>Construction</li>
 								<li>Entretien ménager résidentiel et commercial.</li>
 								<li>Nettoyeur à sec</li>
 								<li>Excavation</li>
 								<li>Dégât d'eau</li>
-							</div>
+							</ul>
 							<p className="mb-4">
 								Spécialisés pour nettoyer, laver, détacher, assécher,
 								décontaminer et tellement plus encore.

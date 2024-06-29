@@ -37,6 +37,15 @@ body {
   @apply bg-stone-800;
 }
 
+ul {
+  list-style: disc; /* Use 'disc' for bullet points */
+  margin-left: 1.5em; /* Optional: adjust the left margin to position the bullets */
+}
+
+li {
+  margin-bottom: 0.5em; /* Optional: add some space between list items */
+}
+
 .bg_light_yellow {
   background: #faf3e1;
 }
