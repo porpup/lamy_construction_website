@@ -6,7 +6,7 @@ import Controls from "./Controls";
 import Image from "next/image";
 import { LanguageContext } from "../components/LanguageContext";
 import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink, scroller } from "react-scroll";
 
 const Navbar = ({ scrolled }) => {
 	const basePath = BasePath();
@@ -60,6 +60,13 @@ const Navbar = ({ scrolled }) => {
 		}
 	};
 
+	const handleGalleryClick = (event) => {
+		if (window.location.pathname === `${basePath}/gallery`) {
+			event.preventDefault();
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}
+	};
+
 	return (
 		<div
 			ref={navbarRef}
@@ -96,7 +103,7 @@ const Navbar = ({ scrolled }) => {
 						</div>
 					</Link>
 					<Link href="/gallery">
-						<div className={`cursor-pointer ${linkClass}`}>
+						<div className={`cursor-pointer ${linkClass}`} onClick={handleGalleryClick}>
 							{translations.gallery}
 						</div>
 					</Link>
@@ -133,7 +140,10 @@ const Navbar = ({ scrolled }) => {
 					</div>
 				</Link>
 				<Link href="/gallery">
-					<div className={`cursor-pointer ${linkClass}`} onClick={toggleMenu}>
+					<div className={`cursor-pointer ${linkClass}`} onClick={(e) => {
+						handleGalleryClick(e);
+						toggleMenu();
+					}}>
 						{translations.gallery}
 					</div>
 				</Link>
