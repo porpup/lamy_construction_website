@@ -5,11 +5,12 @@ import BasePath from "./BasePath";
 import Controls from "./Controls";
 import Image from "next/image";
 import { LanguageContext } from "../components/LanguageContext";
+import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 
-const Navbar = () => {
+const Navbar = ({ scrolled }) => {
 	const basePath = BasePath();
-	const [isScrolled, setIsScrolled] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(scrolled || false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { language, toggleLanguage, translations } =
 		useContext(LanguageContext);
@@ -17,17 +18,19 @@ const Navbar = () => {
 	const [offset, setOffset] = useState(0);
 
 	useEffect(() => {
-		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 10);
-		};
+		if (!scrolled) {
+			const handleScroll = () => {
+				setIsScrolled(window.scrollY > 10);
+			};
 
-		handleScroll();
+			handleScroll();
 
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+			window.addEventListener("scroll", handleScroll);
+			return () => {
+				window.removeEventListener("scroll", handleScroll);
+			};
+		}
+	}, [scrolled]);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -65,6 +68,13 @@ const Navbar = () => {
 			: "text-neutral-100 hover:text-stone-800"
 	}`;
 
+	const handleHomeClick = (event) => {
+		if (window.location.pathname === "/") {
+			event.preventDefault();
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}
+	};
+
 	return (
 		<div
 			ref={navbarRef}
@@ -72,17 +82,8 @@ const Navbar = () => {
 				isScrolled ? "bg-stone-800/90" : "bg-sky-300/90"
 			}`}
 		>
-			<div
-				className="mx-auto flex items-center justify-between p-2"
-			>
-				<ScrollLink
-					to="home"
-					smooth={true}
-					duration={500}
-					offset={offset}
-					className="cursor-pointer"
-					onClick={() => setIsMenuOpen(false)}
-				>
+			<div className="mx-auto flex items-center justify-between p-2">
+				<a href="/" className="cursor-pointer" onClick={handleHomeClick}>
 					<div className="relative w-14 h-14">
 						<Image
 							src={`${basePath}/assets/icons/logo.svg`}
@@ -92,7 +93,7 @@ const Navbar = () => {
 							style={{ objectFit: "contain" }}
 						/>
 					</div>
-				</ScrollLink>
+				</a>
 				<div className="md:hidden">
 					<Controls
 						isMenuOpen={isMenuOpen}
@@ -101,16 +102,16 @@ const Navbar = () => {
 					/>
 				</div>
 				<nav className={`hidden md:flex items-center space-x-4`}>
-					<ScrollLink
-						to="home"
-						smooth={true}
-						duration={500}
-						offset={offset}
+					<a
+						href="/"
 						className={`cursor-pointer ${linkClass}`}
-						onClick={toggleMenu}
+						onClick={handleHomeClick}
 					>
 						{translations.home}
-					</ScrollLink>
+					</a>
+					<Link href="/gallery" className={`cursor-pointer ${linkClass}`}>
+						{translations.gallery}
+					</Link>
 					<ScrollLink
 						to="footer"
 						smooth={true}
@@ -134,16 +135,23 @@ const Navbar = () => {
 					isMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"
 				}`}
 			>
-				<ScrollLink
-					to="home"
-					smooth={true}
-					duration={500}
-					offset={offset}
+				<a
+					href="/"
+					className={`cursor-pointer ${linkClass}`}
+					onClick={(e) => {
+						handleHomeClick(e);
+						toggleMenu();
+					}}
+				>
+					{translations.home}
+				</a>
+				<Link
+					href="/gallery"
 					className={`cursor-pointer ${linkClass}`}
 					onClick={toggleMenu}
 				>
-					{translations.home}
-				</ScrollLink>
+					{translations.gallery}
+				</Link>
 				<ScrollLink
 					to="footer"
 					smooth={true}

@@ -42,7 +42,7 @@ const Floor = () => {
 		<div className="flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full relative justify-center items-end">
 				<Image
-					src={`${basePath}/assets/expert_en_plancher.png`}
+					src={`${basePath}/assets/expert_en_plancher.jpg`}
 					alt="expert_en_plancher"
 					width={1920}
 					height={1080}

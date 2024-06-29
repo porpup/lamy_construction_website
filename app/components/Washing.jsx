@@ -113,7 +113,7 @@ const Washing = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
-						src={`${basePath}/assets/expert_en_sinistre.png`}
+						src={`${basePath}/assets/expert_en_sinistre.jpg`}
 						alt="expert_en_sinistre"
 						className="h-auto w-full object-cover"
 					/>
@@ -158,14 +158,14 @@ const Washing = () => {
 				<div className="w-full flex flex-col">
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/lavage_a_pression1.png`}
+							src={`${basePath}/assets/lavage_a_pression1.jpeg`}
 							alt="lavage_a_pression1"
 							className="h-auto w-full object-cover"
 						/>
 					</div>
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/lavage_a_pression2.png`}
+							src={`${basePath}/assets/lavage_a_pression2.jpg`}
 							alt="lavage_a_pression2"
 							className="h-auto w-full object-cover"
 						/>

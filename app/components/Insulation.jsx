@@ -42,7 +42,7 @@ const Insulation = () => {
 		<div className="flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full relative justify-center items-end">
 				<Image
-					src={`${basePath}/assets/isolation.png`}
+					src={`${basePath}/assets/isolation.jpg`}
 					alt="isolation"
 					width={1920}
 					height={1080}

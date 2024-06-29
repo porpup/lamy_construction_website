@@ -131,3 +131,79 @@ body {
   opacity: 1;
   overflow: hidden;
 }
+
+/* Images Carousel */
+.image-carousel-container {
+  margin: 130px 6%; /* Adjust margins as needed */
+}
+
+.image-slide {
+  padding: 10px;
+  overflow: hidden; /* Hide overflow to prevent image from overflowing container */
+  position: relative; /* Position relative to allow absolute positioning of the image */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow effect */
+  transition: transform 0.3s ease, padding 0.3s ease; /* Smooth transition for scaling and padding */
+}
+
+.image-slide:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.image-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Ensure image itself also has rounded corners */
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
+  outline: none; /* Remove outline */
+}
+
+.image-slide img:focus,
+.image-slide img:active {
+  outline: none; /* Remove outline when image is focused or active */
+}
+
+@media (max-width: 768px) {
+  .image-slide {
+    padding: 6px; /* Adjust slide padding for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .image-slide {
+    padding: 4px; /* Adjust slide padding for mobile */
+  }
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  z-index: 1000;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.fullscreen-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 90%; /* Maximum width of the content */
+  max-height: 90%; /* Maximum height of the content */
+  text-align: center;
+  overflow: hidden; /* Hide overflow to prevent scrollbars */
+  display: flex;
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically */
+}
+
+.fullscreen-content img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px; /* Rounded corners for images */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow effect */
+}

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -12,8 +14,38 @@ const Footer = () => {
 	const googleMap =
 		"https://www.google.com/maps/place/9+Rue+Debussy,+Candiac,+QC+J5R+6C2/@45.3859549,-73.4934945,17z/data=!3m1!4b1!4m6!3m5!1s0x4cc90c20ff306c0f:0xd9adbd862e121b81!8m2!3d45.3859512!4d-73.4909142!16s%2Fg%2F11c5fnb48d?entry=ttu";
 
+	const footerRef = useRef(null);
+
+	useEffect(() => {
+		const handleResize = () => {
+			const footerHeight = footerRef.current.clientHeight;
+			const bodyHeight = document.body.scrollHeight;
+			const viewportHeight = window.innerHeight;
+
+			if (bodyHeight < viewportHeight) {
+				footerRef.current.style.position = "fixed";
+				footerRef.current.style.bottom = "0";
+				footerRef.current.style.left = "0";
+				footerRef.current.style.width = "100%";
+			} else {
+				footerRef.current.style.position = "relative";
+			}
+		};
+
+		window.addEventListener("resize", handleResize);
+		handleResize(); // Initial position check
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
 	return (
-		<footer id="footer" className="bg-stone-800 tc_gray pr-16 pl-16">
+		<footer
+			ref={footerRef}
+			id="footer"
+			className="bg-stone-800 tc_gray pr-16 pl-16"
+		>
 			<hr className="h-0.5 mx-auto my-4 border-0 rounded md:my-5 bg_gray" />
 			<h6 className="mb-4 font-semibold uppercase text-center">Contact</h6>
 			<div className="flex flex-col items-center md:flex-row md:justify-between">

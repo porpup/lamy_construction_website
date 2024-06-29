@@ -109,7 +109,7 @@ const Paint = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
-						src={`${basePath}/assets/peinture.png`}
+						src={`${basePath}/assets/peinture.jpg`}
 						alt="peinture"
 						className="h-auto w-full object-cover"
 					/>
@@ -118,7 +118,7 @@ const Paint = () => {
 			<div className="md:w-1/2 w-full flex-col justify-between">
 				<div className="w-full flex justify-center">
 					<img
-						src={`${basePath}/assets/boiseries.png`}
+						src={`${basePath}/assets/boiseries.jpg`}
 						alt="boiseries"
 						className="h-auto w-full object-contain"
 					/>
@@ -126,14 +126,14 @@ const Paint = () => {
 				<div className="flex items-center w-full" style={{ height: "200px" }}>
 					<div className="w-1/2 h-full">
 						<img
-							src={`${basePath}/assets/moulures_rampes.png`}
+							src={`${basePath}/assets/moulures_rampes.jpg`}
 							alt="moulures_rampes"
 							className="h-full w-full object-cover"
 						/>
 					</div>
 					<div className="w-1/2 h-full">
 						<img
-							src={`${basePath}/assets/portes_et_fenetres.png`}
+							src={`${basePath}/assets/portes_et_fenetres.jpeg`}
 							alt="portes_et_fenetres"
 							className="h-full w-full object-cover"
 						/>

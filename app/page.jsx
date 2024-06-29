@@ -13,20 +13,18 @@ import Footer from "./components/Footer";
 
 const Page = () => {
 	return (
-		<div>
-			<LanguageProvider>
-				<Navbar />
-				<Home />
-				<Floor />
-				<Paint />
-				<Design />
-				<Insulation />
-				<Roofing />
-				<Washing />
-				<Briks />
-				<Footer />
-			</LanguageProvider>
-		</div>
+		<LanguageProvider>
+			<Navbar />
+			<Home />
+			<Floor />
+			<Paint />
+			<Design />
+			<Insulation />
+			<Roofing />
+			<Washing />
+			<Briks />
+			<Footer />
+		</LanguageProvider>
 	);
 };
 

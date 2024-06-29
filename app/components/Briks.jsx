@@ -89,7 +89,7 @@ const Briks = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<Image
-						src={`${basePath}/assets/briques.png`}
+						src={`${basePath}/assets/briques.jpg`}
 						alt="briques"
 						width={1920}
 						height={1080}

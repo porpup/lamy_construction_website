@@ -100,7 +100,7 @@ const Roofing = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
-						src={`${basePath}/assets/toiture1.png`}
+						src={`${basePath}/assets/toiture1.jpg`}
 						alt="toiture1"
 						className="h-auto w-full object-cover"
 					/>
@@ -110,14 +110,14 @@ const Roofing = () => {
 				<div className="w-full flex flex-col">
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/toiture2.png`}
+							src={`${basePath}/assets/toiture2.jpg`}
 							alt="toiture2"
 							className="h-auto w-full object-cover"
 						/>
 					</div>
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/toiture3.png`}
+							src={`${basePath}/assets/toiture3.jpg`}
 							alt="toiture3"
 							className="h-auto w-full object-cover"
 						/>

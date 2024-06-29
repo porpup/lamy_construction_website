@@ -101,7 +101,7 @@ const Design = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
-						src={`${basePath}/assets/conception_avec_decoratrice_fabrication_et_installation_darmoires.png`}
+						src={`${basePath}/assets/conception_avec_decoratrice_fabrication_et_installation_darmoires.jpg`}
 						alt="conception_avec_decoratrice_fabrication_et_installation_darmoires"
 						className="h-auto w-full object-cover"
 					/>
@@ -118,7 +118,7 @@ const Design = () => {
 					</div>
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/tapis.png`}
+							src={`${basePath}/assets/tapis.jpg`}
 							alt="tapis"
 							className="h-auto w-full object-cover"
 						/>
