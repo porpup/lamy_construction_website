@@ -66,7 +66,7 @@ const Navbar = ({ scrolled }) => {
 			className={`fixed top-0 left-0 w-full z-10 transition-colors duration-200 px-4 ${isScrolled ? "bg-stone-800/90" : "bg-sky-300/90"}`}
 		>
 			<div className="mx-auto flex items-center justify-between p-2">
-				<Link href={`${basePath}/`}>
+				<Link href="/">
 					<div className="cursor-pointer" onClick={handleHomeClick}>
 						<div className="relative w-14 h-14">
 							<Image
@@ -87,7 +87,7 @@ const Navbar = ({ scrolled }) => {
 					/>
 				</div>
 				<nav className={`hidden md:flex items-center space-x-4`}>
-					<Link href={`${basePath}/`}>
+					<Link href="/">
 						<div
 							className={`cursor-pointer ${linkClass}`}
 							onClick={handleHomeClick}
@@ -95,7 +95,7 @@ const Navbar = ({ scrolled }) => {
 							{translations.home}
 						</div>
 					</Link>
-					<Link href={`${basePath}/gallery`}>
+					<Link href="/gallery">
 						<div className={`cursor-pointer ${linkClass}`}>
 							{translations.gallery}
 						</div>
@@ -121,7 +121,7 @@ const Navbar = ({ scrolled }) => {
 			<div
 				className={`md:hidden flex flex-col items-center space-y-2 overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"}`}
 			>
-				<Link href={`${basePath}/`}>
+				<Link href="/">
 					<div
 						className={`cursor-pointer ${linkClass}`}
 						onClick={(e) => {
@@ -132,7 +132,7 @@ const Navbar = ({ scrolled }) => {
 						{translations.home}
 					</div>
 				</Link>
-				<Link href={`${basePath}/gallery`}>
+				<Link href="/gallery">
 					<div className={`cursor-pointer ${linkClass}`} onClick={toggleMenu}>
 						{translations.gallery}
 					</div>
