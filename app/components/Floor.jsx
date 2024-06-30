@@ -96,7 +96,7 @@ const Floor = () => {
 							après sinistre.
 						</p>
 						<p className="mb-4">
-							Son équipe a acquis avec les années, une réputa- tion de
+							Son équipe a acquis avec les années, une réputation de
 							fiabilité, un service à la clientèle hors pair et surtout une
 							qualité des travaux exceptionnelle. Nous mettons tout en œuvre
 							afin de maintenir des standards de qualité élevés et une propreté

@@ -67,7 +67,7 @@ const Roofing = () => {
 								on our reliability, good service, and exceptional quality of our
 								work.
 							</p>
-							<p className="mb-4">20-year guarantee.</p>
+							<p className="mb-4">We offer a 20-year guarantee on our work.</p>
 							<p className="mb-4">
 								Not sure which option to choose? Our team of professionals will
 								be happy to answer your questions and offer you the best

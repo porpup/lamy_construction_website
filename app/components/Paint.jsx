@@ -67,7 +67,7 @@ const Paint = () => {
 								whether it be for residential, commercial, or industrial.
 							</p>
 							<p className="mb-4">
-								Whether it’s renovations, plaster work, or preparation before
+								Whether it's renovations, plaster work, or preparation before
 								application, you can count on our work and professionalism.
 							</p>
 							<p className="mb-4">Services offered</p>
@@ -86,8 +86,8 @@ const Paint = () => {
 							<p className="text-stone-800 mb-4 text-2xl">PEINTURE</p>
 							<p className="mb-4">
 								Notre service d'application de peinture au rouleau ou au fusil
-								vous offre un travail professionnel. Que ce soit pour du
-								résidentiel au commercial ou de l'industriel.
+								vous offre un travail professionnel, que ce soit pour du
+								résidentiel, commercial ou de l'industriel.
 							</p>
 							<p className="mb-4">
 								Qu'il s'agisse de rénovations, de travaux de plâtre, de

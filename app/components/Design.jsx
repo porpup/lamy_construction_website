@@ -87,7 +87,7 @@ const Design = () => {
 							<p className="mb-4">
 								Nous sommes spécialisé dans la conception, la fabrication et
 								l'installation d'armoires de cuisine et de salle de bain sur
-								mesure, depuis plusieursannées.
+								mesure, depuis plusieurs années.
 							</p>
 							<p className="mb-4">
 								Notre mission est bien simple, la satisfaction client, en
@@ -149,11 +149,11 @@ const Design = () => {
 					) : (
 						<>
 							<p className="tc_light_brown mb-4 text-2xl">
-								REVÊTEMENTS PLANCHÉS, CÉRAMIQUE ET TAPIS
+								REVÊTEMENTS PLANCHER, CÉRAMIQUE ET TAPIS
 							</p>
 							<p className="mb-4">
 								Revêtement de sol et de décoration. Projets résidentiels ou
-								commerciaux, nos experts vont vous guidez à chacune des étapes
+								commerciaux, nos experts vont vous guider à chacune des étapes
 								de votre projet de rénovation. Vous aurez accès au service de
 								conseiller spécialisé et de designer afin de vous aider à
 								trouver le bon matériel pour votre décor et ainsi compléter

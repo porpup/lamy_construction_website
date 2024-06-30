@@ -86,7 +86,7 @@ const Washing = () => {
 						</>
 					) : (
 						<>
-							<p className="tc_light_brown mb-4 text-2xl">EXPERT EN SINISTRE</p>
+							<p className="tc_light_brown mb-4 text-2xl">EXPERT EN APRÈS SINISTRE</p>
 							<p className="mb-4">
 								Avec nos services de professionnels en sinistre, vous serez
 								guidé à travers les complexités des exigences des assurances.
