@@ -7,8 +7,18 @@ const Controls = ({ isMenuOpen, toggleMenu, isScrolled, isGalleryPage }) => {
 		setIsPressed(true);
 	};
 
-	const handleMouseUp = () => {
+	const handleMouseUp = (e) => {
 		setIsPressed(false);
+		e.target.blur(); // Remove focus from the button
+	};
+
+	const handleTouchStart = () => {
+		setIsPressed(true);
+	};
+
+	const handleTouchEnd = (e) => {
+		setIsPressed(false);
+		e.target.blur(); // Remove focus from the button
 	};
 
 	const lineBaseClass = "block w-full h-0.5 transition-transform duration-200";
@@ -24,8 +34,8 @@ const Controls = ({ isMenuOpen, toggleMenu, isScrolled, isGalleryPage }) => {
 			onClick={toggleMenu}
 			onMouseDown={handleMouseDown}
 			onMouseUp={handleMouseUp}
-			onTouchStart={handleMouseDown}
-			onTouchEnd={handleMouseUp}
+			onTouchStart={handleTouchStart}
+			onTouchEnd={handleTouchEnd}
 		>
 			<span
 				className={`${lineBaseClass} ${
