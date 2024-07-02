@@ -9,17 +9,22 @@ import { metadata } from "./metadata";
 const inter = Inter({ subsets: ["latin"] });
 const basePath = BasePath();
 
-export default function RootLayout({ children, navbarColor, fullscreen }) {
+export default function RootLayout({
+	children,
+	navbarColor,
+	fullscreen,
+	fixedBgColor,
+}) {
 	useEffect(() => {
 		const metaThemeColor = document.querySelector("meta[name=theme-color]");
 		if (metaThemeColor) {
 			if (fullscreen) {
 				metaThemeColor.setAttribute("content", "#000000"); // Set to the background color when images are in fullscreen
 			} else {
-				metaThemeColor.setAttribute("content", navbarColor);
+				metaThemeColor.setAttribute("content", fixedBgColor || navbarColor);
 			}
 		}
-	}, [navbarColor, fullscreen]);
+	}, [navbarColor, fullscreen, fixedBgColor]);
 
 	return (
 		<html lang="en">
@@ -69,7 +74,10 @@ export default function RootLayout({ children, navbarColor, fullscreen }) {
 					name="msapplication-config"
 					content={`${basePath}/assets/icons/browserconfig.xml`}
 				/>
-				<meta name="theme-color" content={fullscreen ? "#000000" : navbarColor} />
+				<meta
+					name="theme-color"
+					content={fullscreen ? "#000000" : fixedBgColor || navbarColor}
+				/>
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />
 				<meta property="og:title" content={metadata.title} />

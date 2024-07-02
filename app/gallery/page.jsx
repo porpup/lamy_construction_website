@@ -21,7 +21,11 @@ const Gallery = () => {
 
 	return (
 		<LanguageProvider>
-			<RootLayout navbarColor={navbarColor} fullscreen={fullscreen}>
+			<RootLayout
+				navbarColor={navbarColor}
+				fullscreen={fullscreen}
+				fixedBgColor="#292524"
+			>
 				<Navbar
 					scrolled={false}
 					onColorChange={handleColorChange}
