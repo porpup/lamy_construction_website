@@ -25,8 +25,8 @@ const Navbar = ({ scrolled }) => {
 		if (metaThemeColor) {
 			metaThemeColor.setAttribute(
 				"content",
-				isScrolled ? "#2D3748" : "#81E6D9"
-			); // bg-stone-800 to bg-sky-300
+				isScrolled ? "#292524" : "#0EA5E9" // bg-stone-800 to bg-sky-300
+			); 
 		}
 	};
 

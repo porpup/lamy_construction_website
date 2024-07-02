@@ -61,8 +61,7 @@ export default function RootLayout({ children }) {
 					name="msapplication-config"
 					content={`${basePath}/assets/icons/browserconfig.xml`}
 				/>
-				<meta name="theme-color" content="#81E6D9" />{" "}
-				{/* Initial color matching bg-sky-300 */}
+				<meta name="theme-color" content="#0EA5E9" /> {/* Initial color matching bg-sky-300 */}
 				<meta
 					name="apple-mobile-web-app-status-bar-style"
 					content="black-translucent"
