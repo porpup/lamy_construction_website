@@ -1,18 +1,24 @@
+"use client";
+
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import BasePath from "./components/BasePath";
+import { useEffect, useState } from "react";
+import { metadata } from "./metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 const basePath = BasePath();
 
-export const metadata = {
-	title: "Lamy Construction - Quality Building Services",
-	description:
-		"Lamy Construction offers top-notch construction services, ensuring quality and reliability for all your building needs.",
-	keywords: "construction, building, quality services, Lamy Construction",
-};
-
 export default function RootLayout({ children }) {
+	const [navbarColor, setNavbarColor] = useState("#0EA5E9");
+
+	useEffect(() => {
+		const metaThemeColor = document.querySelector("meta[name=theme-color]");
+		if (metaThemeColor) {
+			metaThemeColor.setAttribute("content", navbarColor);
+		}
+	}, [navbarColor]);
+
 	return (
 		<html lang="en">
 			<head>
@@ -61,7 +67,7 @@ export default function RootLayout({ children }) {
 					name="msapplication-config"
 					content={`${basePath}/assets/icons/browserconfig.xml`}
 				/>
-				<meta name="theme-color" content="#ffffff" />
+				<meta name="theme-color" content={navbarColor} />
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />
 				<meta property="og:title" content={metadata.title} />

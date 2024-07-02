@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { LanguageProvider } from "./components/LanguageContext";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
@@ -10,20 +12,29 @@ import Roofing from "./components/Roofing";
 import Washing from "./components/Washing";
 import Briks from "./components/Briks";
 import Footer from "./components/Footer";
+import RootLayout from "./layout";
 
 const Home = () => {
+	const [navbarColor, setNavbarColor] = useState("#0EA5E9");
+
+	const handleColorChange = (color) => {
+		setNavbarColor(color);
+	};
+
 	return (
 		<LanguageProvider>
-			<Navbar />
-			<Welcome />
-			<Floor />
-			<Paint />
-			<Design />
-			<Insulation />
-			<Roofing />
-			<Washing />
-			<Briks />
-			<Footer />
+			<RootLayout navbarColor={navbarColor}>
+				<Navbar onColorChange={handleColorChange} />
+				<Welcome />
+				<Floor />
+				<Paint />
+				<Design />
+				<Insulation />
+				<Roofing />
+				<Washing />
+				<Briks />
+				<Footer />
+			</RootLayout>
 		</LanguageProvider>
 	);
 };

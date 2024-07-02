@@ -8,7 +8,7 @@ import { LanguageContext } from './LanguageContext';
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 
-const Navbar = ({ scrolled }) => {
+const Navbar = ({ scrolled, onColorChange }) => {
 	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(scrolled || false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,6 +63,11 @@ const Navbar = ({ scrolled }) => {
 		);
 		setOffset(-bodyPaddingTop);
 	}, []);
+
+	useEffect(() => {
+		const color = isScrolled ? "#292524" : "#0EA5E9";
+		onColorChange(color);
+	}, [isScrolled, onColorChange]);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
