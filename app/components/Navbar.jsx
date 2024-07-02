@@ -8,7 +8,7 @@ import { LanguageContext } from "./LanguageContext";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 
-const Navbar = ({ scrolled, onColorChange, fixedBgColor }) => {
+const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(scrolled || false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,9 +65,9 @@ const Navbar = ({ scrolled, onColorChange, fixedBgColor }) => {
 	}, []);
 
 	useEffect(() => {
-		const color = isScrolled ? "#292524" : "#7DD3FC";
+		const color = isScrolled ? "#292524" : initialBgColor;
 		onColorChange(color);
-	}, [isScrolled, onColorChange]);
+	}, [isScrolled, onColorChange, initialBgColor]);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -75,6 +75,8 @@ const Navbar = ({ scrolled, onColorChange, fixedBgColor }) => {
 
 	const linkClass = `font-bold text-lg ${
 		isScrolled
+			? "tc_gray hover:text-neutral-100"
+			: window.location.pathname === `${basePath}/gallery`
 			? "tc_gray hover:text-neutral-100"
 			: "text-neutral-100 hover:text-stone-800"
 	}`;
@@ -97,9 +99,7 @@ const Navbar = ({ scrolled, onColorChange, fixedBgColor }) => {
 		<div
 			ref={navbarRef}
 			className={`fixed top-0 left-0 w-full z-10 transition-transform duration-200 px-4 ${
-				isScrolled
-					? fixedBgColor || "bg-stone-800/90"
-					: fixedBgColor || "bg-sky-300/90"
+				isScrolled ? "bg-stone-800/90" : initialBgColor
 			} ${scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"}`}
 		>
 			<div className="mx-auto flex items-center justify-between p-2">

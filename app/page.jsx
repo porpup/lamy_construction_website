@@ -24,7 +24,10 @@ const Home = () => {
 	return (
 		<LanguageProvider>
 			<RootLayout navbarColor={navbarColor}>
-				<Navbar onColorChange={handleColorChange} />
+				<Navbar
+					onColorChange={handleColorChange}
+					initialBgColor="bg-sky-300/90"
+				/>
 				<Welcome />
 				<Floor />
 				<Paint />

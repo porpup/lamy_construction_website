@@ -38,12 +38,12 @@ body {
 }
 
 ul {
-  list-style: disc; /* Use 'disc' for bullet points */
-  margin-left: 1.5em; /* Optional: adjust the left margin to position the bullets */
+  list-style: disc;
+  margin-left: 1.5em;
 }
 
 li {
-  margin-bottom: 0.5em; /* Optional: add some space between list items */
+  margin-bottom: 0.5em;
 }
 
 .bg_light_yellow {
@@ -68,6 +68,18 @@ li {
 
 .tc_gray {
   color: #aaa19c;
+}
+
+.hover\:text-neutral-100:hover {
+  color: #f5f5f5;
+}
+
+.hover\:text-stone-800:hover {
+  color: #292524;
+}
+
+.tc_gray:hover {
+  color: #f5f5f5;
 }
 
 .slide-up {
@@ -167,44 +179,44 @@ li {
 
 /* Images Carousel */
 .image-carousel-container {
-  margin: 80px 8%; /* Adjust margins as needed */
+  margin: 80px 8%;
 }
 
 .image-slide {
   padding: 10px;
-  overflow: hidden; /* Hide overflow to prevent image from overflowing container */
-  position: relative; /* Position relative to allow absolute positioning of the image */
-  border-radius: 8px; /* Rounded corners for the container */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow effect */
-  transition: transform 0.3s ease, padding 0.3s ease; /* Smooth transition for scaling and padding */
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, padding 0.3s ease;
 }
 
 .image-slide:hover {
-  transform: scale(1.05); /* Slightly increase size on hover */
+  transform: scale(1.05);
 }
 
 .image-slide img {
   width: 100%;
   height: auto;
-  border-radius: 8px; /* Ensure image itself also has rounded corners */
-  transition: transform 0.3s ease; /* Smooth transition for scaling */
-  outline: none; /* Remove outline */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  outline: none;
 }
 
 .image-slide img:focus,
 .image-slide img:active {
-  outline: none; /* Remove outline when image is focused or active */
+  outline: none;
 }
 
 @media (max-width: 768px) {
   .image-slide {
-    padding: 6px; /* Adjust slide padding for tablets */
+    padding: 6px;
   }
 }
 
 @media (max-width: 480px) {
   .image-slide {
-    padding: 4px; /* Adjust slide padding for mobile */
+    padding: 4px;
   }
 }
 
@@ -212,40 +224,41 @@ li {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Full width of the viewport */
-  height: 100vh; /* Full height of the viewport */
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 .fullscreen-content {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 90%; /* Maximum width of the content */
-  max-height: 90%; /* Maximum height of the content */
+  max-width: 90%;
+  max-height: 90%;
   text-align: center;
-  overflow: hidden; /* Hide overflow to prevent scrollbars */
+  overflow: hidden;
   display: flex;
-  justify-content: center; /* Center image horizontally */
-  align-items: center; /* Center image vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 .fullscreen-content img {
   max-width: 100%;
   max-height: 100%;
-  border-radius: 8px; /* Rounded corners for images */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow effect */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.fullscreen-prev, .fullscreen-next {
+.fullscreen-prev,
+.fullscreen-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   padding: 10px;
@@ -253,7 +266,7 @@ li {
   font-size: 24px;
   z-index: 1001;
   border-radius: 50%;
-  outline: none; /* Remove outline */
+  outline: none;
 }
 
 .fullscreen-prev {
@@ -264,10 +277,12 @@ li {
   right: 10px;
 }
 
-.fullscreen-prev:hover, .fullscreen-next:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+.fullscreen-prev:hover,
+.fullscreen-next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-.fullscreen-prev:focus, .fullscreen-next:focus {
-  outline: none; /* Remove focus outline */
+.fullscreen-prev:focus,
+.fullscreen-next:focus {
+  outline: none;
 }
