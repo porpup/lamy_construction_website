@@ -61,11 +61,7 @@ export default function RootLayout({ children }) {
 					name="msapplication-config"
 					content={`${basePath}/assets/icons/browserconfig.xml`}
 				/>
-				<meta name="theme-color" content="#0EA5E9" /> {/* Initial color matching bg-sky-300 */}
-				<meta
-					name="apple-mobile-web-app-status-bar-style"
-					content="black-translucent"
-				/>
+				<meta name="theme-color" content="#ffffff" />
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />
 				<meta property="og:title" content={metadata.title} />
@@ -85,7 +81,7 @@ export default function RootLayout({ children }) {
 				/>
 				<title>{metadata.title}</title>
 			</head>
-			<body className={`${inter.className} bg_light_brown`}>{children}</body>
+			<body className={inter.className}>{children}</body>
 		</html>
 	);
 }
