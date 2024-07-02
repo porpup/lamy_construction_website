@@ -70,7 +70,7 @@ const ImageCarousel = () => {
 				settings: {
 					slidesToShow: 1,
 					centerMode: true,
-					centerPadding: "80px",
+					centerPadding: "75px",
 				},
 			},
 		],
@@ -137,7 +137,7 @@ const ImageCarousel = () => {
 	};
 
 	return (
-		<div className="image-carousel-container">
+		<div className="image-carousel-container pl-3 pr-3">
 			<Slider {...settings}>
 				{images.map((image, index) => (
 					<div
