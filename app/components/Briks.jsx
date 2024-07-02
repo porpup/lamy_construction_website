@@ -3,7 +3,9 @@
 import BasePath from "./BasePath";
 import Image from "next/image";
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { LanguageContext } from "../components/LanguageContext";
+import { LanguageContext } from "./LanguageContext";
+import briks_en from "@public/assets/text/briks_en";
+import briks_fr from "@public/assets/text/briks_fr";
 
 const Briks = () => {
 	const basePath = BasePath();
@@ -50,6 +52,8 @@ const Briks = () => {
 		};
 	}, []);
 
+	const texts = language === "en" ? briks_en : briks_fr;
+
 	return (
 		<div className="bg_light_brown flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
@@ -60,32 +64,9 @@ const Briks = () => {
 						animateText.text1 ? "show" : ""
 					}`}
 				>
-					{language === "en" ? (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">BRICKS</p>
-							<p className="mb-4">
-								We offer turnkey projects, up to 12 floors for your project:
-								whether it's for a fireplace, a wall, or the complete masonry of
-								your home, businesses, or buildings.
-							</p>
-							<p className="mb-4">
-								We also do masonry point repair and masonry replacement.
-							</p>
-						</>
-					) : (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">BRIQUES</p>
-							<p className="mb-4">
-								Nous offrons des projets clés en main, jusqu'à 12 étages pour
-								votre projet: que ce soit pour un foyer, un mur ou la maçonnerie
-								complète de votre demeure, commerces ou immeubles.
-							</p>
-							<p className="mb-4">
-								Nous faisons aussi la réfection des points de maçonnerie et le
-								remplacement des pièces de maçonnerie.
-							</p>
-						</>
-					)}
+					<p className="text-stone-800 mb-4 text-2xl">{texts.bricksTitle}</p>
+					<p className="mb-4">{texts.bricksParagraph1}</p>
+					<p className="mb-4">{texts.bricksParagraph2}</p>
 				</div>
 				<div className="relative flex justify-center items-end">
 					<Image
@@ -106,33 +87,12 @@ const Briks = () => {
 						animateText.text2 ? "show" : ""
 					}`}
 				>
-					{language === "en" ? (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">OUR EXPERTISE</p>
-							<ul className="mb-4">
-								<li>MEETING DEADLINES</li>
-								<li>5-YEAR WARRANTY WITH CONTRACT PROOF</li>
-								<li>INDEMNITY INSURANCE</li>
-								<li>100% SATISFACTION GUARANTEED</li>
-								<li>RBQ: 5848-3058-01</li>
-								<li>LAW 122</li>
-								<li>ENGINEER AND ARCHITECT SERVICES AVAILABLE</li>
-							</ul>
-						</>
-					) : (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">NOTRE EXPERTISE</p>
-							<ul className="mb-4">
-								<li>RESPECT DES ÉCHÉANCIERS</li>
-								<li>TRAVAUX GARANTIE 5 ANS AVEC PREUVE AU CONTRAT</li>
-								<li>ASSURANCE INDEMNITÉ</li>
-								<li>SATISFACTION GARANTIE À 100%</li>
-								<li>RBQ: 5848-3058-01</li>
-								<li>LOI 122</li>
-								<li>SERVICE D'INGÉNIEURS ET ARCHITECTES DISPONIBLE</li>
-							</ul>
-						</>
-					)}
+					<p className="text-stone-800 mb-4 text-2xl">{texts.expertiseTitle}</p>
+					<ul className="mb-4">
+						{texts.expertiseList.map((item, index) => (
+							<li key={index}>{item}</li>
+						))}
+					</ul>
 				</div>
 				<div className="flex justify-between p-8 items-center">
 					<div className="w-1/2 mx-8">

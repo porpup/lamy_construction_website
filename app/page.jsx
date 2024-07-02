@@ -1,7 +1,7 @@
 import React from "react";
 import { LanguageProvider } from "./components/LanguageContext";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Welcome from "./components/Welcome";
 import Floor from "./components/Floor";
 import Paint from "./components/Paint";
 import Design from "./components/Design";
@@ -11,11 +11,11 @@ import Washing from "./components/Washing";
 import Briks from "./components/Briks";
 import Footer from "./components/Footer";
 
-const Page = () => {
+const Home = () => {
 	return (
 		<LanguageProvider>
 			<Navbar />
-			<Home />
+			<Welcome />
 			<Floor />
 			<Paint />
 			<Design />
@@ -28,4 +28,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Home;

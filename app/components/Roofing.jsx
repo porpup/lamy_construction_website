@@ -1,8 +1,10 @@
 "use client";
 
-import BasePath from "./BasePath";
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { LanguageContext } from "../components/LanguageContext";
+import BasePath from "./BasePath";
+import { LanguageContext } from "./LanguageContext";
+import roofing_en from "@public/assets/text/roofing_en";
+import roofing_fr from "@public/assets/text/roofing_fr";
 
 const Roofing = () => {
 	const basePath = BasePath();
@@ -49,6 +51,8 @@ const Roofing = () => {
 		};
 	}, []);
 
+	const texts = language === "en" ? roofing_en : roofing_fr;
+
 	return (
 		<div className="bg_light_brown flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
@@ -59,44 +63,11 @@ const Roofing = () => {
 						animateText.text1 ? "show" : ""
 					}`}
 				>
-					{language === "en" ? (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">ROOFING</p>
-							<p className="mb-4">
-								Qualified, competent, and reliable team. Our reputation is built
-								on our reliability, good service, and exceptional quality of our
-								work.
-							</p>
-							<p className="mb-4">We offer a 20-year guarantee on our work.</p>
-							<p className="mb-4">
-								Not sure which option to choose? Our team of professionals will
-								be happy to answer your questions and offer you the best
-								solution based on your needs.
-							</p>
-							<p className="mb-4">
-								Contact us for your cornice restoration and repair needs!
-							</p>
-						</>
-					) : (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">TOITURE</p>
-							<p className="mb-4">
-								Équipe qualifiée, compétente et fiable. Notre réputation repose
-								sur notre fiabilité, notre bon service et une qualité
-								exceptionnelle de nos travaux.
-							</p>
-							<p className="mb-4">Garantie de 20 ans.</p>
-							<p className="mb-4">
-								Vous n'êtes pas certain du choix à faire? C'est avec plaisir que
-								notre équipe de professionnels répondra à vos questions et vous
-								proposera la meilleure solution, en fonction de vos besoins.
-							</p>
-							<p className="mb-4">
-								Contactez-nous pour vos besoins en restauration et en réparation
-								de corniche!
-							</p>
-						</>
-					)}
+					<p className="text-stone-800 mb-4 text-2xl">{texts.title}</p>
+					<p className="mb-4">{texts.paragraph1}</p>
+					<p className="mb-4">{texts.paragraph2}</p>
+					<p className="mb-4">{texts.paragraph3}</p>
+					<p className="mb-4">{texts.paragraph4}</p>
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img

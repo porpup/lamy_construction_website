@@ -3,9 +3,9 @@
 import React, { useContext } from "react";
 import BasePath from "./BasePath";
 import Image from "next/image";
-import { LanguageContext } from "../components/LanguageContext";
+import { LanguageContext } from "./LanguageContext";
 
-const Home = () => {
+const Welcome = () => {
 	const basePath = BasePath();
 	const { language } = useContext(LanguageContext);
 
@@ -31,4 +31,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Welcome;

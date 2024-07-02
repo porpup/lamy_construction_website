@@ -1,8 +1,10 @@
 "use client";
 
-import BasePath from "./BasePath";
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { LanguageContext } from "../components/LanguageContext";
+import BasePath from "./BasePath";
+import { LanguageContext } from "./LanguageContext";
+import washing_en from "@public/assets/text/washing_en";
+import washing_fr from "@public/assets/text/washing_fr";
 
 const Washing = () => {
 	const basePath = BasePath();
@@ -49,6 +51,8 @@ const Washing = () => {
 		};
 	}, []);
 
+	const texts = language === "en" ? washing_en : washing_fr;
+
 	return (
 		<div className="bg_light_yellow flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
@@ -59,57 +63,15 @@ const Washing = () => {
 						animateText.text1 ? "show" : ""
 					}`}
 				>
-					{language === "en" ? (
-						<>
-							<p className="tc_light_brown mb-4 text-2xl">DISASTER EXPERT</p>
-							<p className="mb-4">
-								With our professional disaster services, you will be guided
-								through the complexities of insurance requirements. We offer all
-								the services:
-							</p>
-							<ul className="mb-4">
-								<li>Post-disaster cleaning</li>
-								<li>Construction</li>
-								<li>Residential and commercial housekeeping</li>
-								<li>Dry cleaning</li>
-								<li>Excavation</li>
-								<li>Water damage</li>
-							</ul>
-							<p className="mb-4">
-								Specialized in cleaning, washing, stain removal, drying,
-								decontamination, and so much more.
-							</p>
-							<p className="mb-4">
-								We handle the communication with your insurance to ensure
-								everything is resolved as quickly as possible.
-							</p>
-						</>
-					) : (
-						<>
-							<p className="tc_light_brown mb-4 text-2xl">EXPERT EN APRÈS SINISTRE</p>
-							<p className="mb-4">
-								Avec nos services de professionnels en sinistre, vous serez
-								guidé à travers les complexités des exigences des assurances.
-								Nous offrons tous les services :
-							</p>
-							<ul className="mb-4">
-								<li>Nettoyage après sinistre</li>
-								<li>Construction</li>
-								<li>Entretien ménager résidentiel et commercial.</li>
-								<li>Nettoyeur à sec</li>
-								<li>Excavation</li>
-								<li>Dégât d'eau</li>
-							</ul>
-							<p className="mb-4">
-								Spécialisés pour nettoyer, laver, détacher, assécher,
-								décontaminer et tellement plus encore.
-							</p>
-							<p className="mb-4">
-								Nous nous occupons du lien avec vos assurances pour que tout
-								soit réglé le plus rapidement possible.
-							</p>
-						</>
-					)}
+					<p className="tc_light_brown mb-4 text-2xl">{texts.disasterTitle}</p>
+					<p className="mb-4">{texts.disasterParagraph1}</p>
+					<ul className="mb-4">
+						{texts.disasterList.map((item, index) => (
+							<li key={index}>{item}</li>
+						))}
+					</ul>
+					<p className="mb-4">{texts.disasterParagraph2}</p>
+					<p className="mb-4">{texts.disasterParagraph3}</p>
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
@@ -127,33 +89,9 @@ const Washing = () => {
 						animateText.text2 ? "show" : ""
 					}`}
 				>
-					{language === "en" ? (
-						<>
-							<p className="tc_light_brown mb-4 text-2xl">PRESSURE WASHING</p>
-							<p className="mb-4">
-								We are highly qualified and can handle the cleaning of your
-								residence or buildings.
-							</p>
-							<p className="mb-4">
-								Lamy Wash is a reliable team that respects your deadlines and
-								budgets. We ensure the best customer service and exceptional
-								quality of execution.
-							</p>
-						</>
-					) : (
-						<>
-							<p className="tc_light_brown mb-4 text-2xl">LAVAGE À PRESSION</p>
-							<p className="mb-4">
-								Nous sommes hautement qualifiés, et nous pouvons nous s'occuper
-								du nettoyage de votre résidence ou de vos bâtiments.
-							</p>
-							<p className="mb-4">
-								Lavage Lamy est une équipe fiable respectant vos échéanciers et
-								vos budgets. Elle assure le meilleur service à la clientèle
-								ainsi qu'une qualité d'exécution exceptionnelle.
-							</p>
-						</>
-					)}
+					<p className="tc_light_brown mb-4 text-2xl">{texts.pressureTitle}</p>
+					<p className="mb-4">{texts.pressureParagraph1}</p>
+					<p className="mb-4">{texts.pressureParagraph2}</p>
 				</div>
 				<div className="w-full flex flex-col">
 					<div className="w-full">

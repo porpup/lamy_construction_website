@@ -3,11 +3,14 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import BasePath from "./BasePath";
 import Image from "next/image";
-import { LanguageContext } from "../components/LanguageContext";
+import { LanguageContext } from "./LanguageContext";
+import floor_en from "@public/assets/text/floor_en";
+import floor_fr from "@public/assets/text/floor_fr";
 
 const Floor = () => {
 	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState(false);
+	const [hasAnimated, setHasAnimated] = useState(false);
 	const textRef = useRef(null);
 	const { language } = useContext(LanguageContext);
 
@@ -17,7 +20,8 @@ const Floor = () => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						setAnimateText(true);
-					} else {
+						setHasAnimated(true);
+					} else if (!hasAnimated) {
 						setAnimateText(false);
 					}
 				});
@@ -36,7 +40,9 @@ const Floor = () => {
 				observer.unobserve(textRef.current);
 			}
 		};
-	}, []);
+	}, [hasAnimated]);
+
+	const texts = language === "en" ? floor_en : floor_fr;
 
 	return (
 		<div className="flex flex-col md:flex-row">
@@ -55,60 +61,13 @@ const Floor = () => {
 					animateText ? "show" : ""
 				}`}
 			>
-				{language === "en" ? (
-					<>
-						<p className="tc_light_brown mb-4 text-2xl">FLOORING EXPERT</p>
-						<p className="mb-4">Lamy operates in the field of renovation.</p>
-						<p className="mb-4">
-							A Quebec company that has completed more than 500 projects since
-							its inception.
-						</p>
-						<p className="mb-4">The company offers several services:</p>
-						<p className="mb-4">
-							Roofing, painting, pressure washing, insulation, floor coverings,
-							ceramics, carpets, woodwork, moldings, railings, doors, windows,
-							bricks. It also offers post-disaster expert services.
-						</p>
-						<p className="mb-4">
-							Over the years, its team has earned a reputation for reliability,
-							exceptional customer service, and above all, outstanding quality
-							of work. We strive to maintain high standards of quality and
-							exemplary cleanliness on the job site.
-						</p>
-						<p className="mb-4">
-							The company specializes in the commercial sector and also works in
-							the restoration of heritage buildings.
-						</p>
-					</>
-				) : (
-					<>
-						<p className="tc_light_brown mb-4 text-2xl">EXPERT EN PLANCHER</p>
-						<p className="mb-4">Lamy œuvre dans le domaine de la rénovation.</p>
-						<p className="mb-4">
-							Entreprise québécoise qui depuis son ouverture a réalisé plus de
-							500 projets.
-						</p>
-						<p className="mb-4">L'entreprise offre plusieurs services:</p>
-						<p className="mb-4">
-							Toiture, peinture, lavage à pression, isolation, revêtements
-							planchers, céramique, tapis, boiseries, moulures, rampes, portes,
-							fenêtres, briques. Elle offre également un service d'expert en
-							après sinistre.
-						</p>
-						<p className="mb-4">
-							Son équipe a acquis avec les années, une réputation de
-							fiabilité, un service à la clientèle hors pair et surtout une
-							qualité des travaux exceptionnelle. Nous mettons tout en œuvre
-							afin de maintenir des standards de qualité élevés et une propreté
-							du chantier exemplaire.
-						</p>
-						<p className="mb-4">
-							L'entreprise se spécialise dans le domaine commercial et œuvre
-							également dans le domaine de la restauration de bâtiments
-							patrimoniaux.
-						</p>
-					</>
-				)}
+				<p className="tc_light_brown mb-4 text-2xl">{texts.title}</p>
+				<p className="mb-4">{texts.paragraph1}</p>
+				<p className="mb-4">{texts.paragraph2}</p>
+				<p className="mb-4">{texts.paragraph3}</p>
+				<p className="mb-4">{texts.paragraph4}</p>
+				<p className="mb-4">{texts.paragraph5}</p>
+				<p className="mb-4">{texts.paragraph6}</p>
 			</div>
 		</div>
 	);

@@ -1,8 +1,10 @@
 "use client";
 
-import BasePath from "./BasePath";
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { LanguageContext } from "../components/LanguageContext";
+import BasePath from "./BasePath";
+import { LanguageContext } from "./LanguageContext";
+import paint_en from "@public/assets/text/paint_en";
+import paint_fr from "@public/assets/text/paint_fr";
 
 const Paint = () => {
 	const basePath = BasePath();
@@ -49,6 +51,8 @@ const Paint = () => {
 		};
 	}, []);
 
+	const texts = language === "en" ? paint_en : paint_fr;
+
 	return (
 		<div className="bg_light_brown flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
@@ -59,53 +63,16 @@ const Paint = () => {
 						animateText.text1 ? "show" : ""
 					}`}
 				>
-					{language === "en" ? (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">PAINTING</p>
-							<p className="mb-4">
-								Our roll or spray painting service offers you professional work,
-								whether it be for residential, commercial, or industrial.
-							</p>
-							<p className="mb-4">
-								Whether it's renovations, plaster work, or preparation before
-								application, you can count on our work and professionalism.
-							</p>
-							<p className="mb-4">Services offered</p>
-							<ul className="mb-4">
-								<li>Interior / Exterior</li>
-								<li>Concrete block</li>
-								<li>Wood surfaces</li>
-								<li>Stain and varnish</li>
-								<li>Wallboard</li>
-								<li>Plaster repair</li>
-							</ul>
-							<p className="mb-4">And more...</p>
-						</>
-					) : (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">PEINTURE</p>
-							<p className="mb-4">
-								Notre service d'application de peinture au rouleau ou au fusil
-								vous offre un travail professionnel, que ce soit pour du
-								résidentiel, commercial ou de l'industriel.
-							</p>
-							<p className="mb-4">
-								Qu'il s'agisse de rénovations, de travaux de plâtre, de
-								préparation avant application, vous pouvez compter sur notre
-								travail ainsi que sur notre professionnalisme.
-							</p>
-							<p className="mb-4">Services offerts</p>
-							<ul className="mb-4">
-								<li>Intérieur / Extérieur</li>
-								<li>Bloc de béton</li>
-								<li>Surface de bois</li>
-								<li>Teinture et vernis</li>
-								<li>Planche murale</li>
-								<li>Réparation de plâtre</li>
-							</ul>
-							<p className="mb-4">Et plus encore...</p>
-						</>
-					)}
+					<p className="text-stone-800 mb-4 text-2xl">{texts.paintingTitle}</p>
+					<p className="mb-4">{texts.paintingParagraph1}</p>
+					<p className="mb-4">{texts.paintingParagraph2}</p>
+					<p className="mb-4">{texts.services}</p>
+					<ul className="mb-4">
+						{texts.serviceList.map((service, index) => (
+							<li key={index}>{service}</li>
+						))}
+					</ul>
+					<p className="mb-4">{texts.andMore}</p>
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
@@ -147,31 +114,8 @@ const Paint = () => {
 						animateText.text2 ? "show" : ""
 					}`}
 				>
-					{language === "en" ? (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">
-								WOODWORK, MOLDINGS, RAILINGS, DOORS, AND WINDOWS
-							</p>
-							<p className="mb-4">
-								You will find among our selection of woodwork and framing, the
-								necessary elements for the installation of your doors and
-								moldings. A cabinetmaker can be on site for special orders of
-								heritage woodwork, historical, interior, and exterior.
-							</p>
-						</>
-					) : (
-						<>
-							<p className="text-stone-800 mb-4 text-2xl">
-								BOISERIES, MOULURES, RAMPES, PORTES ET FENÊTRES
-							</p>
-							<p className="mb-4">
-								Vous trouverez parmi notre assortiment de boiseries et cadrages,
-								le nécessaire à l'installation de vos portes et de vos moulures.
-								Possibilité d'ébéniste sur place pour commande spéciale de
-								boiserie patrimo- niale, historique, intérieure et extérieure.
-							</p>
-						</>
-					)}
+					<p className="text-stone-800 mb-4 text-2xl">{texts.woodworkTitle}</p>
+					<p className="mb-4">{texts.woodworkParagraph1}</p>
 				</div>
 			</div>
 		</div>
