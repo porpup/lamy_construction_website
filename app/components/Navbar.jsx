@@ -8,7 +8,7 @@ import { LanguageContext } from "./LanguageContext";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 
-const Navbar = ({ scrolled, onColorChange }) => {
+const Navbar = ({ scrolled, onColorChange, fixedBgColor }) => {
 	const basePath = BasePath();
 	const [isScrolled, setIsScrolled] = useState(scrolled || false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,25 +21,27 @@ const Navbar = ({ scrolled, onColorChange }) => {
 	const scrollThreshold = 50; // Adjust this value to make the detection less sensitive
 
 	useEffect(() => {
-		const handleScroll = () => {
-			const currentScrollY = window.scrollY;
-			setIsScrolled(currentScrollY > 10);
+		if (!scrolled) {
+			const handleScroll = () => {
+				const currentScrollY = window.scrollY;
+				setIsScrolled(currentScrollY > 10);
 
-			if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
-				if (currentScrollY > lastScrollY) {
-					setScrollDirection("down");
-				} else {
-					setScrollDirection("up");
+				if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+					if (currentScrollY > lastScrollY) {
+						setScrollDirection("down");
+					} else {
+						setScrollDirection("up");
+					}
+					setLastScrollY(currentScrollY);
 				}
-				setLastScrollY(currentScrollY);
-			}
-		};
+			};
 
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, [lastScrollY]);
+			window.addEventListener("scroll", handleScroll);
+			return () => {
+				window.removeEventListener("scroll", handleScroll);
+			};
+		}
+	}, [scrolled, lastScrollY]);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -95,7 +97,9 @@ const Navbar = ({ scrolled, onColorChange }) => {
 		<div
 			ref={navbarRef}
 			className={`fixed top-0 left-0 w-full z-10 transition-transform duration-200 px-4 ${
-				isScrolled ? "bg-stone-800/90" : "bg-sky-300/90"
+				isScrolled
+					? fixedBgColor || "bg-stone-800/90"
+					: fixedBgColor || "bg-sky-300/90"
 			} ${scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"}`}
 		>
 			<div className="mx-auto flex items-center justify-between p-2">
