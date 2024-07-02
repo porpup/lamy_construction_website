@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BasePath from "./BasePath";
-import { useFullScreen } from "./RootLayout";
+import { useFullScreen } from '@app/layout';
 
 const ImageCarousel = () => {
 	const basePath = BasePath();
