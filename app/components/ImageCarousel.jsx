@@ -5,17 +5,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BasePath from "./BasePath";
-import { useFullScreen } from '@app/layout';
 
-const ImageCarousel = () => {
+const ImageCarousel = ({ onFullscreenChange }) => {
 	const basePath = BasePath();
 	const [sliderLoaded, setSliderLoaded] = useState(false);
 	const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null);
 	const [touchStartX, setTouchStartX] = useState(0);
 	const [touchEndX, setTouchEndX] = useState(0);
 	const isDragging = useRef(false); // Track if the user is dragging
-
-	const { setIsFullScreen } = useFullScreen();
 
 	useEffect(() => {
 		setSliderLoaded(true);
@@ -38,6 +35,11 @@ const ImageCarousel = () => {
 			window.removeEventListener("keydown", handleKeyDown);
 		};
 	}, [fullscreenImageIndex]);
+
+	useEffect(() => {
+		// Notify parent component about fullscreen state change
+		onFullscreenChange(fullscreenImageIndex !== null);
+	}, [fullscreenImageIndex, onFullscreenChange]);
 
 	const images = [
 		`${basePath}/assets/gallery/gallery1.jpg`,
@@ -99,13 +101,11 @@ const ImageCarousel = () => {
 	// Function to open image in full screen overlay
 	const openFullScreen = (index) => {
 		setFullscreenImageIndex(index);
-		setIsFullScreen(true);
 	};
 
 	// Function to close full screen overlay
 	const closeFullScreen = () => {
 		setFullscreenImageIndex(null);
-		setIsFullScreen(false);
 	};
 
 	// Function to handle touch start

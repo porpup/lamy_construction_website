@@ -9,16 +9,21 @@ import RootLayout from "@app/layout";
 
 const Gallery = () => {
 	const [navbarColor, setNavbarColor] = useState("#292524");
+	const [fullscreen, setFullscreen] = useState(false);
 
 	const handleColorChange = (color) => {
 		setNavbarColor(color);
 	};
 
+	const handleFullscreenChange = (isFullscreen) => {
+		setFullscreen(isFullscreen);
+	};
+
 	return (
 		<LanguageProvider>
-			<RootLayout navbarColor={navbarColor}>
+			<RootLayout navbarColor={navbarColor} fullscreen={fullscreen}>
 				<Navbar scrolled={true} onColorChange={handleColorChange} />
-				<ImageCarousel />
+				<ImageCarousel onFullscreenChange={handleFullscreenChange} />
 				<Footer />
 			</RootLayout>
 		</LanguageProvider>
