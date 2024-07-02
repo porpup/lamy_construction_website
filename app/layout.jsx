@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 const basePath = BasePath();
 
 export default function RootLayout({ children }) {
-	const [navbarColor, setNavbarColor] = useState("#0EA5E9");
+	const [navbarColor, setNavbarColor] = useState("#7DD3FC");
 
 	useEffect(() => {
 		const metaThemeColor = document.querySelector("meta[name=theme-color]");

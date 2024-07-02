@@ -65,7 +65,7 @@ const Navbar = ({ scrolled, onColorChange }) => {
 	}, []);
 
 	useEffect(() => {
-		const color = isScrolled ? "#292524" : "#0EA5E9";
+		const color = isScrolled ? "#292524" : "#7DD3FC";
 		onColorChange(color);
 	}, [isScrolled, onColorChange]);
 

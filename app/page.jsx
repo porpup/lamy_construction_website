@@ -15,7 +15,7 @@ import Footer from "./components/Footer";
 import RootLayout from "./layout";
 
 const Home = () => {
-	const [navbarColor, setNavbarColor] = useState("#0EA5E9");
+	const [navbarColor, setNavbarColor] = useState("#7DD3FC");
 
 	const handleColorChange = (color) => {
 		setNavbarColor(color);
