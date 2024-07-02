@@ -21,27 +21,25 @@ const Navbar = ({ scrolled, onColorChange }) => {
 	const scrollThreshold = 50; // Adjust this value to make the detection less sensitive
 
 	useEffect(() => {
-		if (!scrolled) {
-			const handleScroll = () => {
-				const currentScrollY = window.scrollY;
-				setIsScrolled(currentScrollY > 10);
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			setIsScrolled(currentScrollY > 10);
 
-				if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
-					if (currentScrollY > lastScrollY) {
-						setScrollDirection("down");
-					} else {
-						setScrollDirection("up");
-					}
-					setLastScrollY(currentScrollY);
+			if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+				if (currentScrollY > lastScrollY) {
+					setScrollDirection("down");
+				} else {
+					setScrollDirection("up");
 				}
-			};
+				setLastScrollY(currentScrollY);
+			}
+		};
 
-			window.addEventListener("scroll", handleScroll);
-			return () => {
-				window.removeEventListener("scroll", handleScroll);
-			};
-		}
-	}, [scrolled, lastScrollY]);
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [lastScrollY]);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {

@@ -22,7 +22,7 @@ const Gallery = () => {
 	return (
 		<LanguageProvider>
 			<RootLayout navbarColor={navbarColor} fullscreen={fullscreen}>
-				<Navbar scrolled={true} onColorChange={handleColorChange} />
+				<Navbar scrolled={false} onColorChange={handleColorChange} />
 				<ImageCarousel onFullscreenChange={handleFullscreenChange} />
 				<Footer />
 			</RootLayout>
