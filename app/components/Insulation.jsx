@@ -4,8 +4,8 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import BasePath from "./BasePath";
 import Image from "next/image";
 import { LanguageContext } from "./LanguageContext";
-import insulation_en from "@public/assets/text/insulation_en";
-import insulation_fr from "@public/assets/text/insulation_fr";
+import insulation_en from "@public/assets/text/en/insulation_en";
+import insulation_fr from "@public/assets/text/fr/insulation_fr";
 
 const Insulation = () => {
 	const basePath = BasePath();

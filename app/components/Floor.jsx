@@ -4,8 +4,8 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import BasePath from "./BasePath";
 import Image from "next/image";
 import { LanguageContext } from "./LanguageContext";
-import floor_en from "@public/assets/text/floor_en";
-import floor_fr from "@public/assets/text/floor_fr";
+import floor_en from "@public/assets/text/en/floor_en";
+import floor_fr from "@public/assets/text/fr/floor_fr";
 
 const Floor = () => {
 	const basePath = BasePath();

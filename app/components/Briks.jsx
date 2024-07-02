@@ -4,8 +4,8 @@ import BasePath from "./BasePath";
 import Image from "next/image";
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
-import briks_en from "@public/assets/text/briks_en";
-import briks_fr from "@public/assets/text/briks_fr";
+import briks_en from "@public/assets/text/en/briks_en";
+import briks_fr from "@public/assets/text/fr/briks_fr";
 
 const Briks = () => {
 	const basePath = BasePath();

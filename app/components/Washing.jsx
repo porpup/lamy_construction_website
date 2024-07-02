@@ -3,8 +3,8 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import BasePath from "./BasePath";
 import { LanguageContext } from "./LanguageContext";
-import washing_en from "@public/assets/text/washing_en";
-import washing_fr from "@public/assets/text/washing_fr";
+import washing_en from "@public/assets/text/en/washing_en";
+import washing_fr from "@public/assets/text/fr/washing_fr";
 
 const Washing = () => {
 	const basePath = BasePath();

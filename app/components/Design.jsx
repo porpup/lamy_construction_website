@@ -3,8 +3,8 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import BasePath from "./BasePath";
 import { LanguageContext } from "./LanguageContext";
-import design_en from "@public/assets/text/design_en";
-import design_fr from "@public/assets/text/design_fr";
+import design_en from "@public/assets/text/en/design_en";
+import design_fr from "@public/assets/text/fr/design_fr";
 
 const Design = () => {
 	const basePath = BasePath();
