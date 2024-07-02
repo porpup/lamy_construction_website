@@ -20,7 +20,7 @@ const Controls = ({ isMenuOpen, toggleMenu, isScrolled, isGalleryPage }) => {
 
 	return (
 		<button
-			className="menuToggle group"
+			className="menuToggle group outline-none focus:outline-none"
 			onClick={toggleMenu}
 			onMouseDown={handleMouseDown}
 			onMouseUp={handleMouseUp}
