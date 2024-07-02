@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import BasePath from "./BasePath";
 import Controls from "./Controls";
 import Image from "next/image";
-import { LanguageContext } from './LanguageContext';
+import { LanguageContext } from "./LanguageContext";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 
@@ -20,11 +20,22 @@ const Navbar = ({ scrolled }) => {
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const scrollThreshold = 50; // Adjust this value to make the detection less sensitive
 
+	const updateStatusBarColor = (isScrolled) => {
+		const metaThemeColor = document.querySelector("meta[name=theme-color]");
+		if (metaThemeColor) {
+			metaThemeColor.setAttribute(
+				"content",
+				isScrolled ? "#2D3748" : "#81E6D9"
+			); // bg-stone-800 to bg-sky-300
+		}
+	};
+
 	useEffect(() => {
 		if (!scrolled) {
 			const handleScroll = () => {
 				const currentScrollY = window.scrollY;
 				setIsScrolled(currentScrollY > 10);
+				updateStatusBarColor(currentScrollY > 10);
 
 				if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
 					if (currentScrollY > lastScrollY) {
