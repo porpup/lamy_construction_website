@@ -3,15 +3,13 @@
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import BasePath from "./components/BasePath";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { metadata } from "./metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 const basePath = BasePath();
 
-export default function RootLayout({ children }) {
-	const [navbarColor, setNavbarColor] = useState("#7DD3FC");
-
+export default function RootLayout({ children, navbarColor }) {
 	useEffect(() => {
 		const metaThemeColor = document.querySelector("meta[name=theme-color]");
 		if (metaThemeColor) {

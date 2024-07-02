@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import BasePath from "./BasePath";
 import Controls from "./Controls";
 import Image from "next/image";
-import { LanguageContext } from './LanguageContext';
+import { LanguageContext } from "./LanguageContext";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 
