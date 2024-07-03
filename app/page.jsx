@@ -16,17 +16,14 @@ import RootLayout from "./layout";
 
 const Home = () => {
 	const [navbarColor, setNavbarColor] = useState("#7DD3FC");
-	const [isAtTop, setIsAtTop] = useState(true);
 
 	const handleColorChange = (color) => {
 		setNavbarColor(color);
 	};
 
 	useEffect(() => {
-		const handleScroll = () => {
+		const updateThemeColor = () => {
 			const currentScrollY = window.scrollY;
-			setIsAtTop(currentScrollY === 0);
-
 			const metaThemeColor = document.querySelector("meta[name=theme-color]");
 			if (metaThemeColor) {
 				if (currentScrollY === 0) {
@@ -35,6 +32,14 @@ const Home = () => {
 					metaThemeColor.setAttribute("content", navbarColor);
 				}
 			}
+		};
+
+		// Update theme color on initial load
+		updateThemeColor();
+
+		// Update theme color on scroll
+		const handleScroll = () => {
+			updateThemeColor();
 		};
 
 		window.addEventListener("scroll", handleScroll);
