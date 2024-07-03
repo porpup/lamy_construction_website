@@ -30,14 +30,8 @@ export default function RootLayout({
 			<head>
 				<meta charSet="UTF-8" />
 				<title>{metadata.title}</title>
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1, viewport-fit=cover"
-				/>
-				<meta
-					name="theme-color"
-					content={fullscreen ? "#000000" : fixedBgColor || navbarColor}
-				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="theme-color" content={navbarColor} />
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />
 				<meta property="og:title" content={metadata.title} />
