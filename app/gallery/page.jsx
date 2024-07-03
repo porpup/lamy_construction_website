@@ -30,7 +30,7 @@ const Gallery = () => {
 				<Navbar
 					scrolled={false}
 					onColorChange={handleColorChange}
-					initialBgColor="bg_light_brown"
+					initialBgColor="#292524"
 				/>
 				<ImageCarousel onFullscreenChange={handleFullscreenChange} />
 				<Footer />
