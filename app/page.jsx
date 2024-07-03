@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LanguageProvider } from "./components/LanguageContext";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
@@ -16,10 +16,33 @@ import RootLayout from "./layout";
 
 const Home = () => {
 	const [navbarColor, setNavbarColor] = useState("#7DD3FC");
+	const [isAtTop, setIsAtTop] = useState(true);
 
 	const handleColorChange = (color) => {
 		setNavbarColor(color);
 	};
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			setIsAtTop(currentScrollY === 0);
+
+			const metaThemeColor = document.querySelector("meta[name=theme-color]");
+			if (metaThemeColor) {
+				if (currentScrollY === 0) {
+					metaThemeColor.setAttribute("content", "#7DD3FC");
+				} else {
+					metaThemeColor.setAttribute("content", navbarColor);
+				}
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [navbarColor]);
 
 	return (
 		<LanguageProvider>
