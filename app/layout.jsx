@@ -1,28 +1,13 @@
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import BasePath from "./components/BasePath";
-import { useEffect } from "react";
 import { metadata } from "./metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 const basePath = BasePath();
 
-export default function RootLayout({
-	children,
-	navbarColor,
-	fullscreen,
-	fixedBgColor,
-}) {
-	useEffect(() => {
-		const metaThemeColor = document.querySelector("meta[name=theme-color]");
-		if (metaThemeColor) {
-			if (fullscreen) {
-				metaThemeColor.setAttribute("content", "#000000"); // Set to the background color when images are in fullscreen
-			} else {
-				metaThemeColor.setAttribute("content", fixedBgColor || navbarColor);
-			}
-		}
-	}, [navbarColor, fullscreen, fixedBgColor]);
+const RootLayout = ({ children, navbarColor, fullscreen, fixedBgColor }) => {
+	const themeColor = fullscreen ? "#000000" : fixedBgColor || navbarColor;
 
 	return (
 		<html lang="en">
@@ -72,10 +57,7 @@ export default function RootLayout({
 					name="msapplication-config"
 					content={`${basePath}/assets/icons/browserconfig.xml`}
 				/>
-				<meta
-					name="theme-color"
-					content={fullscreen ? "#000000" : fixedBgColor || navbarColor}
-				/>
+				<meta name="theme-color" content={themeColor} />
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />
 				<meta property="og:title" content={metadata.title} />
@@ -93,10 +75,15 @@ export default function RootLayout({
 					name="twitter:image"
 					content={`${basePath}/assets/icons/twitter-image.png`}
 				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1, viewport-fit=cover"
+				/>
 				<title>{metadata.title}</title>
 			</head>
 			<body className={inter.className}>{children}</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;
