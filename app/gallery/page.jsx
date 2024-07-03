@@ -24,8 +24,8 @@ const Gallery = () => {
 			<RootLayout
 				navbarColor={navbarColor}
 				fullscreen={fullscreen}
-				fixedBgColor="#93845e"
-				initialColor="#93845e" // Light brown color for initial load
+				fixedBgColor="#292524"
+				initialColor="#292524" // Light brown color for initial load
 			>
 				<Navbar
 					scrolled={false}
