@@ -14,6 +14,7 @@ export default function RootLayout({
 	navbarColor,
 	fullscreen,
 	fixedBgColor,
+	initialColor,
 }) {
 	useEffect(() => {
 		const currentScrollY = window.scrollY;
@@ -22,12 +23,12 @@ export default function RootLayout({
 			if (fullscreen) {
 				metaThemeColor.setAttribute("content", "#000000"); // Set to the background color when images are in fullscreen
 			} else if (currentScrollY === 0) {
-				metaThemeColor.setAttribute("content", "#7DD3FC");
+				metaThemeColor.setAttribute("content", initialColor || "#7DD3FC");
 			} else {
 				metaThemeColor.setAttribute("content", fixedBgColor || navbarColor);
 			}
 		}
-	}, [navbarColor, fullscreen, fixedBgColor]);
+	}, [navbarColor, fullscreen, fixedBgColor, initialColor]);
 
 	return (
 		<html lang="en">
@@ -79,7 +80,7 @@ export default function RootLayout({
 				/>
 				<meta
 					name="theme-color"
-					content="#7DD3FC" // Set initial color here
+					content={initialColor || "#7DD3FC"} // Set initial color here
 				/>
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />
