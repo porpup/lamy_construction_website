@@ -1,7 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import Link from "next/link";
+import { LanguageContext } from "./LanguageContext";
+import footer_en from "@public/assets/text/en/footer_en";
+import footer_fr from "@public/assets/text/fr/footer_fr";
 
 const Footer = () => {
 	const company = {
@@ -15,6 +18,7 @@ const Footer = () => {
 		"https://www.google.com/maps/place/9+Rue+Debussy,+Candiac,+QC+J5R+6C2/@45.3859549,-73.4934945,17z/data=!3m1!4b1!4m6!3m5!1s0x4cc90c20ff306c0f:0xd9adbd862e121b81!8m2!3d45.3859512!4d-73.4909142!16s%2Fg%2F11c5fnb48d?entry=ttu";
 
 	const footerRef = useRef(null);
+	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -40,18 +44,23 @@ const Footer = () => {
 		};
 	}, []);
 
+	const texts = language === "en" ? footer_en : footer_fr;
+
 	return (
 		<footer
 			ref={footerRef}
 			id="footer"
-			className="bg-stone-800 tc_gray pr-16 pl-16"
+			className="bg-stone-800 pr-16 pl-16"
+			style={{ color: "#aaa19c" }}
 		>
 			<hr className="h-0.5 mx-auto my-4 border-0 rounded md:my-5 bg_gray" />
-			<h6 className="mb-4 font-semibold uppercase text-center">Contact</h6>
+			<h6 className="mb-4 font-semibold uppercase text-center">
+				{texts.contact}
+			</h6>
 			<div className="flex flex-col items-center md:flex-row md:justify-between">
 				{/* Address Section */}
 				<div className="mb-4 md:mb-0 text-left md:flex-1">
-					<Link href={googleMap}>
+					<Link href={googleMap} target="_blank" rel="noopener noreferrer">
 						<p className="flex items-center justify-start hover:text-neutral-100">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -84,8 +93,12 @@ const Footer = () => {
 				</div>
 
 				{/* Phone Section */}
-				<div className="mb-4 md:mb-0 text-right md:flex-1">
-					<p className="flex items-center justify-end hover:text-neutral-100">
+				<div className="mb-4 md:mb-0 text-right md:flex-1 flex flex-col items-center md:items-end">
+					<div className="text-center mb-2">
+						<p>{texts.jobTitle}:</p>
+						<p>Robert Giguère</p>
+					</div>
+					<p className="flex items-center hover:text-neutral-100">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24"
