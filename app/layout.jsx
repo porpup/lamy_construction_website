@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import BasePath from "./components/BasePath";
+import { useEffect } from "react";
 import { metadata } from "./metadata";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,10 +18,11 @@ export default function RootLayout({
 	useEffect(() => {
 		const metaThemeColor = document.querySelector("meta[name=theme-color]");
 		if (metaThemeColor) {
-			metaThemeColor.setAttribute(
-				"content",
-				fullscreen ? "#000000" : fixedBgColor || navbarColor
-			);
+			if (fullscreen) {
+				metaThemeColor.setAttribute("content", "#000000"); // Set to the background color when images are in fullscreen
+			} else {
+				metaThemeColor.setAttribute("content", fixedBgColor || navbarColor);
+			}
 		}
 	}, [navbarColor, fullscreen, fixedBgColor]);
 
@@ -29,26 +30,6 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<meta charSet="UTF-8" />
-				<title>{metadata.title}</title>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta name="theme-color" content={navbarColor} />
-				<meta name="description" content={metadata.description} />
-				<meta name="keywords" content={metadata.keywords} />
-				<meta property="og:title" content={metadata.title} />
-				<meta property="og:description" content={metadata.description} />
-				<meta
-					property="og:image"
-					content={`${basePath}/assets/icons/og-image.png`}
-				/>
-				<meta property="og:url" content="https://yourwebsite.com" />
-				<meta property="og:type" content="website" />
-				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:title" content={metadata.title} />
-				<meta name="twitter:description" content={metadata.description} />
-				<meta
-					name="twitter:image"
-					content={`${basePath}/assets/icons/twitter-image.png`}
-				/>
 				<link
 					rel="preload"
 					href="https://fonts.gstatic.com/s/rubik/v28/iJWKBXyIfDnIV7nBrXyw023e.woff2"
@@ -93,6 +74,28 @@ export default function RootLayout({
 					name="msapplication-config"
 					content={`${basePath}/assets/icons/browserconfig.xml`}
 				/>
+				<meta
+					name="theme-color"
+					content={fullscreen ? "#000000" : fixedBgColor || navbarColor}
+				/>
+				<meta name="description" content={metadata.description} />
+				<meta name="keywords" content={metadata.keywords} />
+				<meta property="og:title" content={metadata.title} />
+				<meta property="og:description" content={metadata.description} />
+				<meta
+					property="og:image"
+					content={`${basePath}/assets/icons/og-image.png`}
+				/>
+				<meta property="og:url" content="https://yourwebsite.com" />
+				<meta property="og:type" content="website" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content={metadata.title} />
+				<meta name="twitter:description" content={metadata.description} />
+				<meta
+					name="twitter:image"
+					content={`${basePath}/assets/icons/twitter-image.png`}
+				/>
+				<title>{metadata.title}</title>
 			</head>
 			<body className={inter.className}>{children}</body>
 		</html>
