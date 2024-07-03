@@ -22,7 +22,7 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		const updateThemeColor = () => {
+		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
 			const metaThemeColor = document.querySelector("meta[name=theme-color]");
 			if (metaThemeColor) {
@@ -35,13 +35,9 @@ const Home = () => {
 		};
 
 		// Update theme color on initial load
-		updateThemeColor();
+		handleScroll();
 
 		// Update theme color on scroll
-		const handleScroll = () => {
-			updateThemeColor();
-		};
-
 		window.addEventListener("scroll", handleScroll);
 
 		return () => {

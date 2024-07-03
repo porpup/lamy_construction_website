@@ -16,10 +16,13 @@ export default function RootLayout({
 	fixedBgColor,
 }) {
 	useEffect(() => {
+		const currentScrollY = window.scrollY;
 		const metaThemeColor = document.querySelector("meta[name=theme-color]");
 		if (metaThemeColor) {
 			if (fullscreen) {
 				metaThemeColor.setAttribute("content", "#000000"); // Set to the background color when images are in fullscreen
+			} else if (currentScrollY === 0) {
+				metaThemeColor.setAttribute("content", "#7DD3FC");
 			} else {
 				metaThemeColor.setAttribute("content", fixedBgColor || navbarColor);
 			}
@@ -76,7 +79,7 @@ export default function RootLayout({
 				/>
 				<meta
 					name="theme-color"
-					content={fullscreen ? "#000000" : fixedBgColor || navbarColor}
+					content="#7DD3FC" // Set initial color here
 				/>
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />
