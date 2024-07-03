@@ -1,5 +1,3 @@
-"use client";
-
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import BasePath from "./components/BasePath";
@@ -95,6 +93,7 @@ export default function RootLayout({
 					name="twitter:image"
 					content={`${basePath}/assets/icons/twitter-image.png`}
 				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 				<title>{metadata.title}</title>
 			</head>
 			<body className={inter.className}>{children}</body>
