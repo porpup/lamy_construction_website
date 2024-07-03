@@ -8,7 +8,7 @@ import Footer from "@app/components/Footer";
 import RootLayout from "@app/layout";
 
 const Gallery = () => {
-	const [navbarColor, setNavbarColor] = useState("#93845e"); // Light brown color
+	const [navbarColor, setNavbarColor] = useState("#292524");
 	const [fullscreen, setFullscreen] = useState(false);
 
 	const handleColorChange = (color) => {
@@ -25,12 +25,11 @@ const Gallery = () => {
 				navbarColor={navbarColor}
 				fullscreen={fullscreen}
 				fixedBgColor="#292524"
-				initialColor="#292524" // Light brown color for initial load
 			>
 				<Navbar
 					scrolled={false}
 					onColorChange={handleColorChange}
-					initialBgColor="#292524"
+					initialBgColor="bg-stone-800/90"
 				/>
 				<ImageCarousel onFullscreenChange={handleFullscreenChange} />
 				<Footer />

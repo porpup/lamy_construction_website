@@ -22,7 +22,7 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		const handleScroll = () => {
+		const updateThemeColor = () => {
 			const currentScrollY = window.scrollY;
 			const metaThemeColor = document.querySelector("meta[name=theme-color]");
 			if (metaThemeColor) {
@@ -35,9 +35,13 @@ const Home = () => {
 		};
 
 		// Update theme color on initial load
-		handleScroll();
+		updateThemeColor();
 
 		// Update theme color on scroll
+		const handleScroll = () => {
+			updateThemeColor();
+		};
+
 		window.addEventListener("scroll", handleScroll);
 
 		return () => {
@@ -47,7 +51,7 @@ const Home = () => {
 
 	return (
 		<LanguageProvider>
-			<RootLayout navbarColor={navbarColor} initialColor="#7DD3FC">
+			<RootLayout navbarColor={navbarColor}>
 				<Navbar
 					onColorChange={handleColorChange}
 					initialBgColor="bg-sky-300/90"
