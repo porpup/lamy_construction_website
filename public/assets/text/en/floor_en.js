@@ -1,7 +1,7 @@
 const floor_en = {
-  title: "FLOORING EXPERT",
-  paragraph1: "Lamy operates in the field of renovation.",
-  paragraph2: "A Quebec company that has completed more than 500 projects since its inception.",
+  title: "WHO ARE WE?",
+  paragraph1: "Lamy Construction operates in the field of renovation.",
+  paragraph2: "We are a Quebec company that has completed more than 500 projects since its inception.",
   paragraph3: "The company offers several services:",
   paragraph4: "Roofing, painting, pressure washing, insulation, floor coverings, ceramics, carpets, woodwork, moldings, railings, doors, windows, bricks. It also offers post-disaster expert services.",
   paragraph5: "Over the years, its team has earned a reputation for reliability, exceptional customer service, and above all, outstanding quality of work. We strive to maintain high standards of quality and exemplary cleanliness on the job site.",
