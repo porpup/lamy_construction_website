@@ -1,4 +1,4 @@
-const floor_en = {
+const whoAreWe_en = {
   title: "WHO ARE WE?",
   paragraph1: "Lamy Construction operates in the field of renovation.",
   paragraph2: "We are a Quebec company that has completed more than 500 projects since its inception.",
@@ -8,4 +8,4 @@ const floor_en = {
   paragraph6: "The company specializes in the commercial sector and also works in the restoration of heritage buildings."
 };
 
-export default floor_en;
+export default whoAreWe_en;

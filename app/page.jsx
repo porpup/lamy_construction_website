@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { LanguageProvider } from "./components/LanguageContext";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
-import Floor from "./components/Floor";
+import WhoAreWe from "./components/WhoAreWe";
 import Paint from "./components/Paint";
 import Design from "./components/Design";
 import Insulation from "./components/Insulation";
@@ -57,7 +57,7 @@ const Home = () => {
 					initialBgColor="bg-sky-300/90"
 				/>
 				<Welcome />
-				<Floor />
+				<WhoAreWe />
 				<Paint />
 				<Design />
 				<Insulation />

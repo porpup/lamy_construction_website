@@ -4,10 +4,10 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import BasePath from "./BasePath";
 import Image from "next/image";
 import { LanguageContext } from "./LanguageContext";
-import floor_en from "@public/assets/text/en/floor_en";
-import floor_fr from "@public/assets/text/fr/floor_fr";
+import whoAreWe_en from "@public/assets/text/en/whoAreWe_en";
+import whoAreWe_fr from "@public/assets/text/fr/whoAreWe_fr";
 
-const Floor = () => {
+const WhoAreWe = () => {
 	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState(false);
 	const [hasAnimated, setHasAnimated] = useState(false);
@@ -42,7 +42,7 @@ const Floor = () => {
 		};
 	}, [hasAnimated]);
 
-	const texts = language === "en" ? floor_en : floor_fr;
+	const texts = language === "en" ? whoAreWe_en : whoAreWe_fr;
 
 	return (
 		<div className="flex flex-col md:flex-row">
@@ -73,4 +73,4 @@ const Floor = () => {
 	);
 };
 
-export default Floor;
+export default WhoAreWe;

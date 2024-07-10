@@ -1,4 +1,4 @@
-const floor_fr = {
+const whoAreWe_fr = {
   title: "QUI SOMMES - NOUS?",
   paragraph1: "Construction Lamy œuvre dans le domaine de la rénovation.",
   paragraph2: "Nous sommes une entreprise québécoise qui depuis son ouverture a réalisé plus de 500 projets.",
@@ -8,4 +8,4 @@ const floor_fr = {
   paragraph6: "L'entreprise se spécialise dans le domaine commercial et œuvre également dans le domaine de la restauration de bâtiments patrimoniaux."
 };
 
-export default floor_fr;
+export default whoAreWe_fr;
