@@ -2,12 +2,10 @@
 
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
-import BasePath from "./components/BasePath";
 import { useEffect } from "react";
 import { metadata } from "./metadata";
 
 const inter = Inter({ subsets: ["latin"] });
-const basePath = BasePath();
 
 export default function RootLayout({
 	children,
@@ -40,39 +38,39 @@ export default function RootLayout({
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
-					href={`${basePath}/assets/icons/apple-touch-icon.png`}
+					href="/assets/icons/apple-touch-icon.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="32x32"
-					href={`${basePath}/assets/icons/favicon-32x32.png`}
+					href="/assets/icons/favicon-32x32.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="16x16"
-					href={`${basePath}/assets/icons/favicon-16x16.png`}
+					href="/assets/icons/favicon-16x16.png"
 				/>
 				<link
 					rel="manifest"
-					href={`${basePath}/assets/icons/site.webmanifest`}
+					href="/assets/icons/site.webmanifest"
 				/>
 				<link
 					rel="mask-icon"
-					href={`${basePath}/assets/icons/safari-pinned-tab.svg`}
+					href="/assets/icons/safari-pinned-tab.svg"
 					color="#5bbad5"
 				/>
 				<link
 					rel="shortcut icon"
-					href={`${basePath}/assets/icons/favicon.ico`}
+					href="/assets/icons/favicon.ico"
 				/>
 				<meta name="apple-mobile-web-app-title" content="Lamy Construction" />
 				<meta name="application-name" content="Lamy Construction" />
 				<meta name="msapplication-TileColor" content="#da532c" />
 				<meta
 					name="msapplication-config"
-					content={`${basePath}/assets/icons/browserconfig.xml`}
+					content="/assets/icons/browserconfig.xml"
 				/>
 				<meta
 					name="theme-color"
@@ -84,7 +82,7 @@ export default function RootLayout({
 				<meta property="og:description" content={metadata.description} />
 				<meta
 					property="og:image"
-					content={`${basePath}/assets/icons/og-image.png`}
+					content="/assets/icons/og-image.png"
 				/>
 				<meta property="og:url" content="https://yourwebsite.com" />
 				<meta property="og:type" content="website" />
@@ -93,7 +91,7 @@ export default function RootLayout({
 				<meta name="twitter:description" content={metadata.description} />
 				<meta
 					name="twitter:image"
-					content={`${basePath}/assets/icons/twitter-image.png`}
+					content="/assets/icons/twitter-image.png"
 				/>
 				<title>{metadata.title}</title>
 			</head>

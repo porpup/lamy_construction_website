@@ -1,18 +1,16 @@
 "use client";
 
 import React, { useContext } from "react";
-import BasePath from "./BasePath";
 import Image from "next/image";
 import { LanguageContext } from "./LanguageContext";
 
 const Welcome = () => {
-	const basePath = BasePath();
 	const { language } = useContext(LanguageContext);
 
 	return (
 		<div id="home" className="relative text-center">
 			<Image
-				src={`${basePath}/assets/construction.jpg`}
+				src="/assets/construction.jpg"
 				alt="construction"
 				width={1920}
 				height={1080}

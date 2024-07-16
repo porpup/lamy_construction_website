@@ -4,10 +4,8 @@ import React, { useEffect, useState, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BasePath from "./BasePath";
 
 const ImageCarousel = ({ onFullscreenChange }) => {
-	const basePath = BasePath();
 	const [sliderLoaded, setSliderLoaded] = useState(false);
 	const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null);
 	const [touchStartX, setTouchStartX] = useState(0);
@@ -42,13 +40,13 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 	}, [fullscreenImageIndex, onFullscreenChange]);
 
 	const images = [
-		`${basePath}/assets/gallery/gallery1.jpg`,
-		`${basePath}/assets/gallery/gallery2.jpg`,
-		`${basePath}/assets/gallery/gallery3.jpg`,
-		`${basePath}/assets/gallery/gallery4.jpg`,
-		`${basePath}/assets/gallery/gallery5.jpg`,
-		`${basePath}/assets/gallery/gallery6.jpg`,
-		`${basePath}/assets/gallery/gallery7.jpg`,
+		"/assets/gallery/gallery1.jpg",
+		"/assets/gallery/gallery2.jpg",
+		"/assets/gallery/gallery3.jpg",
+		"/assets/gallery/gallery4.jpg",
+		"/assets/gallery/gallery5.jpg",
+		"/assets/gallery/gallery6.jpg",
+		"/assets/gallery/gallery7.jpg",
 	];
 
 	const settings = {

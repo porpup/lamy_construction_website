@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useContext } from "react";
-import BasePath from "./BasePath";
 import { LanguageContext } from "./LanguageContext";
 import washing_en from "@public/assets/text/en/washing_en";
 import washing_fr from "@public/assets/text/fr/washing_fr";
 
 const Washing = () => {
-	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState({
 		text1: false,
 		text2: false,
@@ -75,7 +73,7 @@ const Washing = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
-						src={`${basePath}/assets/expert_en_sinistre.jpg`}
+						src="/assets/expert_en_sinistre.jpg"
 						alt="expert_en_sinistre"
 						className="h-auto w-full object-cover"
 					/>
@@ -96,14 +94,14 @@ const Washing = () => {
 				<div className="w-full flex flex-col">
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/lavage_a_pression1.jpeg`}
+							src="/assets/lavage_a_pression1.jpeg"
 							alt="lavage_a_pression1"
 							className="h-auto w-full object-cover"
 						/>
 					</div>
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/lavage_a_pression2.jpg`}
+							src="/assets/lavage_a_pression2.jpg"
 							alt="lavage_a_pression2"
 							className="h-auto w-full object-cover"
 						/>

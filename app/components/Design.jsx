@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useContext } from "react";
-import BasePath from "./BasePath";
 import { LanguageContext } from "./LanguageContext";
 import design_en from "@public/assets/text/en/design_en";
 import design_fr from "@public/assets/text/fr/design_fr";
 
 const Design = () => {
-	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState({
 		text1: false,
 		text2: false,
@@ -69,7 +67,7 @@ const Design = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<img
-						src={`${basePath}/assets/conception_avec_decoratrice_fabrication_et_installation_darmoires.jpg`}
+						src="/assets/conception_avec_decoratrice_fabrication_et_installation_darmoires.jpg"
 						alt="conception_avec_decoratrice_fabrication_et_installation_darmoires"
 						className="h-auto w-full object-cover"
 					/>
@@ -79,14 +77,14 @@ const Design = () => {
 				<div className="w-full flex flex-col">
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/ceramique.png`}
+							src="/assets/ceramique.png"
 							alt="ceramique"
 							className="h-auto w-full object-cover"
 						/>
 					</div>
 					<div className="w-full">
 						<img
-							src={`${basePath}/assets/tapis.jpg`}
+							src="/assets/tapis.jpg"
 							alt="tapis"
 							className="h-auto w-full object-cover"
 						/>

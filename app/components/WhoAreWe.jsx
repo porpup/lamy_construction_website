@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useContext } from "react";
-// import BasePath from "./BasePath";
 import Image from "next/image";
 import { LanguageContext } from "./LanguageContext";
 import whoAreWe_en from "@public/assets/text/en/whoAreWe_en";
 import whoAreWe_fr from "@public/assets/text/fr/whoAreWe_fr";
 
 const WhoAreWe = () => {
-	// const basePath = BasePath();
 	const [animateText, setAnimateText] = useState(false);
 	const [hasAnimated, setHasAnimated] = useState(false);
 	const textRef = useRef(null);

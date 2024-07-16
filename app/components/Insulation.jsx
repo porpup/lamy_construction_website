@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useContext } from "react";
-import BasePath from "./BasePath";
 import Image from "next/image";
 import { LanguageContext } from "./LanguageContext";
 import insulation_en from "@public/assets/text/en/insulation_en";
 import insulation_fr from "@public/assets/text/fr/insulation_fr";
 
 const Insulation = () => {
-	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState({
 		text1: false,
 		text2: false,
@@ -58,7 +56,7 @@ const Insulation = () => {
 		<div className="flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full relative justify-center items-end">
 				<Image
-					src={`${basePath}/assets/isolation.jpg`}
+					src="/assets/isolation.jpg"
 					alt="isolation"
 					width={1920}
 					height={1080}

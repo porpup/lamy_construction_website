@@ -1,6 +1,5 @@
 "use client";
 
-import BasePath from "./BasePath";
 import Image from "next/image";
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
@@ -8,7 +7,6 @@ import briks_en from "@public/assets/text/en/briks_en";
 import briks_fr from "@public/assets/text/fr/briks_fr";
 
 const Briks = () => {
-	const basePath = BasePath();
 	const [animateText, setAnimateText] = useState({
 		text1: false,
 		text2: false,
@@ -70,7 +68,7 @@ const Briks = () => {
 				</div>
 				<div className="relative flex justify-center items-end">
 					<Image
-						src={`${basePath}/assets/briques.jpg`}
+						src="/assets/briques.jpg"
 						alt="briques"
 						width={1920}
 						height={1080}
@@ -97,7 +95,7 @@ const Briks = () => {
 				<div className="flex justify-between p-8 items-center">
 					<div className="w-1/2 mx-8">
 						<Image
-							src={`${basePath}/assets/ordre_ingenieurs_du_quebec_logo.png`}
+							src="/assets/ordre_ingenieurs_du_quebec_logo.png"
 							alt="ordre_ingenieurs_du_quebec_logo"
 							width={600}
 							height={400}
@@ -107,7 +105,7 @@ const Briks = () => {
 					</div>
 					<div className="w-1/2 mx-8">
 						<Image
-							src={`${basePath}/assets/ordre_des_architectes_du_québec_logo.png`}
+							src="/assets/ordre_des_architectes_du_québec_logo.png"
 							alt="ordre_des_architectes_du_québec_logo"
 							width={600}
 							height={400}
