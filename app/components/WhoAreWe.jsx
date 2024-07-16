@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useContext } from "react";
-import BasePath from "./BasePath";
+// import BasePath from "./BasePath";
 import Image from "next/image";
 import { LanguageContext } from "./LanguageContext";
 import whoAreWe_en from "@public/assets/text/en/whoAreWe_en";
 import whoAreWe_fr from "@public/assets/text/fr/whoAreWe_fr";
 
 const WhoAreWe = () => {
-	const basePath = BasePath();
+	// const basePath = BasePath();
 	const [animateText, setAnimateText] = useState(false);
 	const [hasAnimated, setHasAnimated] = useState(false);
 	const textRef = useRef(null);
@@ -48,7 +48,7 @@ const WhoAreWe = () => {
 		<div className="flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full relative justify-center items-end">
 				<Image
-					src={`${basePath}/assets/expert_en_plancher.jpg`}
+					src="/assets/expert_en_plancher.jpg"
 					alt="expert_en_plancher"
 					width={1920}
 					height={1080}
