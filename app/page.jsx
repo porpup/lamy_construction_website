@@ -12,7 +12,6 @@ import Roofing from "./components/Roofing";
 import Washing from "./components/Washing";
 import Briks from "./components/Briks";
 import Footer from "./components/Footer";
-import RootLayout from "./layout";
 
 const Home = () => {
 	const [navbarColor, setNavbarColor] = useState("#7DD3FC");
@@ -51,21 +50,19 @@ const Home = () => {
 
 	return (
 		<LanguageProvider>
-			<RootLayout navbarColor={navbarColor}>
-				<Navbar
-					onColorChange={handleColorChange}
-					initialBgColor="bg-sky-300/90"
-				/>
-				<Welcome />
-				<WhoAreWe />
-				<Paint />
-				<Design />
-				<Insulation />
-				<Roofing />
-				<Washing />
-				<Briks />
-				<Footer />
-			</RootLayout>
+			<Navbar
+				onColorChange={handleColorChange}
+				initialBgColor="bg-sky-300/90"
+			/>
+			<Welcome />
+			<WhoAreWe />
+			<Paint />
+			<Design />
+			<Insulation />
+			<Roofing />
+			<Washing />
+			<Briks />
+			<Footer />
 		</LanguageProvider>
 	);
 };

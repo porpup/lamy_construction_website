@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { LanguageProvider } from "@app/components/LanguageContext";
-import Navbar from "@app/components/Navbar";
-import ImageCarousel from "@app/components/ImageCarousel";
-import Footer from "@app/components/Footer";
-import RootLayout from "@app/layout";
+import { LanguageProvider } from "../components/LanguageContext";
+import Navbar from "../components/Navbar";
+import ImageCarousel from "../components/ImageCarousel";
+import Footer from "../components/Footer";
 
 const Gallery = () => {
 	const [navbarColor, setNavbarColor] = useState("#292524");
@@ -21,19 +20,13 @@ const Gallery = () => {
 
 	return (
 		<LanguageProvider>
-			<RootLayout
-				navbarColor={navbarColor}
-				fullscreen={fullscreen}
-				fixedBgColor="#292524"
-			>
-				<Navbar
-					scrolled={false}
-					onColorChange={handleColorChange}
-					initialBgColor="bg-stone-800/90"
-				/>
-				<ImageCarousel onFullscreenChange={handleFullscreenChange} />
-				<Footer />
-			</RootLayout>
+			<Navbar
+				scrolled={false}
+				onColorChange={handleColorChange}
+				initialBgColor="bg-stone-800/90"
+			/>
+			<ImageCarousel onFullscreenChange={handleFullscreenChange} />
+			<Footer />
 		</LanguageProvider>
 	);
 };
