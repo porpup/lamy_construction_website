@@ -88,7 +88,7 @@ export default function RootLayout({
 			<body className={inter.className}>
 				{children}
 				<Analytics />
-				<SpeedInsights />
+				{/* <SpeedInsights /> */}
 			</body>
 		</html>
 	);
