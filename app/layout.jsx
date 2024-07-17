@@ -1,6 +1,7 @@
 "use client";
 
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "@styles/globals.css";
 import { useEffect } from "react";
 import { metadata } from "./metadata";
@@ -52,19 +53,13 @@ export default function RootLayout({
 					sizes="16x16"
 					href="/assets/icons/favicon-16x16.png"
 				/>
-				<link
-					rel="manifest"
-					href="/assets/icons/site.webmanifest"
-				/>
+				<link rel="manifest" href="/assets/icons/site.webmanifest" />
 				<link
 					rel="mask-icon"
 					href="/assets/icons/safari-pinned-tab.svg"
 					color="#5bbad5"
 				/>
-				<link
-					rel="shortcut icon"
-					href="/assets/icons/favicon.ico"
-				/>
+				<link rel="shortcut icon" href="/assets/icons/favicon.ico" />
 				<meta name="apple-mobile-web-app-title" content="Lamy Construction" />
 				<meta name="application-name" content="Lamy Construction" />
 				<meta name="msapplication-TileColor" content="#da532c" />
@@ -80,22 +75,19 @@ export default function RootLayout({
 				<meta name="keywords" content={metadata.keywords} />
 				<meta property="og:title" content={metadata.title} />
 				<meta property="og:description" content={metadata.description} />
-				<meta
-					property="og:image"
-					content="/assets/icons/og-image.png"
-				/>
+				<meta property="og:image" content="/assets/icons/og-image.png" />
 				<meta property="og:url" content="https://yourwebsite.com" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content={metadata.title} />
 				<meta name="twitter:description" content={metadata.description} />
-				<meta
-					name="twitter:image"
-					content="/assets/icons/twitter-image.png"
-				/>
+				<meta name="twitter:image" content="/assets/icons/twitter-image.png" />
 				<title>{metadata.title}</title>
 			</head>
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				{children}
+				<Analytics />
+			</body>
 		</html>
 	);
 }
