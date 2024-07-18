@@ -82,6 +82,10 @@ li {
   color: #f5f5f5;
 }
 
+.custom-color-opacity {
+  background-color: rgba(147, 132, 94, 0.95);
+}
+
 .slide-up {
   transform: translateY(200px);
   opacity: 0;
