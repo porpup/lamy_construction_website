@@ -77,7 +77,7 @@ export default function RootLayout({
 				<meta property="og:title" content={metadata.title} />
 				<meta property="og:description" content={metadata.description} />
 				<meta property="og:image" content="/assets/icons/og-image.png" />
-				<meta property="og:url" content="https://constructionlamy.com" />
+				<meta property="og:url" content="https://www.constructionlamy.com" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content={metadata.title} />

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.constructionlamy.com
+
+# Sitemaps
+Sitemap: https://www.constructionlamy.com/sitemap.xml
