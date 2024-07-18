@@ -40,34 +40,27 @@ export default function RootLayout({
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
-					href="/assets/icons/apple-touch-icon.png"
+					href="/apple-touch-icon.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="32x32"
-					href="/assets/icons/favicon-32x32.png"
+					href="/favicon-32x32.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="16x16"
-					href="/assets/icons/favicon-16x16.png"
+					href="/favicon-16x16.png"
 				/>
-				<link rel="manifest" href="/assets/icons/site.webmanifest" />
-				<link
-					rel="mask-icon"
-					href="/assets/icons/safari-pinned-tab.svg"
-					color="#5bbad5"
-				/>
-				<link rel="shortcut icon" href="/assets/icons/favicon.ico" />
+				<link rel="manifest" href="/site.webmanifest" />
+				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+				<link rel="shortcut icon" href="/favicon.ico" />
 				<meta name="apple-mobile-web-app-title" content="Lamy Construction" />
 				<meta name="application-name" content="Lamy Construction" />
 				<meta name="msapplication-TileColor" content="#da532c" />
-				<meta
-					name="msapplication-config"
-					content="/assets/icons/browserconfig.xml"
-				/>
+				<meta name="msapplication-config" content="/browserconfig.xml" />
 				<meta
 					name="theme-color"
 					content={fullscreen ? "#000000" : fixedBgColor || navbarColor}
@@ -76,13 +69,19 @@ export default function RootLayout({
 				<meta name="keywords" content={metadata.keywords} />
 				<meta property="og:title" content={metadata.title} />
 				<meta property="og:description" content={metadata.description} />
-				<meta property="og:image" content="/assets/icons/og-image.png" />
+				<meta
+					property="og:image"
+					content="https://www.constructionlamy.com/android-chrome-512x512.png"
+				/>
 				<meta property="og:url" content="https://www.constructionlamy.com" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content={metadata.title} />
 				<meta name="twitter:description" content={metadata.description} />
-				<meta name="twitter:image" content="/assets/icons/twitter-image.png" />
+				<meta
+					name="twitter:image"
+					content="https://www.constructionlamy.com/android-chrome-192x192.png"
+				/>
 				<title>{metadata.title}</title>
 			</head>
 			<body className={inter.className}>
