@@ -12,6 +12,21 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 	const [touchEndX, setTouchEndX] = useState(0);
 	const isDragging = useRef(false); // Track if the user is dragging
 
+	const originalThemeColorRef = useRef(""); // Store original theme color
+
+	const setThemeColor = (color) => {
+		let metaTag = document.querySelector('meta[name="theme-color"]');
+		if (!metaTag) {
+			metaTag = document.createElement("meta");
+			metaTag.name = "theme-color";
+			document.head.appendChild(metaTag);
+		}
+		if (!originalThemeColorRef.current) {
+			originalThemeColorRef.current = metaTag.content;
+		}
+		metaTag.content = color;
+	};
+
 	useEffect(() => {
 		setSliderLoaded(true);
 
@@ -37,6 +52,12 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 	useEffect(() => {
 		// Notify parent component about fullscreen state change
 		onFullscreenChange(fullscreenImageIndex !== null);
+		// Set theme color based on fullscreen state
+		if (fullscreenImageIndex !== null) {
+			setThemeColor("#000000");
+		} else {
+			setThemeColor(originalThemeColorRef.current || "#ffffff"); // Reset to original theme color or white
+		}
 	}, [fullscreenImageIndex, onFullscreenChange]);
 
 	const images = [
