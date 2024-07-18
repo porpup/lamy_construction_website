@@ -104,13 +104,14 @@ const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 			<div className="mx-auto flex items-center justify-between p-2">
 				<Link href="/">
 					<div className="cursor-pointer" onClick={handleHomeClick}>
-						<div className="relative w-14 h-14">
+						<div className="relative w-14 h-14 hover:grayscale">
 							<Image
 								src="/assets/icons/logo.svg"
 								alt="logo"
 								fill
 								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 								style={{ objectFit: "contain" }}
+								className="transition-transform duration-200"
 							/>
 						</div>
 					</div>
