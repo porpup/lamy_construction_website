@@ -70,6 +70,18 @@ const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 		onColorChange(color);
 	}, [isScrolled, onColorChange, initialBgColor]);
 
+	useEffect(() => {
+		// Detect if the device is touch-enabled
+		const isTouchDevice =
+			"ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+		if (isTouchDevice) {
+			document.body.classList.add("no-hover");
+		} else {
+			document.body.classList.remove("no-hover");
+		}
+	}, []);
+
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};

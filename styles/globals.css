@@ -300,3 +300,14 @@ li {
 .fullscreen-next:focus {
   outline: none;
 }
+
+/* Apply the grayscale effect by default */
+.hover\:grayscale:hover {
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+}
+
+/* Disable the grayscale effect on touch devices */
+.no-hover .hover\:grayscale {
+  filter: none !important;
+}

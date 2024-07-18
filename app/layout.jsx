@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@styles/globals.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { metadata } from "./metadata";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,16 +15,21 @@ export default function RootLayout({
 	fullscreen,
 	fixedBgColor,
 }) {
+	const [themeColor, setThemeColor] = useState(navbarColor || fixedBgColor);
+
 	useEffect(() => {
 		const metaThemeColor = document.querySelector("meta[name=theme-color]");
 		if (metaThemeColor) {
-			if (fullscreen) {
-				metaThemeColor.setAttribute("content", "#000000"); // Set to the background color when images are in fullscreen
-			} else {
-				metaThemeColor.setAttribute("content", fixedBgColor || navbarColor);
-			}
+			metaThemeColor.setAttribute(
+				"content",
+				fullscreen ? "#000000" : themeColor
+			);
 		}
-	}, [navbarColor, fullscreen, fixedBgColor]);
+	}, [fullscreen, themeColor]);
+
+	useEffect(() => {
+		setThemeColor(navbarColor || fixedBgColor || "#292524"); // Default to bg-stone-800 color
+	}, [navbarColor, fixedBgColor]);
 
 	return (
 		<html lang="en">
@@ -70,7 +75,7 @@ export default function RootLayout({
 				/>
 				<meta
 					name="theme-color"
-					content={fullscreen ? "#000000" : fixedBgColor || navbarColor}
+					content={fullscreen ? "#000000" : themeColor}
 				/>
 				<meta name="description" content={metadata.description} />
 				<meta name="keywords" content={metadata.keywords} />

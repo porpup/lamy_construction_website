@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LanguageProvider } from "../components/LanguageContext";
 import Navbar from "../components/Navbar";
 import ImageCarousel from "../components/ImageCarousel";
@@ -17,6 +17,13 @@ const Gallery = () => {
 	const handleFullscreenChange = (isFullscreen) => {
 		setFullscreen(isFullscreen);
 	};
+
+	useEffect(() => {
+		const metaThemeColor = document.querySelector("meta[name=theme-color]");
+		if (metaThemeColor) {
+			metaThemeColor.setAttribute("content", "#292524"); // Set to bg-stone-800 color
+		}
+	}, []);
 
 	return (
 		<LanguageProvider>
