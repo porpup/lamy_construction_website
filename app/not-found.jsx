@@ -40,8 +40,8 @@ const NotFoundRoot = () => {
 			}}
 		>
 			<div className="backdrop-blur-sm space-y-4 custom-color-opacity p-10 rounded-md shadow-lg flex flex-col items-center justify-center">
-				<BugIcon className="h-24 w-24 tc_light_yellow" />
-				<h1 className="text-4xl font-bold text-gray-900">Oops!</h1>
+				<BugIcon className="animate-pulse h-24 w-24 tc_light_yellow" />
+				<h1 className="animate-bounce text-4xl font-bold text-gray-900">Oops!</h1>
 				<p className="text-lg tc_light_yellow text-center">
 					This page has left the building.
 				</p>
