@@ -39,7 +39,7 @@ const NotFoundRoot = () => {
 				backgroundPosition: "center",
 			}}
 		>
-			<div className="space-y-4 custom-color-opacity p-10 rounded-md shadow-lg flex flex-col items-center justify-center">
+			<div className="backdrop-blur-sm space-y-4 custom-color-opacity p-10 rounded-md shadow-lg flex flex-col items-center justify-center">
 				<BugIcon className="h-24 w-24 tc_light_yellow" />
 				<h1 className="text-4xl font-bold text-gray-900">Oops!</h1>
 				<p className="text-lg tc_light_yellow text-center">
@@ -47,7 +47,7 @@ const NotFoundRoot = () => {
 				</p>
 				<Link
 					href="/"
-					className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/85 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+					className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-transform transform hover:scale-105 transition-colors hover:bg-gray-900/85 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
 				>
 					Go back Home
 				</Link>
