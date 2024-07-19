@@ -3,6 +3,26 @@
 	"short_name": "Lamy",
 	"icons": [
 		{
+			"src": "/icon?size=16",
+			"sizes": "16x16",
+			"type": "image/png"
+		},
+		{
+			"src": "/icon?size=32",
+			"sizes": "32x32",
+			"type": "image/png"
+		},
+		{
+			"src": "/icon?size=48",
+			"sizes": "48x48",
+			"type": "image/png"
+		},
+		{
+			"src": "/assets/icons/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		},
+		{
 			"src": "/assets/icons/android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png"
@@ -16,5 +36,33 @@
 	"theme_color": "#ffffff",
 	"background_color": "#ffffff",
 	"display": "standalone",
-	"start_url": "/"
+	"start_url": "/",
+	"scope": "/",
+	"orientation": "any",
+	"shortcuts": [
+		{
+			"name": "Lamy Construction | Home",
+			"short_name": "Home",
+			"url": "/",
+			"icons": [
+				{
+					"src": "/icon?size=48",
+					"sizes": "48x48",
+					"type": "image/png"
+				}
+			]
+		},
+		{
+			"name": "Lamy Construction | Gallery",
+			"short_name": "Gallery",
+			"url": "/gallery",
+			"icons": [
+				{
+					"src": "/icon?size=48",
+					"sizes": "48x48",
+					"type": "image/png"
+				}
+			]
+		}
+	]
 }

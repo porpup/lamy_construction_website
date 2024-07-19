@@ -47,18 +47,9 @@ export default function RootLayout({
 					sizes="180x180"
 					href="/assets/icons/apple-touch-icon.png"
 				/>
-				<link
-					rel="icon"
-					type="image/png"
-					sizes="32x32"
-					href="/assets/icons/favicon-32x32.png"
-				/>
-				<link
-					rel="icon"
-					type="image/png"
-					sizes="16x16"
-					href="/assets/icons/favicon-16x16.png"
-				/>
+				<link rel="icon" type="image/png" sizes="16x16" href="/icon?size=16" />
+				<link rel="icon" type="image/png" sizes="32x32" href="/icon?size=32" />
+				<link rel="icon" type="image/png" sizes="48x48" href="/icon?size=48" />
 				<link rel="manifest" href="/assets/icons/site.webmanifest" />
 				<link
 					rel="mask-icon"
