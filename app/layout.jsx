@@ -31,6 +31,14 @@ export default function RootLayout({
 		setThemeColor(navbarColor || fixedBgColor || "#292524"); // Default to bg-stone-800 color
 	}, [navbarColor, fixedBgColor]);
 
+	const jsonLd = {
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		name: "Lamy Construction",
+		url: "https://www.constructionlamy.com",
+		logo: "https://www.constructionlamy.com/assets/icons/logo.png",
+	};
+
 	return (
 		<html lang="en">
 			<head>
@@ -56,7 +64,7 @@ export default function RootLayout({
 					href="/assets/icons/safari-pinned-tab.svg"
 					color="#5bbad5"
 				/>
-				<link rel="shortcut icon" href="/assets/icons/favicon.ico" />
+				<link rel="shortcut icon" href="/favicon.ico" />
 				<meta name="apple-mobile-web-app-title" content="Lamy Construction" />
 				<meta name="application-name" content="Lamy Construction" />
 				<meta name="msapplication-TileColor" content="#da532c" />
@@ -84,6 +92,10 @@ export default function RootLayout({
 				<meta
 					name="twitter:image"
 					content="https://www.constructionlamy.com/assets/icons/android-chrome-192x192.png"
+				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				/>
 				<title>{metadata.title}</title>
 			</head>
