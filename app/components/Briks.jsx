@@ -108,7 +108,7 @@ const Briks = () => {
 							layout="fill"
 							objectFit="contain"
 							className="object-contain"
-							style={{ paddingRight: "3rem" }} // Adjust the right padding here
+							style={{ paddingRight: "3rem" }}
 						/>
 					</div>
 				</div>
