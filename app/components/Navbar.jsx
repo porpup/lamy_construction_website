@@ -19,30 +19,31 @@ const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const scrollThreshold = 50;
 
+	const hasScrollbar = useRef(false);
+
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			setIsGalleryPage(window.location.pathname === "/gallery");
+			hasScrollbar.current = window.innerHeight < document.body.offsetHeight;
 		}
 	}, []);
 
 	useEffect(() => {
-		if (!scrolled) {
-			const handleScroll = () => {
-				const currentScrollY = window.scrollY;
-				setIsScrolled(currentScrollY > 10);
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			setIsScrolled(currentScrollY > 10);
 
-				if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
-					setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
-					setLastScrollY(currentScrollY);
-				}
-			};
+			if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+				setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
+				setLastScrollY(currentScrollY);
+			}
+		};
 
-			window.addEventListener("scroll", handleScroll);
-			return () => {
-				window.removeEventListener("scroll", handleScroll);
-			};
-		}
-	}, [scrolled, lastScrollY]);
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [lastScrollY]);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -96,6 +97,7 @@ const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 		if (window.location.pathname === "/") {
 			event.preventDefault();
 			window.scrollTo({ top: 0, behavior: "smooth" });
+			setIsMenuOpen(false);
 		}
 	};
 
@@ -103,6 +105,14 @@ const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 		if (window.location.pathname === "/gallery") {
 			event.preventDefault();
 			window.scrollTo({ top: 0, behavior: "smooth" });
+			setIsMenuOpen(false);
+		}
+	};
+
+	const handleContactClick = (event) => {
+		if (isGalleryPage && !hasScrollbar.current) {
+			event.preventDefault();
+			setIsMenuOpen(false);
 		}
 	};
 
@@ -153,16 +163,25 @@ const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 							{translations.gallery}
 						</div>
 					</Link>
-					<ScrollLink
-						to="footer"
-						smooth={true}
-						duration={500}
-						offset={offset}
-						className={`cursor-pointer ${linkClass}`}
-						onClick={toggleMenu}
-					>
-						{translations.contacts}
-					</ScrollLink>
+					{isGalleryPage && !hasScrollbar.current ? (
+						<div
+							className={`cursor-pointer ${linkClass}`}
+							onClick={handleContactClick}
+						>
+							{translations.contacts}
+						</div>
+					) : (
+						<ScrollLink
+							to="footer"
+							smooth={true}
+							duration={500}
+							offset={offset}
+							className={`cursor-pointer ${linkClass}`}
+							onClick={() => setIsMenuOpen(false)}
+						>
+							{translations.contacts}
+						</ScrollLink>
+					)}
 					<button
 						onClick={toggleLanguage}
 						className={`${linkClass} border border-current px-2 py-1 rounded`}
@@ -198,16 +217,25 @@ const Navbar = ({ scrolled, onColorChange, initialBgColor }) => {
 						{translations.gallery}
 					</div>
 				</Link>
-				<ScrollLink
-					to="footer"
-					smooth={true}
-					duration={500}
-					offset={offset}
-					className={`cursor-pointer ${linkClass}`}
-					onClick={toggleMenu}
-				>
-					{translations.contacts}
-				</ScrollLink>
+				{isGalleryPage && !hasScrollbar.current ? (
+					<div
+						className={`cursor-pointer ${linkClass}`}
+						onClick={handleContactClick}
+					>
+						{translations.contacts}
+					</div>
+				) : (
+					<ScrollLink
+						to="footer"
+						smooth={true}
+						duration={500}
+						offset={offset}
+						className={`cursor-pointer ${linkClass}`}
+						onClick={() => setIsMenuOpen(false)}
+					>
+						{translations.contacts}
+					</ScrollLink>
+				)}
 				<button
 					onClick={() => {
 						toggleLanguage();
