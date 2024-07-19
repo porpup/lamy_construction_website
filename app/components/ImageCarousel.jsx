@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -10,9 +11,9 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 	const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null);
 	const [touchStartX, setTouchStartX] = useState(0);
 	const [touchEndX, setTouchEndX] = useState(0);
-	const isDragging = useRef(false); // Track if the user is dragging
+	const isDragging = useRef(false);
 
-	const originalThemeColorRef = useRef(""); // Store original theme color
+	const originalThemeColorRef = useRef("");
 
 	const setThemeColor = (color) => {
 		let metaTag = document.querySelector('meta[name="theme-color"]');
@@ -30,7 +31,6 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 	useEffect(() => {
 		setSliderLoaded(true);
 
-		// Add event listener for keydown events
 		const handleKeyDown = (e) => {
 			if (fullscreenImageIndex !== null) {
 				if (e.key === "ArrowRight") {
@@ -43,20 +43,17 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 
 		window.addEventListener("keydown", handleKeyDown);
 
-		// Cleanup event listener on component unmount
 		return () => {
 			window.removeEventListener("keydown", handleKeyDown);
 		};
 	}, [fullscreenImageIndex]);
 
 	useEffect(() => {
-		// Notify parent component about fullscreen state change
 		onFullscreenChange(fullscreenImageIndex !== null);
-		// Set theme color based on fullscreen state
 		if (fullscreenImageIndex !== null) {
 			setThemeColor("#000000");
 		} else {
-			setThemeColor(originalThemeColorRef.current || "#ffffff"); // Reset to original theme color or white
+			setThemeColor(originalThemeColorRef.current || "#ffffff");
 		}
 	}, [fullscreenImageIndex, onFullscreenChange]);
 
@@ -74,12 +71,12 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 		dots: true,
 		infinite: true,
 		speed: 2500,
-		slidesToShow: 3, // Number of slides to show at once
+		slidesToShow: 3,
 		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 2000,
-		centerMode: true, // Enable center mode
-		centerPadding: "110px", // Padding around the centered slide
+		centerMode: true,
+		centerPadding: "110px",
 		responsive: [
 			{
 				breakpoint: 768,
@@ -102,7 +99,7 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 
 	const handleMouseDown = (e) => {
 		isDragging.current = false;
-		e.currentTarget.style.outline = "none"; // Remove outline on mousedown
+		e.currentTarget.style.outline = "none";
 	};
 
 	const handleMouseMove = () => {
@@ -110,50 +107,41 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 	};
 
 	const handleMouseUp = (e, index) => {
-		e.currentTarget.style.outline = "none"; // Remove outline on mouseup
+		e.currentTarget.style.outline = "none";
 		if (!isDragging.current) {
 			openFullScreen(index);
 		}
 		isDragging.current = false;
 	};
 
-	// Function to open image in full screen overlay
 	const openFullScreen = (index) => {
 		setFullscreenImageIndex(index);
 	};
 
-	// Function to close full screen overlay
 	const closeFullScreen = () => {
 		setFullscreenImageIndex(null);
 	};
 
-	// Function to handle touch start
 	const handleTouchStart = (e) => {
 		setTouchStartX(e.touches[0].clientX);
 	};
 
-	// Function to handle touch move
 	const handleTouchMove = (e) => {
 		setTouchEndX(e.touches[0].clientX);
 	};
 
-	// Function to handle touch end
 	const handleTouchEnd = () => {
 		if (touchStartX - touchEndX > 50) {
-			// Swipe left
 			showNextImage();
 		} else if (touchEndX - touchStartX > 50) {
-			// Swipe right
 			showPreviousImage();
 		}
 	};
 
-	// Function to show the next image
 	const showNextImage = () => {
 		setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % images.length);
 	};
 
-	// Function to show the previous image
 	const showPreviousImage = () => {
 		setFullscreenImageIndex(
 			(prevIndex) => (prevIndex - 1 + images.length) % images.length
@@ -171,16 +159,18 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 						onMouseMove={handleMouseMove}
 						onMouseUp={(e) => handleMouseUp(e, index)}
 					>
-						<img
+						<Image
 							src={image}
 							alt={`gallery-image${index + 1}`}
+							width={800}
+							height={600}
 							className="carousel-image"
+							priority={index === 0}
 						/>
 					</div>
 				))}
 			</Slider>
 
-			{/* Full screen overlay */}
 			{fullscreenImageIndex !== null && (
 				<div
 					className="fullscreen-overlay"
@@ -196,18 +186,24 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 								e.stopPropagation();
 								showPreviousImage();
 							}}
-							tabIndex="-1" // Prevent focus
+							tabIndex="-1"
 						>
 							&#10094;
 						</button>
-						<img src={images[fullscreenImageIndex]} alt="Full Screen Image" />
+						<Image
+							src={images[fullscreenImageIndex]}
+							alt="Full Screen Image"
+							width={1920}
+							height={1080}
+							style={{ width: "auto", height: "auto" }}
+						/>
 						<button
 							className="fullscreen-next"
 							onClick={(e) => {
 								e.stopPropagation();
 								showNextImage();
 							}}
-							tabIndex="-1" // Prevent focus
+							tabIndex="-1"
 						>
 							&#10095;
 						</button>

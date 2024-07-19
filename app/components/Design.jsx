@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
 import design_en from "@public/assets/text/en/design_en";
@@ -52,7 +53,7 @@ const Design = () => {
 	const texts = language === "en" ? design_en : design_fr;
 
 	return (
-		<div className="bg_light_yellow flex flex-col md:flex-row">
+		<div className="bg_light_yellow flex flex-col md:flex-row min-h-screen">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -65,32 +66,35 @@ const Design = () => {
 					<p className="mb-4">{texts.designParagraph1}</p>
 					<p className="mb-4">{texts.designParagraph2}</p>
 				</div>
-				<div className="relative flex justify-center items-end">
-					<img
+				<div className="relative w-full h-64 md:h-full">
+					<Image
 						src="/assets/conception_avec_decoratrice_fabrication_et_installation_darmoires.jpg"
 						alt="conception_avec_decoratrice_fabrication_et_installation_darmoires"
-						className="h-auto w-full object-cover"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
 					/>
 				</div>
 			</div>
-			<div className="md:w-1/2 w-full flex-col justify-between">
-				<div className="w-full flex flex-col">
-					<div className="w-full">
-						<img
-							src="/assets/ceramique.png"
-							alt="ceramique"
-							className="h-auto w-full object-cover"
-						/>
-					</div>
-					<div className="w-full">
-						<img
-							src="/assets/tapis.jpg"
-							alt="tapis"
-							className="h-auto w-full object-cover"
-						/>
-					</div>
+			<div className="md:w-1/2 w-full flex flex-col justify-between">
+				<div className="relative w-full h-64 md:h-full">
+					<Image
+						src="/assets/ceramique.png"
+						alt="ceramique"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
+					/>
 				</div>
-				<div className="flex-grow p-8"></div>
+				<div className="relative w-full h-64 md:h-full">
+					<Image
+						src="/assets/tapis.jpg"
+						alt="tapis"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
+					/>
+				</div>
 				<div
 					ref={textRef2}
 					id="text2"

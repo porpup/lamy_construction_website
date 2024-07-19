@@ -43,19 +43,18 @@ const WhoAreWe = () => {
 	const texts = language === "en" ? whoAreWe_en : whoAreWe_fr;
 
 	return (
-		<div className="flex flex-col md:flex-row">
-			<div className="md:w-1/2 w-full relative justify-center items-end">
+		<div className="flex flex-col md:flex-row min-h-screen">
+			<div className="md:w-1/2 w-full relative h-64 md:h-auto">
 				<Image
 					src="/assets/expert_en_plancher.jpg"
 					alt="expert_en_plancher"
-					width={1920}
-					height={1080}
-					style={{ width: "100%", height: "auto" }}
+					layout="fill"
+					className="object-cover"
 				/>
 			</div>
 			<div
 				ref={textRef}
-				className={`md:w-1/2 w-full tc_light_yellow p-16 slide-up ${
+				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow slide-up ${
 					animateText ? "show" : ""
 				}`}
 			>

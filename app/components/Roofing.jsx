@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
 import roofing_en from "@public/assets/text/en/roofing_en";
 import roofing_fr from "@public/assets/text/fr/roofing_fr";
+import Image from "next/image";
 
 const Roofing = () => {
 	const [animateText, setAnimateText] = useState({
@@ -52,7 +53,7 @@ const Roofing = () => {
 	const texts = language === "en" ? roofing_en : roofing_fr;
 
 	return (
-		<div className="bg_light_brown flex flex-col md:flex-row">
+		<div className="bg_light_brown flex flex-col md:flex-row min-h-screen">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -67,30 +68,34 @@ const Roofing = () => {
 					<p className="mb-4">{texts.paragraph3}</p>
 					<p className="mb-4">{texts.paragraph4}</p>
 				</div>
-				<div className="relative flex justify-center items-end">
-					<img
+				<div className="relative w-full h-64 md:h-full">
+					<Image
 						src="/assets/toiture1.jpg"
 						alt="toiture1"
-						className="h-auto w-full object-cover"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
 					/>
 				</div>
 			</div>
-			<div className="md:w-1/2 w-full flex-col justify-between">
-				<div className="w-full flex flex-col">
-					<div className="w-full">
-						<img
-							src="/assets/toiture2.jpg"
-							alt="toiture2"
-							className="h-auto w-full object-cover"
-						/>
-					</div>
-					<div className="w-full">
-						<img
-							src="/assets/toiture3.jpg"
-							alt="toiture3"
-							className="h-auto w-full object-cover"
-						/>
-					</div>
+			<div className="md:w-1/2 w-full flex flex-col justify-between">
+				<div className="relative w-full h-64 md:h-full">
+					<Image
+						src="/assets/toiture2.jpg"
+						alt="toiture2"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
+					/>
+				</div>
+				<div className="relative w-full h-64 md:h-full">
+					<Image
+						src="/assets/toiture3.jpg"
+						alt="toiture3"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
+					/>
 				</div>
 			</div>
 		</div>

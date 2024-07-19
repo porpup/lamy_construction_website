@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
 import paint_en from "@public/assets/text/en/paint_en";
@@ -52,7 +53,7 @@ const Paint = () => {
 	const texts = language === "en" ? paint_en : paint_fr;
 
 	return (
-		<div className="bg_light_brown flex flex-col md:flex-row">
+		<div className="bg_light_brown flex flex-col md:flex-row min-h-screen">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -72,39 +73,42 @@ const Paint = () => {
 					</ul>
 					<p className="mb-4">{texts.andMore}</p>
 				</div>
-				<div className="relative flex justify-center items-end">
-					<img
+				<div className="relative w-full h-64 md:h-full">
+					<Image
 						src="/assets/peinture.jpg"
 						alt="peinture"
-						className="h-auto w-full object-cover"
+						layout="fill"
+						objectFit="cover"
 					/>
 				</div>
 			</div>
-			<div className="md:w-1/2 w-full flex-col justify-between">
-				<div className="w-full flex justify-center">
-					<img
+			<div className="md:w-1/2 w-full flex flex-col justify-between">
+				<div className="relative w-full h-64 md:h-full">
+					<Image
 						src="/assets/boiseries.jpg"
 						alt="boiseries"
-						className="h-auto w-full object-contain"
+						layout="fill"
+						objectFit="cover"
 					/>
 				</div>
-				<div className="flex items-center w-full" style={{ height: "200px" }}>
-					<div className="w-1/2 h-full">
-						<img
+				<div className="flex flex-row w-full h-64 md:h-full">
+					<div className="relative w-1/2 h-full">
+						<Image
 							src="/assets/moulures_rampes.jpg"
 							alt="moulures_rampes"
-							className="h-full w-full object-cover"
+							layout="fill"
+							objectFit="cover"
 						/>
 					</div>
-					<div className="w-1/2 h-full">
-						<img
+					<div className="relative w-1/2 h-full">
+						<Image
 							src="/assets/portes_et_fenetres.jpeg"
 							alt="portes_et_fenetres"
-							className="h-full w-full object-cover"
+							layout="fill"
+							objectFit="cover"
 						/>
 					</div>
 				</div>
-				<div className="flex-grow p-8"></div>
 				<div
 					ref={textRef2}
 					id="text2"

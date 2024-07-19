@@ -12,7 +12,6 @@ const Insulation = () => {
 		text2: false,
 	});
 	const textRef1 = useRef(null);
-	const textRef2 = useRef(null);
 	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
@@ -22,8 +21,6 @@ const Insulation = () => {
 					if (entry.isIntersecting) {
 						if (entry.target.id === "text1") {
 							setAnimateText((prev) => ({ ...prev, text1: true }));
-						} else if (entry.target.id === "text2") {
-							setAnimateText((prev) => ({ ...prev, text2: true }));
 						}
 					}
 				});
@@ -36,16 +33,10 @@ const Insulation = () => {
 		if (textRef1.current) {
 			observer.observe(textRef1.current);
 		}
-		if (textRef2.current) {
-			observer.observe(textRef2.current);
-		}
 
 		return () => {
 			if (textRef1.current) {
 				observer.unobserve(textRef1.current);
-			}
-			if (textRef2.current) {
-				observer.unobserve(textRef2.current);
 			}
 		};
 	}, []);
@@ -53,20 +44,19 @@ const Insulation = () => {
 	const texts = language === "en" ? insulation_en : insulation_fr;
 
 	return (
-		<div className="flex flex-col md:flex-row">
-			<div className="md:w-1/2 w-full relative justify-center items-end">
+		<div className="flex flex-col md:flex-row min-h-screen">
+			<div className="md:w-1/2 w-full relative h-64 md:h-auto">
 				<Image
 					src="/assets/isolation.jpg"
 					alt="isolation"
-					width={1920}
-					height={1080}
-					style={{ width: "100%", height: "auto" }}
+					layout="fill"
+					className="object-cover"
 				/>
 			</div>
 			<div
 				ref={textRef1}
 				id="text1"
-				className={`md:w-1/2 w-full tc_light_yellow p-16 slide-up ${
+				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow slide-up ${
 					animateText.text1 ? "show" : ""
 				}`}
 			>

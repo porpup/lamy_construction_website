@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
 import washing_en from "@public/assets/text/en/washing_en";
 import washing_fr from "@public/assets/text/fr/washing_fr";
+import Image from "next/image";
 
 const Washing = () => {
 	const [animateText, setAnimateText] = useState({
@@ -52,7 +53,7 @@ const Washing = () => {
 	const texts = language === "en" ? washing_en : washing_fr;
 
 	return (
-		<div className="bg_light_yellow flex flex-col md:flex-row">
+		<div className="bg_light_yellow flex flex-col md:flex-row min-h-screen">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -71,15 +72,17 @@ const Washing = () => {
 					<p className="mb-4">{texts.disasterParagraph2}</p>
 					<p className="mb-4">{texts.disasterParagraph3}</p>
 				</div>
-				<div className="relative flex justify-center items-end">
-					<img
+				<div className="relative w-full h-64 md:h-full">
+					<Image
 						src="/assets/expert_en_sinistre.jpg"
 						alt="expert_en_sinistre"
-						className="h-auto w-full object-cover"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
 					/>
 				</div>
 			</div>
-			<div className="md:w-1/2 w-full flex-col justify-between">
+			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef2}
 					id="text2"
@@ -91,21 +94,23 @@ const Washing = () => {
 					<p className="mb-4">{texts.pressureParagraph1}</p>
 					<p className="mb-4">{texts.pressureParagraph2}</p>
 				</div>
-				<div className="w-full flex flex-col">
-					<div className="w-full">
-						<img
-							src="/assets/lavage_a_pression1.jpeg"
-							alt="lavage_a_pression1"
-							className="h-auto w-full object-cover"
-						/>
-					</div>
-					<div className="w-full">
-						<img
-							src="/assets/lavage_a_pression2.jpg"
-							alt="lavage_a_pression2"
-							className="h-auto w-full object-cover"
-						/>
-					</div>
+				<div className="relative w-full h-64 md:h-full">
+					<Image
+						src="/assets/lavage_a_pression1.jpeg"
+						alt="lavage_a_pression1"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
+					/>
+				</div>
+				<div className="relative w-full h-64 md:h-full">
+					<Image
+						src="/assets/lavage_a_pression2.jpg"
+						alt="lavage_a_pression2"
+						layout="fill"
+						objectFit="cover"
+						className="object-cover"
+					/>
 				</div>
 			</div>
 		</div>
