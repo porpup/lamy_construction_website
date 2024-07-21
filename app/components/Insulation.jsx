@@ -44,8 +44,8 @@ const Insulation = () => {
 	const texts = language === "en" ? insulation_en : insulation_fr;
 
 	return (
-		<div className="flex flex-col md:flex-row min-h-screen">
-			<div className="md:w-1/2 w-full relative h-64 md:h-auto">
+		<div className="flex flex-col md:flex-row">
+			<div className="md:w-1/2 w-full relative h-32 md:h-auto">
 				<Image
 					src="/assets/isolation.jpg"
 					alt="isolation"

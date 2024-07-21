@@ -6,7 +6,7 @@ import { LanguageContext } from "./LanguageContext";
 import paint_en from "@public/assets/text/en/paint_en";
 import paint_fr from "@public/assets/text/fr/paint_fr";
 
-const Paint = () => {
+const Painting = () => {
 	const [animateText, setAnimateText] = useState({
 		text1: false,
 		text2: false,
@@ -53,7 +53,7 @@ const Paint = () => {
 	const texts = language === "en" ? paint_en : paint_fr;
 
 	return (
-		<div className="bg_light_brown flex flex-col md:flex-row min-h-screen">
+		<div className="bg_light_brown flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -73,7 +73,7 @@ const Paint = () => {
 					</ul>
 					<p className="mb-4">{texts.andMore}</p>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[22rem] md:h-[16rem]">
 					<Image
 						src="/assets/peinture.jpg"
 						alt="peinture"
@@ -83,7 +83,7 @@ const Paint = () => {
 				</div>
 			</div>
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[30rem] md:h-[21rem]">
 					<Image
 						src="/assets/boiseries.jpg"
 						alt="boiseries"
@@ -91,8 +91,8 @@ const Paint = () => {
 						objectFit="cover"
 					/>
 				</div>
-				<div className="flex flex-row w-full h-64 md:h-full">
-					<div className="relative w-1/2 h-full">
+				<div className="flex flex-row w-full h-32 lg:h-[12rem] md:h-[16rem]">
+					<div className="relative w-1/2">
 						<Image
 							src="/assets/moulures_rampes.jpg"
 							alt="moulures_rampes"
@@ -100,7 +100,7 @@ const Paint = () => {
 							objectFit="cover"
 						/>
 					</div>
-					<div className="relative w-1/2 h-full">
+					<div className="relative w-1/2">
 						<Image
 							src="/assets/portes_et_fenetres.jpeg"
 							alt="portes_et_fenetres"
@@ -124,4 +124,4 @@ const Paint = () => {
 	);
 };
 
-export default Paint;
+export default Painting;

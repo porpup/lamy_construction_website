@@ -76,14 +76,14 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 		autoplay: true,
 		autoplaySpeed: 2000,
 		centerMode: true,
-		centerPadding: "110px",
+		centerPadding: "160px",
 		responsive: [
 			{
 				breakpoint: 768,
 				settings: {
 					slidesToShow: 1,
 					centerMode: true,
-					centerPadding: "110px",
+					centerPadding: "185px",
 				},
 			},
 			{
@@ -91,7 +91,7 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 				settings: {
 					slidesToShow: 1,
 					centerMode: true,
-					centerPadding: "75px",
+					centerPadding: "120px",
 				},
 			},
 		],
@@ -149,7 +149,7 @@ const ImageCarousel = ({ onFullscreenChange }) => {
 	};
 
 	return (
-		<div className="image-carousel-container pl-3 pr-3">
+		<div className="image-carousel-container pl-3 pr-3 py-12">
 			<Slider {...settings}>
 				{images.map((image, index) => (
 					<div

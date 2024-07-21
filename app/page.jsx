@@ -5,7 +5,7 @@ import { LanguageProvider } from "./components/LanguageContext";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import WhoAreWe from "./components/WhoAreWe";
-import Paint from "./components/Paint";
+import Painting from "./components/Painting";
 import Design from "./components/Design";
 import Insulation from "./components/Insulation";
 import Roofing from "./components/Roofing";
@@ -56,7 +56,7 @@ const Home = () => {
 			/>
 			<Welcome />
 			<WhoAreWe />
-			<Paint />
+			<Painting />
 			<Design />
 			<Insulation />
 			<Roofing />

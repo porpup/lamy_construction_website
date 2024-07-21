@@ -53,7 +53,7 @@ const Design = () => {
 	const texts = language === "en" ? design_en : design_fr;
 
 	return (
-		<div className="bg_light_yellow flex flex-col md:flex-row min-h-screen">
+		<div className="bg_light_yellow flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -66,7 +66,7 @@ const Design = () => {
 					<p className="mb-4">{texts.designParagraph1}</p>
 					<p className="mb-4">{texts.designParagraph2}</p>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[23rem] md:h-[15rem]">
 					<Image
 						src="/assets/conception_avec_decoratrice_fabrication_et_installation_darmoires.jpg"
 						alt="conception_avec_decoratrice_fabrication_et_installation_darmoires"
@@ -77,7 +77,7 @@ const Design = () => {
 				</div>
 			</div>
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[15.5rem] md:h-[13.5rem]">
 					<Image
 						src="/assets/ceramique.png"
 						alt="ceramique"
@@ -86,7 +86,7 @@ const Design = () => {
 						className="object-cover"
 					/>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[15.5rem] md:h-[13.5rem]">
 					<Image
 						src="/assets/tapis.jpg"
 						alt="tapis"

@@ -53,7 +53,7 @@ const Briks = () => {
 	const texts = language === "en" ? briks_en : briks_fr;
 
 	return (
-		<div className="bg_light_brown flex flex-col md:flex-row min-h-screen">
+		<div className="bg_light_brown flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -66,7 +66,7 @@ const Briks = () => {
 					<p className="mb-4">{texts.bricksParagraph1}</p>
 					<p className="mb-4">{texts.bricksParagraph2}</p>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[24rem] md:h-[16rem]">
 					<Image
 						src="/assets/briques.jpg"
 						alt="briques"
@@ -91,8 +91,13 @@ const Briks = () => {
 						))}
 					</ul>
 				</div>
-				<div className="relative w-full h-32 md:h-32 flex items-center">
-					<div className="relative w-1/2 h-full mx-4">
+				<div className="relative w-full h-32 md:h-32 flex items-center space-x-4 p-10">
+					<a
+						href="https://www.oiq.qc.ca/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="relative w-1/2 h-full"
+					>
 						<Image
 							src="/assets/ordre_ingenieurs_du_quebec_logo.png"
 							alt="ordre_ingenieurs_du_quebec_logo"
@@ -100,17 +105,21 @@ const Briks = () => {
 							objectFit="contain"
 							className="object-contain"
 						/>
-					</div>
-					<div className="relative w-1/2 h-full mx-4">
+					</a>
+					<a
+						href="https://www.oaq.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="relative w-1/2 h-full"
+					>
 						<Image
 							src="/assets/ordre_des_architectes_du_québec_logo.png"
 							alt="ordre_des_architectes_du_québec_logo"
 							layout="fill"
 							objectFit="contain"
 							className="object-contain"
-							style={{ paddingRight: "3rem" }}
 						/>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>

@@ -53,7 +53,7 @@ const Washing = () => {
 	const texts = language === "en" ? washing_en : washing_fr;
 
 	return (
-		<div className="bg_light_yellow flex flex-col md:flex-row min-h-screen">
+		<div className="bg_light_yellow flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
@@ -72,7 +72,7 @@ const Washing = () => {
 					<p className="mb-4">{texts.disasterParagraph2}</p>
 					<p className="mb-4">{texts.disasterParagraph3}</p>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[20rem] md:h-[15rem]">
 					<Image
 						src="/assets/expert_en_sinistre.jpg"
 						alt="expert_en_sinistre"
@@ -94,23 +94,25 @@ const Washing = () => {
 					<p className="mb-4">{texts.pressureParagraph1}</p>
 					<p className="mb-4">{texts.pressureParagraph2}</p>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
-					<Image
-						src="/assets/lavage_a_pression1.jpeg"
-						alt="lavage_a_pression1"
-						layout="fill"
-						objectFit="cover"
-						className="object-cover"
-					/>
-				</div>
-				<div className="relative w-full h-64 md:h-full">
-					<Image
-						src="/assets/lavage_a_pression2.jpg"
-						alt="lavage_a_pression2"
-						layout="fill"
-						objectFit="cover"
-						className="object-cover"
-					/>
+				<div className="relative w-full h-auto flex flex-col">
+					<div className="relative w-full h-32 lg:h-[20rem] md:h-[15rem]">
+						<Image
+							src="/assets/lavage_a_pression1.jpeg"
+							alt="lavage_a_pression1"
+							layout="fill"
+							objectFit="cover"
+							className="object-cover"
+						/>
+					</div>
+					<div className="relative w-full h-32 lg:h-[20rem] md:h-[15rem]">
+						<Image
+							src="/assets/lavage_a_pression2.jpg"
+							alt="lavage_a_pression2"
+							layout="fill"
+							objectFit="cover"
+							className="object-cover"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

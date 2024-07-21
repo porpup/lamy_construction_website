@@ -53,12 +53,12 @@ const Roofing = () => {
 	const texts = language === "en" ? roofing_en : roofing_fr;
 
 	return (
-		<div className="bg_light_brown flex flex-col md:flex-row min-h-screen">
+		<div className="bg_light_brown flex flex-col md:flex-row">
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
 				<div
 					ref={textRef1}
 					id="text1"
-					className={`tc_light_yellow p-8 slide-up ${
+					className={`tc_light_yellow p-8 slide-up  ${
 						animateText.text1 ? "show" : ""
 					}`}
 				>
@@ -68,7 +68,7 @@ const Roofing = () => {
 					<p className="mb-4">{texts.paragraph3}</p>
 					<p className="mb-4">{texts.paragraph4}</p>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[21.5rem] md:h-[27.5rem]">
 					<Image
 						src="/assets/toiture1.jpg"
 						alt="toiture1"
@@ -79,7 +79,7 @@ const Roofing = () => {
 				</div>
 			</div>
 			<div className="md:w-1/2 w-full flex flex-col justify-between">
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[26rem] md:h-[29rem]">
 					<Image
 						src="/assets/toiture2.jpg"
 						alt="toiture2"
@@ -88,7 +88,7 @@ const Roofing = () => {
 						className="object-cover"
 					/>
 				</div>
-				<div className="relative w-full h-64 md:h-full">
+				<div className="relative w-full h-32 lg:h-[21.5rem] md:h-[27.5rem]">
 					<Image
 						src="/assets/toiture3.jpg"
 						alt="toiture3"
