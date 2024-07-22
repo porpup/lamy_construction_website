@@ -56,7 +56,7 @@ const Home = () => {
 			/>
 			<main>
 				<h1 style={{ position: "absolute", left: "-9999px" }}>
-					Welcome to Construction Lamy
+					Lamy Construction - Home
 				</h1>
 				<Welcome />
 				<WhoAreWe />

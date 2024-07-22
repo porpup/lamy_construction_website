@@ -32,7 +32,12 @@ const Gallery = () => {
 				onColorChange={handleColorChange}
 				initialBgColor="bg-stone-800/90"
 			/>
-			<ImageCarousel onFullscreenChange={handleFullscreenChange} />
+			<main>
+				<h1 style={{ position: "absolute", left: "-9999px" }}>
+					Lamy Construction - Gallery
+				</h1>
+				<ImageCarousel onFullscreenChange={handleFullscreenChange} />
+			</main>
 			<Footer />
 		</LanguageProvider>
 	);
