@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /redirect-to-oiq
+Disallow: /redirect-to-oaq
 
 # Sitemaps
 Sitemap: https://www.constructionlamy.com/sitemap.xml
