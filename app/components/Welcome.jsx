@@ -35,12 +35,12 @@ const Welcome = () => {
 					className="zoom-out-image"
 				/>
 			</div>
-			<p
+			<h1
 				ref={textRef}
 				className="absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-0 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-neutral-100 whitespace-nowrap drop-shadow-lg neon-glow"
 			>
 				{texts.welcomeText}
-			</p>
+			</h1>
 		</div>
 	);
 };
