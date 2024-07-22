@@ -48,7 +48,8 @@ const WhoAreWe = () => {
 				<Image
 					src="/assets/expert_en_plancher.jpg"
 					alt="expert_en_plancher"
-					layout="fill"
+					fill
+					style={{ objectFit: "cover" }}
 					className="object-cover"
 				/>
 			</div>

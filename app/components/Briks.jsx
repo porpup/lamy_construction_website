@@ -70,8 +70,8 @@ const Briks = () => {
 					<Image
 						src="/assets/briques.jpg"
 						alt="briques"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>
@@ -101,8 +101,8 @@ const Briks = () => {
 						<Image
 							src="/assets/ordre_ingenieurs_du_quebec_logo.png"
 							alt="ordre_ingenieurs_du_quebec_logo"
-							layout="fill"
-							objectFit="contain"
+							fill
+							style={{ objectFit: "contain" }}
 							className="object-contain"
 						/>
 					</a>
@@ -115,8 +115,8 @@ const Briks = () => {
 						<Image
 							src="/assets/ordre_des_architectes_du_québec_logo.png"
 							alt="ordre_des_architectes_du_québec_logo"
-							layout="fill"
-							objectFit="contain"
+							fill
+							style={{ objectFit: "contain" }}
 							className="object-contain"
 						/>
 					</a>

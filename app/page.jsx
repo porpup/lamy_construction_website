@@ -54,14 +54,19 @@ const Home = () => {
 				onColorChange={handleColorChange}
 				initialBgColor="bg-sky-300/90"
 			/>
-			<Welcome />
-			<WhoAreWe />
-			<Painting />
-			<Design />
-			<Insulation />
-			<Roofing />
-			<Washing />
-			<Briks />
+			<main>
+				<h1 style={{ position: "absolute", left: "-9999px" }}>
+					Welcome to Construction Lamy
+				</h1>
+				<Welcome />
+				<WhoAreWe />
+				<Painting />
+				<Design />
+				<Insulation />
+				<Roofing />
+				<Washing />
+				<Briks />
+			</main>
 			<Footer />
 		</LanguageProvider>
 	);

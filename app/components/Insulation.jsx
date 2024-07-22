@@ -9,7 +9,6 @@ import insulation_fr from "@public/assets/text/fr/insulation_fr";
 const Insulation = () => {
 	const [animateText, setAnimateText] = useState({
 		text1: false,
-		text2: false,
 	});
 	const textRef1 = useRef(null);
 	const { language } = useContext(LanguageContext);
@@ -49,7 +48,8 @@ const Insulation = () => {
 				<Image
 					src="/assets/isolation.jpg"
 					alt="isolation"
-					layout="fill"
+					fill
+					style={{ objectFit: "cover" }}
 					className="object-cover"
 				/>
 			</div>

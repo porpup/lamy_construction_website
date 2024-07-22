@@ -70,8 +70,8 @@ const Design = () => {
 					<Image
 						src="/assets/conception_avec_decoratrice_fabrication_et_installation_darmoires.jpg"
 						alt="conception_avec_decoratrice_fabrication_et_installation_darmoires"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>
@@ -81,8 +81,8 @@ const Design = () => {
 					<Image
 						src="/assets/ceramique.png"
 						alt="ceramique"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>
@@ -90,8 +90,8 @@ const Design = () => {
 					<Image
 						src="/assets/tapis.jpg"
 						alt="tapis"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>

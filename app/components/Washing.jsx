@@ -76,8 +76,8 @@ const Washing = () => {
 					<Image
 						src="/assets/expert_en_sinistre.jpg"
 						alt="expert_en_sinistre"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>
@@ -99,8 +99,8 @@ const Washing = () => {
 						<Image
 							src="/assets/lavage_a_pression1.jpeg"
 							alt="lavage_a_pression1"
-							layout="fill"
-							objectFit="cover"
+							fill
+							style={{ objectFit: "cover" }}
 							className="object-cover"
 						/>
 					</div>
@@ -108,8 +108,8 @@ const Washing = () => {
 						<Image
 							src="/assets/lavage_a_pression2.jpg"
 							alt="lavage_a_pression2"
-							layout="fill"
-							objectFit="cover"
+							fill
+							style={{ objectFit: "cover" }}
 							className="object-cover"
 						/>
 					</div>

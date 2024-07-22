@@ -58,7 +58,7 @@ const Roofing = () => {
 				<div
 					ref={textRef1}
 					id="text1"
-					className={`tc_light_yellow p-8 slide-up  ${
+					className={`tc_light_yellow p-8 slide-up ${
 						animateText.text1 ? "show" : ""
 					}`}
 				>
@@ -72,8 +72,8 @@ const Roofing = () => {
 					<Image
 						src="/assets/toiture1.jpg"
 						alt="toiture1"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>
@@ -83,8 +83,8 @@ const Roofing = () => {
 					<Image
 						src="/assets/toiture2.jpg"
 						alt="toiture2"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>
@@ -92,8 +92,8 @@ const Roofing = () => {
 					<Image
 						src="/assets/toiture3.jpg"
 						alt="toiture3"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
 						className="object-cover"
 					/>
 				</div>

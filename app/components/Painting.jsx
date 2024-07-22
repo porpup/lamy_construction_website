@@ -77,8 +77,9 @@ const Painting = () => {
 					<Image
 						src="/assets/peinture.jpg"
 						alt="peinture"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
+						className="object-cover"
 					/>
 				</div>
 			</div>
@@ -87,8 +88,9 @@ const Painting = () => {
 					<Image
 						src="/assets/boiseries.jpg"
 						alt="boiseries"
-						layout="fill"
-						objectFit="cover"
+						fill
+						style={{ objectFit: "cover" }}
+						className="object-cover"
 					/>
 				</div>
 				<div className="flex flex-row w-full h-32 lg:h-[12rem] md:h-[16rem]">
@@ -96,16 +98,18 @@ const Painting = () => {
 						<Image
 							src="/assets/moulures_rampes.jpg"
 							alt="moulures_rampes"
-							layout="fill"
-							objectFit="cover"
+							fill
+							style={{ objectFit: "cover" }}
+							className="object-cover"
 						/>
 					</div>
 					<div className="relative w-1/2">
 						<Image
 							src="/assets/portes_et_fenetres.jpeg"
 							alt="portes_et_fenetres"
-							layout="fill"
-							objectFit="cover"
+							fill
+							style={{ objectFit: "cover" }}
+							className="object-cover"
 						/>
 					</div>
 				</div>
