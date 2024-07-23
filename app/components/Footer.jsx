@@ -116,8 +116,8 @@ const Footer = () => {
 				</div>
 			</div>
 			<hr className="h-0.5 mx-auto my-4 border-0 rounded md:my-5 bg_gray" />
-			<div className="pb-5 text-center flex flex-col items-center md:flex-row md:justify-center md:space-x-16">
-				<p className="mb-2 md:mb-0">Copyright © 2024 - {company.name}</p>
+			<div className="text-xs pb-5 text-center flex flex-col items-center md:flex-row md:justify-center md:space-x-16">
+				<p className="mb-2 md:mb-0">© 2024 - {company.name}</p>
 				<p>RBQ: 5848-3058-01</p>
 			</div>
 		</footer>
