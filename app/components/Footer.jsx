@@ -53,7 +53,7 @@ const Footer = () => {
 			className="bg-stone-800 pr-16 pl-16"
 			style={{ color: "#aaa19c" }}
 		>
-			<hr className="h-0.5 mx-auto my-4 border-0 rounded md:my-5 bg_gray" />
+			<hr className="h-[1px] mx-auto my-4 border-0 rounded md:my-4 bg_gray" />
 			<h6 className="mb-2 font-semibold uppercase text-center">
 				{texts.contact}
 			</h6>
@@ -115,7 +115,7 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
-			<hr className="h-0.5 mx-auto my-4 border-0 rounded md:my-4 bg_gray" />
+			<hr className="h-[0.5px] mx-auto my-4 border-0 rounded md:my-4 bg_gray" />
 			<div className="text-xs pb-5 flex flex-col md:flex-row md:space-x-10">
 				<p className="mb-2 md:mb-0">© 2024 - {company.name}</p>
 				<p>RBQ: 5848-3058-01</p>
