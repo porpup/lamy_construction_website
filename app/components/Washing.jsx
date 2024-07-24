@@ -16,8 +16,12 @@ const Washing = () => {
 		image2: false,
 		image3: false,
 	});
+	const [animateTitle1, setAnimateTitle1] = useState(false);
+	const [animateTitle2, setAnimateTitle2] = useState(false);
 	const textRef1 = useRef(null);
 	const textRef2 = useRef(null);
+	const titleRef1 = useRef(null);
+	const titleRef2 = useRef(null);
 	const imageRef1 = useRef(null);
 	const imageRef2 = useRef(null);
 	const imageRef3 = useRef(null);
@@ -39,6 +43,20 @@ const Washing = () => {
 			checkVisibility(imageRef1, setAnimateImages, "image1");
 			checkVisibility(imageRef2, setAnimateImages, "image2");
 			checkVisibility(imageRef3, setAnimateImages, "image3");
+
+			if (titleRef1.current) {
+				const rect = titleRef1.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateTitle1(true);
+				}
+			}
+
+			if (titleRef2.current) {
+				const rect = titleRef2.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateTitle2(true);
+				}
+			}
 		};
 
 		// Trigger on scroll and initial load
@@ -62,7 +80,14 @@ const Washing = () => {
 						animateText.text1 ? "slide-up show" : "slide-up"
 					}`}
 				>
-					<p className="tc_light_brown mb-4 text-2xl">{texts.disasterTitle}</p>
+					<p
+						ref={titleRef1}
+						className={`tc_light_brown mb-4 text-2xl ${
+							animateTitle1 ? "fade-in" : ""
+						}`}
+					>
+						{texts.disasterTitle}
+					</p>
 					<p className="mb-4">{texts.disasterParagraph1}</p>
 					<ul className="mb-4">
 						{texts.disasterList.map((item, index) => (
@@ -95,7 +120,14 @@ const Washing = () => {
 						animateText.text2 ? "slide-up show" : "slide-up"
 					}`}
 				>
-					<p className="tc_light_brown mb-4 text-2xl">{texts.pressureTitle}</p>
+					<p
+						ref={titleRef2}
+						className={`tc_light_brown mb-4 text-2xl ${
+							animateTitle2 ? "fade-in" : ""
+						}`}
+					>
+						{texts.pressureTitle}
+					</p>
 					<p className="mb-4">{texts.pressureParagraph1}</p>
 					<p className="mb-4">{texts.pressureParagraph2}</p>
 				</div>

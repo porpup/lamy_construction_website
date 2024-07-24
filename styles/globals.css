@@ -45,6 +45,19 @@
   transform-origin: center center;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
 /* Apply Rubik font immediately to ensure it's used */
 * {
   font-family: 'Rubik', sans-serif;

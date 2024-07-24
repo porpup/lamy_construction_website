@@ -16,8 +16,10 @@ const Roofing = () => {
 		image2: false,
 		image3: false,
 	});
+	const [animateTitle, setAnimateTitle] = useState(false);
 	const textRef1 = useRef(null);
 	const textRef2 = useRef(null);
+	const titleRef = useRef(null);
 	const imageRef1 = useRef(null);
 	const imageRef2 = useRef(null);
 	const imageRef3 = useRef(null);
@@ -39,6 +41,13 @@ const Roofing = () => {
 			checkVisibility(imageRef1, setAnimateImages, "image1");
 			checkVisibility(imageRef2, setAnimateImages, "image2");
 			checkVisibility(imageRef3, setAnimateImages, "image3");
+
+			if (titleRef.current) {
+				const rect = titleRef.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateTitle(true);
+				}
+			}
 		};
 
 		// Trigger on scroll and initial load
@@ -62,7 +71,14 @@ const Roofing = () => {
 						animateText.text1 ? "slide-up show" : "slide-up"
 					}`}
 				>
-					<p className="text-stone-800 mb-4 text-2xl">{texts.title}</p>
+					<p
+						ref={titleRef}
+						className={`text-stone-800 mb-4 text-2xl ${
+							animateTitle ? "fade-in" : ""
+						}`}
+					>
+						{texts.title}
+					</p>
 					<p className="mb-4">{texts.paragraph1}</p>
 					<p className="mb-4">{texts.paragraph2}</p>
 					<p className="mb-4">{texts.paragraph3}</p>

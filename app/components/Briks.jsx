@@ -16,8 +16,12 @@ const Briks = () => {
 		image2: false,
 		image3: false,
 	});
+	const [animateTitle1, setAnimateTitle1] = useState(false);
+	const [animateTitle2, setAnimateTitle2] = useState(false);
 	const textRef1 = useRef(null);
 	const textRef2 = useRef(null);
+	const titleRef1 = useRef(null);
+	const titleRef2 = useRef(null);
 	const imageRef1 = useRef(null);
 	const imageRef2 = useRef(null);
 	const imageRef3 = useRef(null);
@@ -39,6 +43,20 @@ const Briks = () => {
 			checkVisibility(imageRef1, setAnimateImages, "image1");
 			checkVisibility(imageRef2, setAnimateImages, "image2");
 			checkVisibility(imageRef3, setAnimateImages, "image3");
+
+			if (titleRef1.current) {
+				const rect = titleRef1.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateTitle1(true);
+				}
+			}
+
+			if (titleRef2.current) {
+				const rect = titleRef2.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateTitle2(true);
+				}
+			}
 		};
 
 		// Trigger on scroll and initial load
@@ -62,7 +80,14 @@ const Briks = () => {
 						animateText.text1 ? "slide-up show" : "slide-up"
 					}`}
 				>
-					<p className="text-stone-800 mb-4 text-2xl">{texts.bricksTitle}</p>
+					<p
+						ref={titleRef1}
+						className={`text-stone-800 mb-4 text-2xl ${
+							animateTitle1 ? "fade-in" : ""
+						}`}
+					>
+						{texts.bricksTitle}
+					</p>
 					<p className="mb-4">{texts.bricksParagraph1}</p>
 					<p className="mb-4">{texts.bricksParagraph2}</p>
 				</div>
@@ -89,7 +114,14 @@ const Briks = () => {
 						animateText.text2 ? "slide-up show" : "slide-up"
 					}`}
 				>
-					<p className="text-stone-800 mb-4 text-2xl">{texts.expertiseTitle}</p>
+					<p
+						ref={titleRef2}
+						className={`text-stone-800 mb-4 text-2xl ${
+							animateTitle2 ? "fade-in" : ""
+						}`}
+					>
+						{texts.expertiseTitle}
+					</p>
 					<ul className="mb-4">
 						{texts.expertiseList.map((item, index) => (
 							<li key={index}>{item}</li>

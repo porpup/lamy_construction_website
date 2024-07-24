@@ -9,12 +9,20 @@ import whoAreWe_fr from "@public/assets/text/fr/whoAreWe_fr";
 const WhoAreWe = () => {
 	const [animateText, setAnimateText] = useState(false);
 	const [animateImage, setAnimateImage] = useState(false);
+	const [animateTitle, setAnimateTitle] = useState(false);
 	const textRef = useRef(null);
 	const imageRef = useRef(null);
+	const titleRef = useRef(null);
 	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
 		const handleScroll = () => {
+			if (titleRef.current) {
+				const rect = titleRef.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateTitle(true);
+				}
+			}
 			if (textRef.current) {
 				const rect = textRef.current.getBoundingClientRect();
 				if (rect.top < window.innerHeight * 0.9) {
@@ -59,11 +67,18 @@ const WhoAreWe = () => {
 			<div
 				ref={textRef}
 				id="text"
-				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow transition-transform duration-700 ${
+				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow ${
 					animateText ? "slide-up show" : "slide-up"
 				}`}
 			>
-				<p className="tc_light_brown mb-4 text-2xl">{texts.title}</p>
+				<p
+					ref={titleRef}
+					className={`tc_light_brown mb-4 text-2xl ${
+						animateTitle ? "fade-in" : ""
+					}`}
+				>
+					{texts.title}
+				</p>
 				<p className="mb-4">{texts.paragraph1}</p>
 				<p className="mb-4">{texts.paragraph2}</p>
 				<p className="mb-4">{texts.paragraph3}</p>

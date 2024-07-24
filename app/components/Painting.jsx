@@ -17,8 +17,12 @@ const Painting = () => {
 		image3: false,
 		image4: false,
 	});
+	const [animateTitle1, setAnimateTitle1] = useState(false);
+	const [animateTitle2, setAnimateTitle2] = useState(false);
 	const textRef1 = useRef(null);
 	const textRef2 = useRef(null);
+	const titleRef1 = useRef(null);
+	const titleRef2 = useRef(null);
 	const imageRef1 = useRef(null);
 	const imageRef2 = useRef(null);
 	const imageRef3 = useRef(null);
@@ -36,12 +40,23 @@ const Painting = () => {
 				}
 			};
 
+			const checkTitleVisibility = (ref, setState) => {
+				if (ref.current) {
+					const rect = ref.current.getBoundingClientRect();
+					if (rect.top < window.innerHeight * 0.9) {
+						setState(true);
+					}
+				}
+			};
+
 			checkVisibility(textRef1, setAnimateText, "text1");
 			checkVisibility(textRef2, setAnimateText, "text2");
 			checkVisibility(imageRef1, setAnimateImages, "image1");
 			checkVisibility(imageRef2, setAnimateImages, "image2");
 			checkVisibility(imageRef3, setAnimateImages, "image3");
 			checkVisibility(imageRef4, setAnimateImages, "image4");
+			checkTitleVisibility(titleRef1, setAnimateTitle1);
+			checkTitleVisibility(titleRef2, setAnimateTitle2);
 		};
 
 		// Trigger on scroll and initial load
@@ -65,7 +80,14 @@ const Painting = () => {
 						animateText.text1 ? "slide-up show" : "slide-up"
 					}`}
 				>
-					<p className="text-stone-800 mb-4 text-2xl">{texts.paintingTitle}</p>
+					<p
+						ref={titleRef1}
+						className={`text-stone-800 mb-4 text-2xl ${
+							animateTitle1 ? "fade-in" : ""
+						}`}
+					>
+						{texts.paintingTitle}
+					</p>
 					<p className="mb-4">{texts.paintingParagraph1}</p>
 					<p className="mb-4">{texts.paintingParagraph2}</p>
 					<p className="mb-4">{texts.services}</p>
@@ -143,7 +165,14 @@ const Painting = () => {
 						animateText.text2 ? "slide-up show" : "slide-up"
 					}`}
 				>
-					<p className="text-stone-800 mb-4 text-2xl">{texts.woodworkTitle}</p>
+					<p
+						ref={titleRef2}
+						className={`text-stone-800 mb-4 text-2xl ${
+							animateTitle2 ? "fade-in" : ""
+						}`}
+					>
+						{texts.woodworkTitle}
+					</p>
 					<p className="mb-4">{texts.woodworkParagraph1}</p>
 				</div>
 			</div>
