@@ -8,55 +8,59 @@ import whoAreWe_fr from "@public/assets/text/fr/whoAreWe_fr";
 
 const WhoAreWe = () => {
 	const [animateText, setAnimateText] = useState(false);
-	const [hasAnimated, setHasAnimated] = useState(false);
+	const [animateImage, setAnimateImage] = useState(false);
 	const textRef = useRef(null);
+	const imageRef = useRef(null);
 	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						setAnimateText(true);
-						setHasAnimated(true);
-					} else if (!hasAnimated) {
-						setAnimateText(false);
-					}
-				});
-			},
-			{
-				threshold: 0.1,
-			}
-		);
-
-		if (textRef.current) {
-			observer.observe(textRef.current);
-		}
-
-		return () => {
+		const handleScroll = () => {
 			if (textRef.current) {
-				observer.unobserve(textRef.current);
+				const rect = textRef.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateText(true);
+				}
+			}
+			if (imageRef.current) {
+				const rect = imageRef.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateImage(true);
+				}
 			}
 		};
-	}, [hasAnimated]);
+
+		// Trigger on scroll and initial load
+		window.addEventListener("scroll", handleScroll);
+		handleScroll();
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	const texts = language === "en" ? whoAreWe_en : whoAreWe_fr;
 
 	return (
 		<div className="flex flex-col md:flex-row">
-			<div className="md:w-1/2 w-full relative h-32 md:h-auto">
+			<div
+				ref={imageRef}
+				id="image"
+				className={`relative w-full h-32 md:h-auto md:w-1/2 overflow-hidden transition-transform duration-700 ${
+					animateImage ? "translate-x-0" : "-translate-x-full"
+				}`}
+			>
 				<Image
 					src="/assets/expert_en_plancher.jpg"
 					alt="expert_en_plancher"
 					fill
-					style={{ objectFit: "cover" }}
-					className="object-cover"
+					className="absolute object-cover"
 				/>
 			</div>
 			<div
 				ref={textRef}
-				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow slide-up ${
-					animateText ? "show" : ""
+				id="text"
+				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow transition-transform duration-700 ${
+					animateText ? "slide-up show" : "slide-up"
 				}`}
 			>
 				<p className="tc_light_brown mb-4 text-2xl">{texts.title}</p>

@@ -7,36 +7,34 @@ import insulation_en from "@public/assets/text/en/insulation_en";
 import insulation_fr from "@public/assets/text/fr/insulation_fr";
 
 const Insulation = () => {
-	const [animateText, setAnimateText] = useState({
-		text1: false,
-	});
-	const textRef1 = useRef(null);
+	const [animateText, setAnimateText] = useState(false);
+	const [animateImage, setAnimateImage] = useState(false);
+	const textRef = useRef(null);
+	const imageRef = useRef(null);
 	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						if (entry.target.id === "text1") {
-							setAnimateText((prev) => ({ ...prev, text1: true }));
-						}
-					}
-				});
-			},
-			{
-				threshold: 0.1,
+		const handleScroll = () => {
+			if (textRef.current) {
+				const rect = textRef.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateText(true);
+				}
 			}
-		);
+			if (imageRef.current) {
+				const rect = imageRef.current.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.9) {
+					setAnimateImage(true);
+				}
+			}
+		};
 
-		if (textRef1.current) {
-			observer.observe(textRef1.current);
-		}
+		// Trigger on scroll and initial load
+		window.addEventListener("scroll", handleScroll);
+		handleScroll();
 
 		return () => {
-			if (textRef1.current) {
-				observer.unobserve(textRef1.current);
-			}
+			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
 
@@ -44,20 +42,25 @@ const Insulation = () => {
 
 	return (
 		<div className="flex flex-col md:flex-row">
-			<div className="md:w-1/2 w-full relative h-32 md:h-auto">
+			<div
+				ref={imageRef}
+				id="image"
+				className={`relative w-full h-32 md:h-auto md:w-1/2 overflow-hidden transition-transform duration-700 ${
+					animateImage ? "translate-x-0" : "-translate-x-full"
+				}`}
+			>
 				<Image
 					src="/assets/isolation.jpg"
 					alt="isolation"
 					fill
-					style={{ objectFit: "cover" }}
-					className="object-cover"
+					className="absolute object-cover"
 				/>
 			</div>
 			<div
-				ref={textRef1}
-				id="text1"
-				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow slide-up ${
-					animateText.text1 ? "show" : ""
+				ref={textRef}
+				id="text"
+				className={`md:w-1/2 w-full p-8 md:p-16 tc_light_yellow transition-transform duration-700 ${
+					animateText ? "slide-up show" : "slide-up"
 				}`}
 			>
 				<p className="tc_light_brown mb-4 text-2xl">{texts.title}</p>

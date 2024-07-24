@@ -11,42 +11,42 @@ const Briks = () => {
 		text1: false,
 		text2: false,
 	});
+	const [animateImages, setAnimateImages] = useState({
+		image1: false,
+		image2: false,
+		image3: false,
+	});
 	const textRef1 = useRef(null);
 	const textRef2 = useRef(null);
+	const imageRef1 = useRef(null);
+	const imageRef2 = useRef(null);
+	const imageRef3 = useRef(null);
 	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						if (entry.target.id === "text1") {
-							setAnimateText((prev) => ({ ...prev, text1: true }));
-						} else if (entry.target.id === "text2") {
-							setAnimateText((prev) => ({ ...prev, text2: true }));
-						}
+		const handleScroll = () => {
+			const checkVisibility = (ref, setState, key) => {
+				if (ref.current) {
+					const rect = ref.current.getBoundingClientRect();
+					if (rect.top < window.innerHeight * 0.9) {
+						setState((prevState) => ({ ...prevState, [key]: true }));
 					}
-				});
-			},
-			{
-				threshold: 0.1,
-			}
-		);
+				}
+			};
 
-		if (textRef1.current) {
-			observer.observe(textRef1.current);
-		}
-		if (textRef2.current) {
-			observer.observe(textRef2.current);
-		}
+			checkVisibility(textRef1, setAnimateText, "text1");
+			checkVisibility(textRef2, setAnimateText, "text2");
+			checkVisibility(imageRef1, setAnimateImages, "image1");
+			checkVisibility(imageRef2, setAnimateImages, "image2");
+			checkVisibility(imageRef3, setAnimateImages, "image3");
+		};
+
+		// Trigger on scroll and initial load
+		window.addEventListener("scroll", handleScroll);
+		handleScroll();
 
 		return () => {
-			if (textRef1.current) {
-				observer.unobserve(textRef1.current);
-			}
-			if (textRef2.current) {
-				observer.unobserve(textRef2.current);
-			}
+			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
 
@@ -58,21 +58,26 @@ const Briks = () => {
 				<div
 					ref={textRef1}
 					id="text1"
-					className={`tc_light_yellow p-8 slide-up ${
-						animateText.text1 ? "show" : ""
+					className={`tc_light_yellow p-8 transition-transform duration-700 ${
+						animateText.text1 ? "slide-up show" : "slide-up"
 					}`}
 				>
 					<p className="text-stone-800 mb-4 text-2xl">{texts.bricksTitle}</p>
 					<p className="mb-4">{texts.bricksParagraph1}</p>
 					<p className="mb-4">{texts.bricksParagraph2}</p>
 				</div>
-				<div className="relative w-full h-32 lg:h-[24rem] md:h-[16rem]">
+				<div
+					ref={imageRef1}
+					id="image1"
+					className="relative w-full h-32 lg:h-[24rem] md:h-[16rem] overflow-hidden"
+				>
 					<Image
 						src="/assets/briques.jpg"
 						alt="briques"
 						fill
-						style={{ objectFit: "cover" }}
-						className="object-cover"
+						className={`object-cover absolute transition-transform duration-700 ${
+							animateImages.image1 ? "translate-x-0" : "-translate-x-full"
+						}`}
 					/>
 				</div>
 			</div>
@@ -80,8 +85,8 @@ const Briks = () => {
 				<div
 					ref={textRef2}
 					id="text2"
-					className={`tc_light_yellow p-8 slide-up ${
-						animateText.text2 ? "show" : ""
+					className={`tc_light_yellow p-8 transition-transform duration-700 ${
+						animateText.text2 ? "slide-up show" : "slide-up"
 					}`}
 				>
 					<p className="text-stone-800 mb-4 text-2xl">{texts.expertiseTitle}</p>
@@ -96,28 +101,34 @@ const Briks = () => {
 						href="https://www.oiq.qc.ca/"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="relative w-1/2 h-full"
+						className="relative w-1/2 h-full overflow-hidden"
 					>
 						<Image
+							ref={imageRef2}
+							id="image2"
 							src="/assets/ordre_ingenieurs_du_quebec_logo.png"
 							alt="ordre_ingenieurs_du_quebec_logo"
 							fill
-							style={{ objectFit: "contain" }}
-							className="object-contain"
+							className={`object-contain absolute transition-transform duration-700 ${
+								animateImages.image2 ? "translate-y-0" : "translate-y-full"
+							}`}
 						/>
 					</a>
 					<a
 						href="https://www.oaq.com/"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="relative w-1/2 h-full"
+						className="relative w-1/2 h-full overflow-hidden"
 					>
 						<Image
+							ref={imageRef3}
+							id="image3"
 							src="/assets/ordre_des_architectes_du_québec_logo.png"
 							alt="ordre_des_architectes_du_québec_logo"
 							fill
-							style={{ objectFit: "contain" }}
-							className="object-contain"
+							className={`object-contain absolute transition-transform duration-700 delay-300 ${
+								animateImages.image3 ? "translate-y-0" : "translate-y-full"
+							}`}
 						/>
 					</a>
 				</div>
