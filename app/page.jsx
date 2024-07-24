@@ -12,6 +12,7 @@ import Roofing from "./components/Roofing";
 import Washing from "./components/Washing";
 import Briks from "./components/Briks";
 import Footer from "./components/Footer";
+import { motion } from "framer-motion";
 
 const Home = () => {
 	const [navbarColor, setNavbarColor] = useState("#7DD3FC");
@@ -48,21 +49,34 @@ const Home = () => {
 		};
 	}, [navbarColor]);
 
+	const variants = {
+		initial: { opacity: 0 },
+		animate: { opacity: 1, transition: { duration: 0.5 } },
+		exit: { opacity: 0, transition: { duration: 0.5 } },
+	};
+
 	return (
 		<LanguageProvider>
-			<Navbar
-				onColorChange={handleColorChange}
-				initialBgColor="bg-sky-300/90"
-			/>
-			<Welcome />
-			<WhoAreWe />
-			<Painting />
-			<Design />
-			<Insulation />
-			<Roofing />
-			<Washing />
-			<Briks />
-			<Footer />
+			<motion.div
+				initial="initial"
+				animate="animate"
+				exit="exit"
+				variants={variants}
+			>
+				<Navbar
+					onColorChange={handleColorChange}
+					initialBgColor="bg-sky-300/90"
+				/>
+				<Welcome />
+				<WhoAreWe />
+				<Painting />
+				<Design />
+				<Insulation />
+				<Roofing />
+				<Washing />
+				<Briks />
+				<Footer />
+			</motion.div>
 		</LanguageProvider>
 	);
 };

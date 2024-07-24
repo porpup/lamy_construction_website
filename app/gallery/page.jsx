@@ -5,6 +5,7 @@ import { LanguageProvider } from "../components/LanguageContext";
 import Navbar from "../components/Navbar";
 import ImageCarousel from "../components/ImageCarousel";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 
 const Gallery = () => {
 	const [navbarColor, setNavbarColor] = useState("#292524");
@@ -25,15 +26,28 @@ const Gallery = () => {
 		}
 	}, []);
 
+	const variants = {
+		initial: { opacity: 0 },
+		animate: { opacity: 1, transition: { duration: 0.5 } },
+		exit: { opacity: 0, transition: { duration: 0.5 } },
+	};
+
 	return (
 		<LanguageProvider>
-			<Navbar
-				scrolled={false}
-				onColorChange={handleColorChange}
-				initialBgColor="bg-stone-800/90"
-			/>
-			<ImageCarousel onFullscreenChange={handleFullscreenChange} />
-			<Footer />
+			<motion.div
+				initial="initial"
+				animate="animate"
+				exit="exit"
+				variants={variants}
+			>
+				<Navbar
+					scrolled={false}
+					onColorChange={handleColorChange}
+					initialBgColor="bg-stone-800/90"
+				/>
+				<ImageCarousel onFullscreenChange={handleFullscreenChange} />
+				<Footer />
+			</motion.div>
 		</LanguageProvider>
 	);
 };
