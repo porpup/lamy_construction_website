@@ -62,6 +62,7 @@ const WhoAreWe = () => {
 					alt="expert_en_plancher"
 					fill
 					className="absolute object-cover"
+					priority
 				/>
 			</div>
 			<div

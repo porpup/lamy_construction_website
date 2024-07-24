@@ -1,11 +1,12 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import Head from "next/head";
+import { metadata } from "./metadata";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@styles/globals.css";
-import { useEffect, useState } from "react";
-import { metadata } from "./metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,7 @@ export default function RootLayout({
 	}, [fullscreen, themeColor]);
 
 	useEffect(() => {
-		setThemeColor(navbarColor || fixedBgColor || "#292524"); // Default to bg-stone-800 color
+		setThemeColor(navbarColor || fixedBgColor || "#292524");
 	}, [navbarColor, fixedBgColor]);
 
 	const jsonLd = {
@@ -67,10 +68,13 @@ export default function RootLayout({
 				<link rel="shortcut icon" href="/favicon.ico" />
 				<meta name="apple-mobile-web-app-title" content="Lamy Construction" />
 				<meta name="application-name" content="Lamy Construction" />
-				<meta name="msapplication-TileColor" content="#da532c" />
+				<meta
+					name="msapplication-TileColor"
+					content={metadata.msapplication.TileColor}
+				/>
 				<meta
 					name="msapplication-config"
-					content="/assets/icons/browserconfig.xml"
+					content={metadata.msapplication.config}
 				/>
 				<meta
 					name="theme-color"

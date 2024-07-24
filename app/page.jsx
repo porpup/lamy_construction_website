@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
+import { metadata } from "./metadata";
 import { LanguageProvider } from "./components/LanguageContext";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
@@ -34,18 +36,11 @@ const Home = () => {
 			}
 		};
 
-		// Update theme color on initial load
 		updateThemeColor();
-
-		// Update theme color on scroll
-		const handleScroll = () => {
-			updateThemeColor();
-		};
-
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", updateThemeColor);
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("scroll", updateThemeColor);
 		};
 	}, [navbarColor]);
 
@@ -57,6 +52,58 @@ const Home = () => {
 
 	return (
 		<LanguageProvider>
+			<Head>
+				<title>{metadata.title}</title>
+				<meta name="description" content={metadata.description} />
+				<meta name="keywords" content={metadata.keywords} />
+				{metadata.icons.icon.map((icon) => (
+					<link
+						key={icon.sizes}
+						rel="icon"
+						type={icon.type}
+						sizes={icon.sizes}
+						href={icon.url}
+					/>
+				))}
+				<link rel="apple-touch-icon" href={metadata.icons.apple} />
+				{metadata.icons.other.map((icon) => (
+					<link
+						key={icon.url}
+						rel={icon.rel}
+						href={icon.url}
+						color={icon.color}
+					/>
+				))}
+				<link rel="manifest" href={metadata.manifest} />
+				<meta name="theme-color" content="#7DD3FC" />
+				<meta
+					name="msapplication-TileColor"
+					content={metadata.msapplication.TileColor}
+				/>
+				<meta
+					name="msapplication-config"
+					content={metadata.msapplication.config}
+				/>
+				<meta property="og:title" content={metadata.openGraph.title} />
+				<meta
+					property="og:description"
+					content={metadata.openGraph.description}
+				/>
+				<meta property="og:url" content={metadata.openGraph.url} />
+				<meta property="og:type" content={metadata.openGraph.type} />
+				{metadata.openGraph.images.map((image) => (
+					<meta key={image.url} property="og:image" content={image.url} />
+				))}
+				<meta name="twitter:card" content={metadata.twitter.card} />
+				<meta name="twitter:title" content={metadata.twitter.title} />
+				<meta
+					name="twitter:description"
+					content={metadata.twitter.description}
+				/>
+				{metadata.twitter.images.map((image) => (
+					<meta key={image} name="twitter:image" content={image} />
+				))}
+			</Head>
 			<motion.div
 				initial="initial"
 				animate="animate"
