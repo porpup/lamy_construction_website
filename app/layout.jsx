@@ -1,7 +1,4 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { metadata } from "./metadata";
+import React from "react";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -9,28 +6,7 @@ import "@styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
-	children,
-	navbarColor,
-	fullscreen,
-	fixedBgColor,
-}) {
-	const [themeColor, setThemeColor] = useState(navbarColor || fixedBgColor);
-
-	useEffect(() => {
-		const metaThemeColor = document.querySelector("meta[name=theme-color]");
-		if (metaThemeColor) {
-			metaThemeColor.setAttribute(
-				"content",
-				fullscreen ? "#000000" : themeColor
-			);
-		}
-	}, [fullscreen, themeColor]);
-
-	useEffect(() => {
-		setThemeColor(navbarColor || fixedBgColor || "#292524");
-	}, [navbarColor, fixedBgColor]);
-
+export default function RootLayout({ children }) {
 	const jsonLd = {
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -67,22 +43,22 @@ export default function RootLayout({
 				<link rel="shortcut icon" href="/favicon.ico" />
 				<meta name="apple-mobile-web-app-title" content="Lamy Construction" />
 				<meta name="application-name" content="Lamy Construction" />
+				<meta name="msapplication-TileColor" content="#da532c" />
+				<meta name="msapplication-config" content="/browserconfig.xml" />
+				<meta name="theme-color" content="#ffffff" />
 				<meta
-					name="msapplication-TileColor"
-					content={metadata.msapplication.TileColor}
+					name="description"
+					content="Lamy Construction official website."
 				/>
 				<meta
-					name="msapplication-config"
-					content={metadata.msapplication.config}
+					name="keywords"
+					content="construction, Lamy, building, renovation"
 				/>
+				<meta property="og:title" content="Lamy Construction" />
 				<meta
-					name="theme-color"
-					content={fullscreen ? "#000000" : themeColor}
+					property="og:description"
+					content="Official website of Lamy Construction."
 				/>
-				<meta name="description" content={metadata.description} />
-				<meta name="keywords" content={metadata.keywords} />
-				<meta property="og:title" content={metadata.title} />
-				<meta property="og:description" content={metadata.description} />
 				<meta
 					property="og:image"
 					content="https://www.constructionlamy.com/assets/icons/android-chrome-512x512.png"
@@ -90,8 +66,11 @@ export default function RootLayout({
 				<meta property="og:url" content="https://www.constructionlamy.com" />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:title" content={metadata.title} />
-				<meta name="twitter:description" content={metadata.description} />
+				<meta name="twitter:title" content="Lamy Construction" />
+				<meta
+					name="twitter:description"
+					content="Official website of Lamy Construction."
+				/>
 				<meta
 					name="twitter:image"
 					content="https://www.constructionlamy.com/assets/icons/android-chrome-192x192.png"
@@ -100,7 +79,7 @@ export default function RootLayout({
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				/>
-				<title>{metadata.title}</title>
+				<title>Lamy Construction</title>
 			</head>
 			<body className={inter.className}>
 				{children}

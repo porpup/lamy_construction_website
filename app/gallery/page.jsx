@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { metadata } from '@app/metadata';
+import { metadata } from "@app/metadata";
 import { LanguageProvider } from "../components/LanguageContext";
 import Navbar from "../components/Navbar";
 import ImageCarousel from "../components/ImageCarousel";
