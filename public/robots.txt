@@ -5,3 +5,4 @@ Disallow: /redirect-to-oaq
 
 # Sitemaps
 Sitemap: https://www.constructionlamy.com/sitemap.xml
+Sitemap: https://www.constructionlamy.com/sitemap-0.xml
