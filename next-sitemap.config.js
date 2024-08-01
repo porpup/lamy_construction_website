@@ -2,15 +2,15 @@
 const config = {
 	siteUrl: "https://www.constructionlamy.com",
 	generateRobotsTxt: false, // Disable automatic robots.txt generation
+	sitemapSize: 5000, // Adjust based on the number of URLs
 	robotsTxtOptions: {
 		policies: [
 			{
 				userAgent: "*",
 				allow: "/",
-				disallow: ["/redirect-to-oiq", "/redirect-to-oaq"], // Add the paths you want to exclude
+				disallow: ["/redirect-to-oiq", "/redirect-to-oaq"], // Paths to exclude
 			},
 		],
-		additionalSitemaps: ["https://www.constructionlamy.com/sitemap.xml"],
 	},
 };
 
