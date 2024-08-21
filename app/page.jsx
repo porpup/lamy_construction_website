@@ -103,6 +103,7 @@ const Home = () => {
 				{metadata.twitter.images.map((image) => (
 					<meta key={image} name="twitter:image" content={image} />
 				))}
+				<link rel="canonical" href="https://www.constructionlamy.com/" />
 			</Head>
 			<motion.div
 				initial="initial"
